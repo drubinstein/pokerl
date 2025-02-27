@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.144.2"><script src="/pokerl/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=pokerl/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Learning Pokemon With Reinforcement Learning
+  #
+
+Hi! Since 2020, I&rsquo;ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokemon Red.
+As of February 2025, I confidently can say that I have an RL system that can learn to beat Pokemon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent&rsquo;s current state. All code is open sourced and available for you, the reader, to try.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/">
+  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:title" content="Learning Pokemon With Reinforcement Learning">
+  <meta property="og:description" content="Learning Pokemon With Reinforcement Learning # Hi! Since 2020, I’ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokemon Red. As of February 2025, I confidently can say that I have an RL system that can learn to beat Pokemon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent’s current state. All code is open sourced and available for you, the reader, to try.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Learning Pokemon With Reinforcement Learning | Pokemon RL</title>
+<link rel="icon" href="/pokerl/favicon.png" >
+<link rel="manifest" href="/pokerl/manifest.json">
+<link rel="canonical" href="http://localhost:1313/pokerl/">
+<link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
+  <script defer src="/pokerl/fuse.min.js"></script>
+  <script defer src="/pokerl/en.search.min.1cf198c8682c4283df4c3320ac96d752b44ec2cbf9a5a9a4b481b988efcecfa8.js" integrity="sha256-HPGYyGgsQoPfTDMgrJbXUrROwsv5pamktIG5iO/Oz6g=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/pokerl/index.xml" title="Pokemon RL" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 1: RL and the Pokemon Environment</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/the-loop/" class="">RL Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/env-setup/" class="">Setting up the Environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Breaking Down Pokemon</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/intro/" class="">Intro</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/battling/" class="">Battling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/8badges/" class="">The 8 Badges</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/field_interactions/" class="">Field Interactions and Exploration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/team_rocket/" class="">Team Rocket</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/route/" class="">The &#34;Route&#34;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/risk_management/" class="">Risk Management</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 2: Observations, Rewards, and Policy</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/observations/" class="">Observations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/rewards/" class="">Rewards</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/policy/" class="">Policy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 3: Building and Running the System</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/running/" class="">Running</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/reading-ram/" class="">Reading RAM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/metrics/" class="">Metrics and Visualization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/swarm/" class="">The Swarm</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 4: Concluding Thoughts</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/results/" class="">Results</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/future/" class="">Future</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Learning Pokemon With Reinforcement Learning</h3>
+
+  <label for="toc-control">
+    
+    <img src="/pokerl/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pokemon-red-primer">Pokemon Red Primer?</a></li>
+    <li><a href="#why-pokemon-red">Why Pokemon Red</a></li>
+    <li><a href="#why-pokemon-red-with-rl">Why Pokemon Red with RL</a></li>
+    <li><a href="#changelog">Changelog</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="learning-pokemon-with-reinforcement-learning">
+  Learning Pokemon With Reinforcement Learning
+  <a class="anchor" href="#learning-pokemon-with-reinforcement-learning">#</a>
+</h1>
+<p>Hi! Since 2020, I&rsquo;ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokemon Red.
+As of February 2025, I confidently can say that I have an RL system that <em>can learn</em> to beat Pokemon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent&rsquo;s current state. <a href="https://github.com/thatguy11325/pokemonred_puffer">All code is open sourced and available for you, the reader, to try.</a></p>
+<p>As I improve and add to this website, I will update the changelog. Before you dive into the website,
+let me provide some background on Pokemon and my motivation for using RL.</p>
+<h2 id="pokemon-red-primer">
+  Pokemon Red Primer?
+  <a class="anchor" href="#pokemon-red-primer">#</a>
+</h2>
+<p>Pokemon Red, released in 1996, is a single player Japanese role playing game (JRPG).
+Players follow the journey of a new “Pokemon Trainer.” Players capture Pokemon “creatures” to battle against opposing Pokemon,
+explore the world and progress through the game’s storyline. Pokemon has two goals:</p>
+<ul>
+<li>Catch all possible Pokemon species.</li>
+<li>Become the “champion.”</li>
+</ul>
+<p>Most players focus on becoming the champion, which will be the focus of my work.</p>
+<h2 id="why-pokemon-red">
+  Why Pokemon Red
+  <a class="anchor" href="#why-pokemon-red">#</a>
+</h2>
+<p>Why do I care about developing an agent to beat Pokemon with machine learning?
+The answer is really a bit higher level. I care about solving <em>JRPGs</em> with machine learning as a stepping stone towards AGI. JRPGs:</p>
+<ul>
+<li>Involve complex reasoning and decision making.</li>
+<li>Are nonlinear.</li>
+<li>Can be long such as &gt; 24 hours average human gameplay.</li>
+<li>Require multi-task reasoning.</li>
+<li>Have non-obvious reward functions.</li>
+</ul>
+<p>Of JRPGs, Pokemon is relatively easy to program for.
+The <a href="https://github.com/pret">Pokemon Reverse Engineering Team</a> (PRET) and the <a href="https://github.com/Baekalfen/PyBoy">PyBoy Python Gameboy Emulation</a> projects have
+made it extremely easy to introspect the game and extract data as needed. Throughout this website, I&rsquo;ll show many examples of how I leveraged these tools for this work.</p>
+<h2 id="why-pokemon-red-with-rl">
+  Why Pokemon Red with RL
+  <a class="anchor" href="#why-pokemon-red-with-rl">#</a>
+</h2>
+<p>I could’ve taken many approaches if wanted an agent to Pokemon with machine learning.</p>
+<ul>
+<li>
+<p>I could’ve chosen a supervised learning approach, but that would have needed a well
+labelled and plentiful dataset and honestly a model larger than I had the budget to support.</p>
+</li>
+<li>
+<p>I could’ve chosen behavioral cloning and attempted to build a model that imitates a
+known speedrun route. I tried that once, but struggled to make an efficient data collection system.</p>
+</li>
+<li>
+<p>I could’ve attempted to beat the game with an LLM like ChatGPT like Pimanrules did
+in his video <a href="https://www.youtube.com/watch?v=Dct7dffObpY">Can ChatGPT play Pokémon Crystal? (with GPT-4V)</a>, but that would have
+required a lot more money and computing power than I had at my disposal.</p>
+</li>
+</ul>
+<p>Of the many approaches I considered, RL appealed to me the most.
+RL’s goal is to train a “policy” capable of determining what actions will maximize
+a reward function based on observations taken from an environment.</p>
+<p>What makes RL special to me is how you collect data in an RL training system.
+The data is almost always new data. No need to build
+complex data collection systems, manage large datasets or worry if the dataset is
+out of date. If you can build a system that can create new data on the fly, you can start training.</p>
+<p>With RL, I could build an agent with minimal resources and get amazing results. As stated before, that&rsquo;s what this blog shows.</p>
+<h2 id="changelog">
+  Changelog
+  <a class="anchor" href="#changelog">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pokemon-red-primer">Pokemon Red Primer?</a></li>
+    <li><a href="#why-pokemon-red">Why Pokemon Red</a></li>
+    <li><a href="#why-pokemon-red-with-rl">Why Pokemon Red with RL</a></li>
+    <li><a href="#changelog">Changelog</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

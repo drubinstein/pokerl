@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/pokerl/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=pokerl/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Setting up the Environment
+  #
+
+When I start designing an RL system, I start with the environment. The Python library Gymnasium provides a fairly straightforward API which can be simplified into two functions: Reset and Step
+
+  Resets and Episodes
+  #
+
+Reset handles the initialization for a gameplay session also known as an “episode.”
+In most video game DRL projects I&rsquo;ve observed a reset will happen when an agent
+
+Achieves a major milestone, such as defeating a boss.
+Encounters a failure state, such as losing all their lives.
+Reaches a predefined time or action limit, such as 100 tetriminos in Tetris,
+
+Pokemon is in the realm of “long episodic RL.” Long episodes mean that the agent may not get large rewards for a very long time. If the agent only receives large rewards at the end of an episode, it may have trouble creating long term policies.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/the-env/">
+  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:title" content="Setting up the Environment">
+  <meta property="og:description" content="Setting up the Environment # When I start designing an RL system, I start with the environment. The Python library Gymnasium provides a fairly straightforward API which can be simplified into two functions: Reset and Step
+Resets and Episodes # Reset handles the initialization for a gameplay session also known as an “episode.”
+In most video game DRL projects I’ve observed a reset will happen when an agent
+Achieves a major milestone, such as defeating a boss. Encounters a failure state, such as losing all their lives. Reaches a predefined time or action limit, such as 100 tetriminos in Tetris, Pokemon is in the realm of “long episodic RL.” Long episodes mean that the agent may not get large rewards for a very long time. If the agent only receives large rewards at the end of an episode, it may have trouble creating long term policies.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Setting up the Environment | Pokemon RL</title>
+<link rel="icon" href="/pokerl/favicon.png" >
+<link rel="manifest" href="/pokerl/manifest.json">
+<link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/the-env/">
+<link rel="stylesheet" href="/pokerl/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/pokerl/fuse.min.js"></script>
+  <script defer src="/pokerl/en.search.min.433a26689a094ab265fe4be716dc00fb3fa67d9fe19bfaadfb11519c81af5b03.js" integrity="sha256-QzomaJoJSrJl/kvnFtwA&#43;z&#43;mfZ/hm/qt&#43;xFRnIGvWwM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 1: Building the RL System</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/the-loop/" class="">RL Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/the-env/" class="active">Setting up the Environment</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Setting up the Environment</h3>
+
+  <label for="toc-control">
+    
+    <img src="/pokerl/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#resets-and-episodes">Resets and Episodes</a></li>
+    <li><a href="#steps">Steps</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="setting-up-the-environment">
+  Setting up the Environment
+  <a class="anchor" href="#setting-up-the-environment">#</a>
+</h1>
+<p>When I start designing an RL system, I start with the environment. The Python library <a href="https://gymnasium.farama.org/">Gymnasium</a> provides a fairly straightforward API which can be simplified into two functions: Reset and Step</p>
+<h2 id="resets-and-episodes">
+  Resets and Episodes
+  <a class="anchor" href="#resets-and-episodes">#</a>
+</h2>
+<p>Reset handles the initialization for a gameplay session also known as an “episode.”</p>
+<p>In most video game DRL projects I&rsquo;ve observed a reset will happen when an agent</p>
+<ul>
+<li>Achieves a major milestone, such as defeating a boss.</li>
+<li>Encounters a failure state, such as losing all their lives.</li>
+<li>Reaches a predefined time or action limit, such as 100 tetriminos in Tetris,</li>
+</ul>
+<p>Pokemon is in the realm of “long episodic RL.” Long episodes mean that the agent may not get large rewards for a very long time. If the agent only receives large rewards at the end of an episode, it may have trouble creating long term policies.</p>
+<p>Imagine if in the Tic-Tac-Toe example, the grid was 100x100. That means the agent wouldn&rsquo;t receive a reward for up to a max 5000 steps. Imagine having to plan out a 5000 step strategy. It&rsquo;s not easy! Later, I&rsquo;ll go over how I handled rewards for Pokemon&rsquo;s long episodes.</p>
+<p>Based on prior work, I began with an episode being a fixed number of steps. Over time, I tried multiple additional strategies including dynamically increasing the number of steps per episode as the agent performed important milestones. However, to me, an episode <em>should be</em> the amount of time it takes to beat the game or put yourself in a potentially unrecoverable state (soft-lock), e.g.,  such as running out of money. Therefore, I came up with a compromise. I created “mini-episodes.” An episode would be the duration of an entire game. However, the agent&rsquo;s state would periodically reset mid-episode, but the emulator state would not.</p>
+<h2 id="steps">
+  Steps
+  <a class="anchor" href="#steps">#</a>
+</h2>
+<p>Step handles actions meant for the environment and returns observations based on a taken action, any logging info and whether or not to reset the environment.</p>
+<p>Our step function for Pokemon can naively be written as:</p>
+<ul>
+<li>Receive a button press action</li>
+<li>Send the button press to the gameboy emulator</li>
+<li>Wait some frames for the action to have an effect on the environment</li>
+<li>Sample the environment</li>
+<li>Return data based on the sample</li>
+</ul>
+<p>And that’s really it. Once I had the game loop running in a Gymnasium Environment, I could begin to implement game-specific functionality.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#resets-and-episodes">Resets and Episodes</a></li>
+    <li><a href="#steps">Steps</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

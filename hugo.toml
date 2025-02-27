@@ -1,0 +1,18 @@
+baseURL = 'https://thatguy11325.github.io/pokerl'
+languageCode = 'en-us'
+title = 'Pokemon RL'
+theme = 'hugo-book'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+  [markup.goldmark.renderer]
+    unsafe = true
+          
+[params]
+  math = true

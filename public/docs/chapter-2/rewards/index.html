@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/pokerl/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=pokerl/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Rewards
+  #
+
+Rewards was where I was willing to be a bit more flexible and leak some information that an agent wouldn’t normally have access to. Only rewarding the storyline is very sparse. It can be thousands of steps before a high value event is attempted. The agent needs some way knowing it is making progress in between these high value sparse rewards.
+
+  Sparse vs. Dense Rewards
+  #
+
+Sparse rewards were the rewards I chose that were very high value but rarely occur, e.g. gym battles. If we were to only reward the sparse rewards, the agent would most likely never leave the starting point in Pallet Town.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-2/rewards/">
+  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:title" content="Rewards">
+  <meta property="og:description" content="Rewards # Rewards was where I was willing to be a bit more flexible and leak some information that an agent wouldn’t normally have access to. Only rewarding the storyline is very sparse. It can be thousands of steps before a high value event is attempted. The agent needs some way knowing it is making progress in between these high value sparse rewards.
+Sparse vs. Dense Rewards # Sparse rewards were the rewards I chose that were very high value but rarely occur, e.g. gym battles. If we were to only reward the sparse rewards, the agent would most likely never leave the starting point in Pallet Town.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Rewards | Pokemon RL</title>
+<link rel="icon" href="/pokerl/favicon.png" >
+<link rel="manifest" href="/pokerl/manifest.json">
+<link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-2/rewards/">
+<link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
+  <script defer src="/pokerl/fuse.min.js"></script>
+  <script defer src="/pokerl/en.search.min.1cf198c8682c4283df4c3320ac96d752b44ec2cbf9a5a9a4b481b988efcecfa8.js" integrity="sha256-HPGYyGgsQoPfTDMgrJbXUrROwsv5pamktIG5iO/Oz6g=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 1: RL and the Pokemon Environment</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/the-loop/" class="">RL Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/env-setup/" class="">Setting up the Environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Breaking Down Pokemon</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/intro/" class="">Intro</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/battling/" class="">Battling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/8badges/" class="">The 8 Badges</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/field_interactions/" class="">Field Interactions and Exploration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/team_rocket/" class="">Team Rocket</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/route/" class="">The &#34;Route&#34;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/risk_management/" class="">Risk Management</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 2: Observations, Rewards, and Policy</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/observations/" class="">Observations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/rewards/" class="active">Rewards</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/policy/" class="">Policy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 3: Building and Running the System</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/running/" class="">Running</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/reading-ram/" class="">Reading RAM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/metrics/" class="">Metrics and Visualization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/swarm/" class="">The Swarm</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 4: Concluding Thoughts</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/results/" class="">Results</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/future/" class="">Future</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Rewards</h3>
+
+  <label for="toc-control">
+    
+    <img src="/pokerl/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#sparse-vs-dense-rewards">Sparse vs. Dense Rewards</a></li>
+        <li><a href="#is-exploration-all-you-need">Is Exploration All You Need?</a></li>
+      </ul>
+    </li>
+    <li><a href="#making-game-progress">Making Game Progress?</a></li>
+    <li><a href="#map-id-rewards">Map ID Rewards</a></li>
+    <li><a href="#safari-zone-rewards">Safari Zone Rewards</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="rewards">
+  Rewards
+  <a class="anchor" href="#rewards">#</a>
+</h1>
+<p>Rewards was where I was willing to be a bit more flexible and leak some information that an agent wouldn’t normally have access to. Only rewarding the storyline is very sparse. It can be thousands of steps before a high value event is attempted. The agent needs some way knowing it is making progress in between these high value sparse rewards.</p>
+<h3 id="sparse-vs-dense-rewards">
+  Sparse vs. Dense Rewards
+  <a class="anchor" href="#sparse-vs-dense-rewards">#</a>
+</h3>
+<p><strong>Sparse rewards</strong> were the rewards I chose that were very high value but rarely occur, e.g. gym battles. If we were to only reward the sparse rewards, the agent would most likely never leave the starting point in Pallet Town.</p>
+<p><strong>Dense rewards</strong> are like breadcrumbs. They are for teaching an agent how to explore or interact with the world. By mixing dense rewards in, the agent can progress and eventually discover the highly valued sparse rewards.</p>
+<h3 id="is-exploration-all-you-need">
+  Is Exploration All You Need?
+  <a class="anchor" href="#is-exploration-all-you-need">#</a>
+</h3>
+<p>Exploration became the foundation for all dense rewards.</p>
+<p>I originally believed that an agent had successfully learned Pokemon if the agent could visit every coordinate in the game’s world. I loosened that definition. I now consider <em>any</em> interaction a form of exploration.</p>
+<p>However, onnly using exploration rewards are not enough. The mix of sparse and dense rewards is what makes the policy successful! If I were to only reward for unique coordinates, the agent may never interact with Brock, the first gym leader. Instead, the agent would wander the world forever collecting new locations until it ran out of locations.</p>
+<p>In the end, I rewarded for:</p>
+<ul>
+<li>The number of unique coordinates visited during a mini-episode.</li>
+<li>The number of signs interacted the agent interacts with during a mini-episode.</li>
+<li>The number of unique moves taught.</li>
+<li>The number of valid and invalid uses of HMs/Pokeflute in the overworld.</li>
+<li>The number of unique map ID transitions (warps) visited during a mini-episode.</li>
+<li>The number of unique seen and caught pokemon.</li>
+<li>The current level of the agent’s party with a cutoff to prevent grinding (not exploration related).</li>
+</ul>
+<p>I tried to also reward for all locations an agent has pressed A on and the number of unique menus the agent visited during an epiosde. However, the A press and unique menus reward provided no gain and slowed down training tremendously.</p>
+<h2 id="making-game-progress">
+  Making Game Progress?
+  <a class="anchor" href="#making-game-progress">#</a>
+</h2>
+<p>Game progress was ultimately defined by high value sparse rewards. These included:</p>
+<ul>
+<li>Gym badges obtained.</li>
+<li>All required events completed.</li>
+<li>All required items obtained.</li>
+</ul>
+<p>Without these rewards, the agent would ultimately wander until the mini-episode reset and make no progress.</p>
+<h2 id="map-id-rewards">
+  Map ID Rewards
+  <a class="anchor" href="#map-id-rewards">#</a>
+</h2>
+<p>I additionally gave the option for a &ldquo;boosted&rdquo; reward if the agent explored a currently important map ID. I understand this is a controversial choice. On one hand, I am potentially putting the game on rails. On the other hand, I experienced that the agent would have no clue where to go next unless I added boosted rewards for specific map IDs since the agent could not understand text. Often in Pokemon, an NPC will tell the player where to go next. The agent not being able to understand text obviously could not know where to go so I compromised.</p>
+<p>Specific map IDs start the game with a <em>boosted</em> exploration reward <em>until</em> the map ID’s objective is complete. For example, a gym has boosted reward until it is beaten. Only two map IDs break this rule.</p>
+<ul>
+<li>Route 23 does not get boosted until all gyms are beaten</li>
+<li>Lavender Tower does not get boosted until the Celadon City rocket event is completed. Otherwise, agents would not leave Lavender due to the level up reward obtained from the wild battles inside Lavender Tower.</li>
+</ul>
+<h2 id="safari-zone-rewards">
+  Safari Zone Rewards
+  <a class="anchor" href="#safari-zone-rewards">#</a>
+</h2>
+<p>The Safari Zone minigame provided a big challenge. The Safari Zone is a minigame where two required items must be obtained within 500 steps. The Safari Zone can be attempted as long as you can pay for it. Safari Zone’s route is simple to reward for until a fork in the road 75% the way in. I needed to incentivize the agent to get to that fork as fast as possible <em>and</em> take the correct fork.</p>
+<p>I added a specific Safari Zone reward for this case. The agent obtains a reward proportional to the number of steps left for any map id it reaches within the Safari Zone. Ideally, the agent’s visited mask will prompt the agent to explore both forks within the same episode. In reality, the agent does eventually complete the Safari Zone but it can take thousands of steps during training.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#sparse-vs-dense-rewards">Sparse vs. Dense Rewards</a></li>
+        <li><a href="#is-exploration-all-you-need">Is Exploration All You Need?</a></li>
+      </ul>
+    </li>
+    <li><a href="#making-game-progress">Making Game Progress?</a></li>
+    <li><a href="#map-id-rewards">Map ID Rewards</a></li>
+    <li><a href="#safari-zone-rewards">Safari Zone Rewards</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learning Pokemon With Reinforcement Learning on Pokemon RL</title>
+    <link>http://localhost:1313/pokerl/</link>
+    <description>Recent content in Learning Pokemon With Reinforcement Learning on Pokemon RL</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/pokerl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RL Quickstart</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/the-loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/the-loop/</guid>
+      <description>&lt;h1 id=&#34;rl-quickstart&#34;&gt;&#xA;  RL Quickstart&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rl-quickstart&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Before I focus on Pokemon, I&amp;rsquo;d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokemon training system.&lt;/p&gt;&#xA;&lt;p&gt;In a typical RL framework, there will be 2 components.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Setting up the Environment</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/env-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/env-setup/</guid>
+      <description>&lt;h1 id=&#34;setting-up-the-environment&#34;&gt;&#xA;  Setting up the Environment&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#setting-up-the-environment&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;When I start designing an RL system, I start with the environment. The Python library &lt;a href=&#34;https://gymnasium.farama.org/&#34;&gt;Gymnasium&lt;/a&gt; provides a fairly straightforward API which can be simplified into two functions: Reset and Step&lt;/p&gt;&#xA;&lt;h2 id=&#34;resets-episodes-and-the-goal&#34;&gt;&#xA;  Resets, Episodes and the Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#resets-episodes-and-the-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Reset handles the initialization for a gameplay session also known as an “episode.”&lt;/p&gt;&#xA;&lt;p&gt;In most video game DRL projects I&amp;rsquo;ve observed a reset will happen when an agent&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Intro</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/breakdown/intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/breakdown/intro/</guid>
+      <description>&lt;h1 id=&#34;breaking-down-pokemon&#34;&gt;&#xA;  Breaking Down Pokemon&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#breaking-down-pokemon&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.&lt;/p&gt;&#xA;&lt;p&gt;Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.&lt;/p&gt;&#xA;&lt;p&gt;To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Battling</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/breakdown/battling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/breakdown/battling/</guid>
+      <description>&lt;h1 id=&#34;battling&#34;&gt;&#xA;  Battling&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#battling&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokemon with RL.&lt;/p&gt;&#xA;&lt;p&gt;The Pokemon battle system is pretty straight forward. Pokemon is an advanced game of rock-paper-scissors. Pokemon have moves that can be used to either inflict status effects against other Pokemon, damage other Pokemon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokemon relative to the move and overall stats. Moves are given priority based on a Pokemon&amp;rsquo;s SPEED stat or based on a move&amp;rsquo;s priority. Damage is based on the Pokemon&amp;rsquo;s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokemon&amp;rsquo;s ACCURACY stats.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The 8 Badges</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/breakdown/8badges/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/breakdown/8badges/</guid>
+      <description>&lt;h1 id=&#34;the-8-badges&#34;&gt;&#xA;  The 8 Badges&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-8-badges&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Next, I focused on what it takes to beat the 8 gym leaders. The gym leaders upon defeat, give the main character a “badge.” Badges either unlock the ability to use a taught field move or apply permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokemon, their types and what they unlock.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Gym Leader&lt;/strong&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Type&lt;/strong&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Reward&lt;/strong&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Brock&lt;br&gt;&lt;img src=&#34;images/brock.png&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Rock&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;div align=&#34;left&#34;&gt;- 12.5% ATTACK boost&lt;br/&gt;- Can use FLASH outside of battle&lt;/align&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Misty&lt;br&gt;&lt;img src=&#34;images/misty.png&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Water&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;div align=&#34;left&#34;&gt;- Can use CUT outside of battle&lt;/align&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Lt. Surge&lt;/strong&gt;&lt;br&gt;&lt;img src=&#34;images/surge.png&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Electric&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;div align=&#34;left&#34;&gt;- 12.5% DEFENSE boost&lt;br/&gt;- Can use FLY outside of battle&lt;/align&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Erika&lt;/strong&gt;&lt;br&gt;&lt;img src=&#34;images/erika.png&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Grass&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;div align=&#34;left&#34;&gt;- Can use STRENGTH outside of battle&lt;/align&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Koga&lt;/strong&gt;&lt;br&gt;&lt;img src=&#34;images/koga.png&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Poison&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;div align=&#34;left&#34;&gt;- 12.5% SPEED boost&lt;br/&gt;- Can use SURF outside of battle&lt;/align&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Sabrina&lt;/strong&gt;&lt;br&gt;&lt;img src=&#34;images/sabrina.png&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Psychic&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Blaine&lt;/strong&gt;&lt;br&gt;&lt;img src=&#34;images/blaine.png&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Fire&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;div align=&#34;left&#34;&gt;-12.5% SPECIAL&lt;/align&gt; boost&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Giovanni&lt;br&gt;&lt;img src=&#34;images/giovanni.png&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Ground&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;I emphasized 5 gym leaders. Why? Because these gym leaders can be accomplished in &lt;em&gt;nearly any order&lt;/em&gt;. The vast majority of storyline events are gated by &lt;strong&gt;Misty, Erika, and Koga&lt;/strong&gt; who give access to the field moves CUT, STRENGTH and SURF outside of battle. How to obtain these field moves will be discussed in a later section.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Field Interactions and Exploration</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/breakdown/field_interactions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/breakdown/field_interactions/</guid>
+      <description>&lt;h1 id=&#34;field-interactions-and-exploration&#34;&gt;&#xA;  Field Interactions and Exploration&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#field-interactions-and-exploration&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;As mentioned previously, field moves taught to Pokemon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokemon.&lt;/p&gt;&#xA;&lt;p&gt;The 5 field moves of Pokemon are&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;HM01 - CUT&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;HM02 - FLY&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;HM03 - SURF&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;HM04 - STRENGTH&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;HM05 - FLASH&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Only CUT, SURF, and STRENGTH are required for game progression. Although useful, FLY and FLASH aren’t required. They only allow for faster game progression.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Team Rocket</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/breakdown/team_rocket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/breakdown/team_rocket/</guid>
+      <description>&lt;h2 id=&#34;team-rocket-storyline&#34;&gt;&#xA;  Team Rocket Storyline&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#team-rocket-storyline&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;div style=&#34;text-align: center;&#34;&gt;&#xA;&lt;p&gt;&lt;img src=&#34;assets/hideoutmaze.gif&#34; alt=&#34;&#34; /&gt;&#xA;&lt;img src=&#34;assets/silph_co.gif&#34; alt=&#34;&#34; /&gt;&#xA;&lt;img src=&#34;assets/defeatgio.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Beyond the gym battles and field moves, there are mandatory quests involving encounters with the antagonist group, Team Rocket. These events require defeating trainers, obtaining special items, and solving in-game puzzles. Thankfully, these quests must be accomplished in a linear order. For completeness, hare are all the tasks required to to complete the Rocket storyline:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Defeat the rockets blocking the exit to Mt. Moon (post Brock).&lt;/li&gt;&#xA;&lt;li&gt;Defeat the rocket at the end of Nugget Bridge north of Cerulean City.&lt;/li&gt;&#xA;&lt;li&gt;Defeat the rocket at the exit of Cerulean City.&lt;/li&gt;&#xA;&lt;li&gt;Defeat the rocket guard in the Celadon City Casino.&lt;/li&gt;&#xA;&lt;li&gt;Press the poster switch the Celadon City Casino Rocket guard is guarding and enter the Rocket hideout.&lt;/li&gt;&#xA;&lt;li&gt;Solve the Rocket hideout maze puzzle on BF3 to get to BF4.&lt;/li&gt;&#xA;&lt;li&gt;Beat the Rocket grunt in BF4.&lt;/li&gt;&#xA;&lt;li&gt;Pick up the dropped elevator key from the BF4 Rocket Grunt.&lt;/li&gt;&#xA;&lt;li&gt;Solve the maze puzzle on BF2.&lt;/li&gt;&#xA;&lt;li&gt;Use the elevator key to enter the elevator on BF2.&lt;/li&gt;&#xA;&lt;li&gt;Go to BF4 using the elevator key.&lt;/li&gt;&#xA;&lt;li&gt;Beat Giovanni in Rocket Hideout.&lt;/li&gt;&#xA;&lt;li&gt;Pick up the Silph Scope Giovanni drops.&lt;/li&gt;&#xA;&lt;li&gt;Save Mr. Fuji at the top of Lavender Tower  .&lt;/li&gt;&#xA;&lt;li&gt;Find the card key in Silph Co in Saffron City.&lt;/li&gt;&#xA;&lt;li&gt;Defeat Giovanni in Silph Co.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;It’s a lot of tasks. Unlike the gym leaders, the difficulty of the Team Rocket puzzles are highly variable, but brute-forceable. From these quests, I concluded the agent needed a desire to either explore the whole world or spend extra time building a policy capable of reading and interpreting text. I decided to focus on the former.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The &#34;Route&#34;</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/breakdown/route/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/breakdown/route/</guid>
+      <description>&lt;h1 id=&#34;defining-a-route&#34;&gt;&#xA;  Defining a &amp;ldquo;Route&amp;rdquo;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#defining-a-route&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;For the agent to complete all objectives, I wanted to simplify the number of game as much as possible to maximizing the likelihood of success. To limit non-determinism, I started the agent after the &amp;ldquo;Parcel Delivery&amp;rdquo; event. Starting the agent with a specific Pokemon would guarantee later stages of the game would be possible. Given the previous breakdown, here’s the &lt;em&gt;route&lt;/em&gt; I wanted the agent to learn:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Risk Management</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-1/breakdown/risk_management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-1/breakdown/risk_management/</guid>
+      <description>&lt;h1 id=&#34;risk-management&#34;&gt;&#xA;  Risk Management&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#risk-management&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Even though I simplified the game, I still needed risk mitigation. Pokemon contains numerous game ending risks including:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Permanently losing vital Pokemon&lt;/li&gt;&#xA;&lt;li&gt;Catching Pokemon and not having enough space for the Lapras or any other Pokemon that can learn Surf&lt;/li&gt;&#xA;&lt;li&gt;Item management. If the agent obtains too many items, then there may not be enough room for key items&lt;/li&gt;&#xA;&lt;li&gt;Money management. It is possible to soft-lock if you cannot obtain any more money at the time the Safari Zone objectives need to be completed.&lt;/li&gt;&#xA;&lt;li&gt;Only having Pokemon with non-damaging moves.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I’d like to emphasize again that &lt;em&gt;none&lt;/em&gt; of these issues require teaching the agent how to best Pokemon battles.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Observations</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-2/observations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-2/observations/</guid>
+      <description>&lt;h1 id=&#34;observations&#34;&gt;&#xA;  Observations&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#observations&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent&amp;rsquo;s current inventory. Pokemon contains tons of visible and invisible pieces of information.&lt;/p&gt;&#xA;&lt;p&gt;It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. I desired to make the agent play the game as a new player would. When in doubt, I tried to stick to one rule when designing my observations:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rewards</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-2/rewards/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-2/rewards/</guid>
+      <description>&lt;h1 id=&#34;rewards&#34;&gt;&#xA;  Rewards&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rewards&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Rewards was where I was willing to be a bit more flexible and leak some information that an agent wouldn’t normally have access to. Only rewarding the storyline is very sparse. It can be thousands of steps before a high value event is attempted. The agent needs some way knowing it is making progress in between these high value sparse rewards.&lt;/p&gt;&#xA;&lt;h3 id=&#34;sparse-vs-dense-rewards&#34;&gt;&#xA;  Sparse vs. Dense Rewards&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#sparse-vs-dense-rewards&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Sparse rewards&lt;/strong&gt; were the rewards I chose that were very high value but rarely occur, e.g. gym battles. If we were to only reward the sparse rewards, the agent would most likely never leave the starting point in Pallet Town.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Policy</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-2/policy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-2/policy/</guid>
+      <description>&lt;h1 id=&#34;rl-algorithm-and-policy&#34;&gt;&#xA;  RL Algorithm and Policy&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rl-algorithm-and-policy&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;For training, I adopted the &lt;a href=&#34;https://towardsdatascience.com/on-policy-v-s-off-policy-learning-75089916bc2f/&#34;&gt;on-policy&lt;/a&gt; algorithm &lt;a href=&#34;https://en.wikipedia.org/wiki/Proximal_policy_optimization&#34;&gt;Proximal Policy Optimization&lt;/a&gt; (PPO). PPO supports vectorized environments well and there is a large amount of online code examples surrounding it.&lt;/p&gt;&#xA;&lt;p&gt;I tried to keep the policy itself simple. I wanted a policy that&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Could have some way of processing sequential (time) data.&lt;/li&gt;&#xA;&lt;li&gt;Was small for faster training.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;To handle time dependence I considered a few options:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Modify my observation to stack frames. Each frame would linearly increase the model’s input. Then use some form of model that handles batches of sequential data, e.g., a 3D &lt;a href=&#34;https://en.wikipedia.org/wiki/Convolutional_neural_network&#34;&gt;CNN&lt;/a&gt; or &lt;a href=&#34;https://en.wikipedia.org/wiki/Attention_%28machine_learning%29&#34;&gt;attention&lt;/a&gt; layer. These models would have heavily slowed down training and require more VRAM than I had at the time&lt;/li&gt;&#xA;&lt;li&gt;Use a &lt;a href=&#34;https://en.wikipedia.org/wiki/Recurrent_neural_network&#34;&gt;recurrent neural network&lt;/a&gt; such as an &lt;a href=&#34;https://en.wikipedia.org/wiki/Long_short-term_memory&#34;&gt;LSTM&lt;/a&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Use a &lt;a href=&#34;https://huggingface.co/blog/lbourdois/get-on-the-ssm-train&#34;&gt;state space model&lt;/a&gt; (SSM).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I went with the easiest to integrate solution, an LSTM. An LSTM contains an internal state that gets input to the model alongside the most recent data point. Although LSTMs can only remember up to ≈1000 steps, that was enough history for an effective policy.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Running</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-3/running/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-3/running/</guid>
+      <description>&lt;h1 id=&#34;actually-building-the-rl-system&#34;&gt;&#xA;  Actually Building the RL System&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#actually-building-the-rl-system&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;So I have a policy, observations, an environment and a reward. Now it&amp;rsquo;s time to discuss the meat of the system and how I wrote it. Along the way, I&amp;rsquo;ll provide relevant snippets of code and tricks I did to make my system run as fast as possible.&lt;/p&gt;&#xA;&lt;p&gt;Before I begin though, I am obligated to give thanks to Joseph Suarez, the creator of PufferAI and PufferLib. Joseph graciously donated 4 machines to this effort. Each machine contained a NVIDIA 4090 GPU, Intel Core i9-14900K, 125 GB of RAM and 2TB of disk space. Before his contribution, I was paying $200/month using &lt;a href=&#34;https://vast.ai/&#34;&gt;vast.ai&lt;/a&gt; for training with worse hardware.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Reading RAM</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-3/reading-ram/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-3/reading-ram/</guid>
+      <description>&lt;h1 id=&#34;reading-ram&#34;&gt;&#xA;  Reading RAM&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reading-ram&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title>Metrics and Visualization</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-3/metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-3/metrics/</guid>
+      <description>&lt;h1 id=&#34;metrics&#34;&gt;&#xA;  Metrics&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#metrics&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title>The Swarm</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-3/swarm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-3/swarm/</guid>
+      <description>&lt;h1 id=&#34;the-swarm&#34;&gt;&#xA;  The Swarm&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-swarm&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;I know I haven’t gotten to the final run yet. I have not mentioned an important modification I made to the normal PPO loop. Pokemon is a nearly open world game. Unfortunately, the experiential data can get “non-coherent” and the agents can become detached from each other.&lt;/p&gt;&#xA;&lt;p&gt;Without sufficiently coherent data, the policy will not improve. This plagued me for &lt;em&gt;months&lt;/em&gt;. Eventually, I took inspiration from the &lt;a href=&#34;https://arxiv.org/abs/1901.10995&#34;&gt;Go-Explore&lt;/a&gt; paper. I changed the way training is done. I made assurances that the data would remain coherent.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Results</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-4/results/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-4/results/</guid>
+      <description>&lt;h1 id=&#34;results-and-concluding-thoughts&#34;&gt;&#xA;  Results and Concluding Thoughts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#results-and-concluding-thoughts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;So how did this agent perform? Well, I now have an agent that beats Pokemon with a few caveats. The code is open sourced for anyone to play with. Currently, I&amp;rsquo;m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/pokerl/docs/chapter-4/future/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-4/future/</guid>
+      <description>&lt;h1 id=&#34;the-future-gen-ii&#34;&gt;&#xA;  The Future: Gen II&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-future-gen-ii&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;So what comes next? Well I’ll continue working on this project and at some point plan to make a video of my work and obtain a recording of at least one full playthrough.&lt;/p&gt;&#xA;&lt;p&gt;But also, I&amp;rsquo;m thinking of trying the Gen II games, Gold/Silver/Crystal. &lt;a href=&#34;https://github.com/pret/pokecrystal&#34;&gt;Gen II has a decompilation from PRET&lt;/a&gt; and Gen II is easier in one important way; HMs can be used by pressing A in the field instead of extra menu interactions.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
