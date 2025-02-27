@@ -3,6 +3,12 @@ title: Learning Pokémon With Reinforcement Learning
 type: docs
 ---
 
+<div style="text-align: center;">
+
+![](logo.png)
+
+</div>
+
 # Learning Pokémon With Reinforcement Learning
 
 Hi! Since 2020, I've been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.

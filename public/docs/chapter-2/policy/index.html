@@ -38,7 +38,7 @@ Modify my observation to stack frames. Each frame would linearly increase the mo
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-2/policy/">
 <link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
   <script defer src="/pokerl/fuse.min.js"></script>
-  <script defer src="/pokerl/en.search.min.1cf198c8682c4283df4c3320ac96d752b44ec2cbf9a5a9a4b481b988efcecfa8.js" integrity="sha256-HPGYyGgsQoPfTDMgrJbXUrROwsv5pamktIG5iO/Oz6g=" crossorigin="anonymous"></script>
+  <script defer src="/pokerl/en.search.min.609089bdf0d2128ecc6610d73567268095da34d009e846197f9b37980606a962.js" integrity="sha256-YJCJvfDSEo7MZhDXNWcmgJXaNNAJ6EYZf5s3mAYGqWI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -313,7 +313,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-3/running/" class="">Running</a>
+    <a href="/pokerl/docs/chapter-3/running/running/" class="">Running</a>
   
 
         </li>
@@ -326,7 +326,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-3/reading-ram/" class="">Reading RAM</a>
+    <a href="/pokerl/docs/chapter-3/reading-asm/" class="">Reading RAM</a>
   
 
         </li>
@@ -460,7 +460,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#feature-engineering-the-policy">Feature Engineering the Policy</a>
       <ul>
-        <li><a href="#Pokémon-red-policy">Pokémon Red Policy</a></li>
+        <li><a href="#pokémon-red-policy">Pokémon Red Policy</a></li>
       </ul>
     </li>
     <li><a href="#the-cnn">The CNN</a></li>
@@ -505,12 +505,18 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#feature-engineering-the-policy">#</a>
 </h2>
 <p>I mentioned the observation I input to the policy, but did not mention its members’ <em>data types</em>. As I’ll explain later, I wanted to keep the size (in bytes) of the observation as small as possible. I also needed to transform the observation into a form the model dictating the policy could use for optimization.</p>
-<h3 id="Pokémon-red-policy">
+<h3 id="pokémon-red-policy">
   Pokémon Red Policy
-  <a class="anchor" href="#Pokémon-red-policy">#</a>
+  <a class="anchor" href="#pok%c3%a9mon-red-policy">#</a>
 </h3>
 <details open><summary>Pokémon Red Policy</summary>
   <div class="markdown-inner">
+<script src="/pokerl/mermaid.min.js"></script>
+  <script>mermaid.initialize({
+  "securityLevel": "loose",
+  "theme": "mc"
+}
+)</script>
 <pre class="mermaid">
 ---
 config:
@@ -833,7 +839,7 @@ flowchart TB
   <ul>
     <li><a href="#feature-engineering-the-policy">Feature Engineering the Policy</a>
       <ul>
-        <li><a href="#Pokémon-red-policy">Pokémon Red Policy</a></li>
+        <li><a href="#pokémon-red-policy">Pokémon Red Policy</a></li>
       </ul>
     </li>
     <li><a href="#the-cnn">The CNN</a></li>

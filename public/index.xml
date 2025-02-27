@@ -26,7 +26,7 @@
       <link>http://localhost:1313/pokerl/docs/chapter-1/breakdown/intro/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/pokerl/docs/chapter-1/breakdown/intro/</guid>
-      <description>&lt;h1 id=&#34;breaking-down-Pokémon&#34;&gt;&#xA;  Breaking Down Pokémon&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#breaking-down-Pokémon&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.&lt;/p&gt;&#xA;&lt;p&gt;Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.&lt;/p&gt;&#xA;&lt;p&gt;To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokémon, you must:&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;breaking-down-pokémon&#34;&gt;&#xA;  Breaking Down Pokémon&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#breaking-down-pok%c3%a9mon&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.&lt;/p&gt;&#xA;&lt;p&gt;Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.&lt;/p&gt;&#xA;&lt;p&gt;To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokémon, you must:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Battling</title>
@@ -93,24 +93,24 @@
     </item>
     <item>
       <title>Running</title>
-      <link>http://localhost:1313/pokerl/docs/chapter-3/running/</link>
+      <link>http://localhost:1313/pokerl/docs/chapter-3/running/running/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/pokerl/docs/chapter-3/running/</guid>
+      <guid>http://localhost:1313/pokerl/docs/chapter-3/running/running/</guid>
       <description>&lt;h1 id=&#34;actually-building-the-rl-system&#34;&gt;&#xA;  Actually Building the RL System&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#actually-building-the-rl-system&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;So I have a policy, observations, an environment and a reward. Now it&amp;rsquo;s time to discuss the meat of the system and how I wrote it. Along the way, I&amp;rsquo;ll provide relevant snippets of code and tricks I did to make my system run as fast as possible.&lt;/p&gt;&#xA;&lt;p&gt;Before I begin though, I am obligated to give thanks to Joseph Suarez, the creator of PufferAI and PufferLib. Joseph graciously donated 4 machines to this effort. Each machine contained a NVIDIA 4090 GPU, Intel Core i9-14900K, 125 GB of RAM and 2TB of disk space. Before his contribution, I was paying $200/month using &lt;a href=&#34;https://vast.ai/&#34;&gt;vast.ai&lt;/a&gt; for training with worse hardware.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Reading RAM</title>
-      <link>http://localhost:1313/pokerl/docs/chapter-3/reading-ram/</link>
+      <link>http://localhost:1313/pokerl/docs/chapter-3/reading-asm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/pokerl/docs/chapter-3/reading-ram/</guid>
-      <description>&lt;h1 id=&#34;reading-ram&#34;&gt;&#xA;  Reading RAM&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reading-ram&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+      <guid>http://localhost:1313/pokerl/docs/chapter-3/reading-asm/</guid>
+      <description>&lt;h1 id=&#34;reading-gameboy-asm&#34;&gt;&#xA;  Reading GameBoy ASM&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reading-gameboy-asm&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;I have metrics, I have observations, I have the rewards. But I needed a surefire way of knowing what the values were. There isn&amp;rsquo;t an easy way. If I had a model that could read the screen and tell me all the values I needed, then I could probably use that model to beat Pokémon.&lt;/p&gt;&#xA;&lt;p&gt;But I don&amp;rsquo;t have that model. However, I have &lt;a href=&#34;https://github.com/pret/pokered/tree/master&#34;&gt;PRET&lt;/a&gt;. I have read an extraordinary amount of GameBoy ASM (also learned GameBoy ASM from &lt;a href=&#34;https://gbdev.io/gb-asm-tutorial/&#34;&gt;gbdev&lt;/a&gt;) for this project.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Metrics and Visualization</title>
       <link>http://localhost:1313/pokerl/docs/chapter-3/metrics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/pokerl/docs/chapter-3/metrics/</guid>
-      <description>&lt;h1 id=&#34;metrics&#34;&gt;&#xA;  Metrics&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#metrics&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+      <description>&lt;h1 id=&#34;metrics&#34;&gt;&#xA;  Metrics&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#metrics&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Without metrics, I would have no way of knowing how far the agents have progressed. Inspecting the game play of 288 agents is not just time consuming, it&amp;rsquo;s expensive. Videos consume valuable CPU and disk space to render. However, generating a few metrics are way smaller and easier and can provide data in &lt;em&gt;real time&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;p&gt;For metrics writing, I had two sinks: &lt;a href=&#34;https://wandb.ai/&#34;&gt;Weights and Biases&lt;/a&gt; and &lt;a href=&#34;https://pwhiddy.github.io/pokerl-map-viz/&#34;&gt;a live map visualization&lt;/a&gt; Peter Whidden stood up for this effort. Without them, I wouldn&amp;rsquo;t be able to make any logical improvements, I&amp;rsquo;d only be guessing.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Swarm</title>

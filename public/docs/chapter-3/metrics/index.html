@@ -6,13 +6,16 @@
 <meta name="description" content="
   Metrics
   #
-">
+
+Without metrics, I would have no way of knowing how far the agents have progressed. Inspecting the game play of 288 agents is not just time consuming, it&rsquo;s expensive. Videos consume valuable CPU and disk space to render. However, generating a few metrics are way smaller and easier and can provide data in real time.
+For metrics writing, I had two sinks: Weights and Biases and a live map visualization Peter Whidden stood up for this effort. Without them, I wouldn&rsquo;t be able to make any logical improvements, I&rsquo;d only be guessing.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-3/metrics/">
   <meta property="og:site_name" content="Pokémon RL">
   <meta property="og:title" content="Metrics and Visualization">
-  <meta property="og:description" content="Metrics #">
+  <meta property="og:description" content="Metrics # Without metrics, I would have no way of knowing how far the agents have progressed. Inspecting the game play of 288 agents is not just time consuming, it’s expensive. Videos consume valuable CPU and disk space to render. However, generating a few metrics are way smaller and easier and can provide data in real time.
+For metrics writing, I had two sinks: Weights and Biases and a live map visualization Peter Whidden stood up for this effort. Without them, I wouldn’t be able to make any logical improvements, I’d only be guessing.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -22,7 +25,7 @@
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-3/metrics/">
 <link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
   <script defer src="/pokerl/fuse.min.js"></script>
-  <script defer src="/pokerl/en.search.min.1cf198c8682c4283df4c3320ac96d752b44ec2cbf9a5a9a4b481b988efcecfa8.js" integrity="sha256-HPGYyGgsQoPfTDMgrJbXUrROwsv5pamktIG5iO/Oz6g=" crossorigin="anonymous"></script>
+  <script defer src="/pokerl/en.search.min.609089bdf0d2128ecc6610d73567268095da34d009e846197f9b37980606a962.js" integrity="sha256-YJCJvfDSEo7MZhDXNWcmgJXaNNAJ6EYZf5s3mAYGqWI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -297,7 +300,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-3/running/" class="">Running</a>
+    <a href="/pokerl/docs/chapter-3/running/running/" class="">Running</a>
   
 
         </li>
@@ -310,7 +313,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-3/reading-ram/" class="">Reading RAM</a>
+    <a href="/pokerl/docs/chapter-3/reading-asm/" class="">Reading RAM</a>
   
 
         </li>
@@ -440,7 +443,17 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-live-map">The Live Map</a></li>
+    <li><a href="#weights-and-biases">Weights and Biases</a>
+      <ul>
+        <li><a href="#charts">Charts</a></li>
+        <li><a href="#the-map-overlay">The Map Overlay</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -455,7 +468,62 @@ https://github.com/alex-shpak/hugo-book
   Metrics
   <a class="anchor" href="#metrics">#</a>
 </h1>
-</article>
+<p>Without metrics, I would have no way of knowing how far the agents have progressed. Inspecting the game play of 288 agents is not just time consuming, it&rsquo;s expensive. Videos consume valuable CPU and disk space to render. However, generating a few metrics are way smaller and easier and can provide data in <em>real time</em>.</p>
+<p>For metrics writing, I had two sinks: <a href="https://wandb.ai/">Weights and Biases</a> and <a href="https://pwhiddy.github.io/pokerl-map-viz/">a live map visualization</a> Peter Whidden stood up for this effort. Without them, I wouldn&rsquo;t be able to make any logical improvements, I&rsquo;d only be guessing.</p>
+<h2 id="the-live-map">
+  The Live Map
+  <a class="anchor" href="#the-live-map">#</a>
+</h2>
+<div style="text-align: center;">
+<p><img src="assets/livemap.png" alt="" /></p>
+</div>
+<p>The live map is a really simple addition from the developer side. In a wrapper per agent, I open a websocket to a service Peter is hosting and I send the agent&rsquo;s coordinates over the websocket. I can leave it open during the day. I can check it out whenever. It also provided me a valuable way of seeing if new code I wrote (particularly sarming) was properly working. It was the first place I looked when evaluating a running experiment.</p>
+<h2 id="weights-and-biases">
+  Weights and Biases
+  <a class="anchor" href="#weights-and-biases">#</a>
+</h2>
+<h3 id="charts">
+  Charts
+  <a class="anchor" href="#charts">#</a>
+</h3>
+<p>Charts provided an invaluable way for me to understand the timeline of progress and understand how fast the agent was capable of achieving tasks.</p>
+<p>For example, I could look at a badge count metric to see how long it would take on average for an agent to get a badge. Fun fact, my current record for badge 1 is <em>10 minutes</em></p>
+<div style="text-align: center;">
+<p><img src="assets/badges.png" alt="" /></p>
+</div>
+<p>Or I could see how many events the agent has finished.</p>
+<div style="text-align: center;">
+<p><img src="assets/events.png" alt="" /></p>
+</div>
+<p>I could see if my pokecenter healing reward was finally tuned correctly.</p>
+<div style="text-align: center;">
+<p><img src="assets/pokecenter.png" alt="" /></p>
+</div>
+<p>And finally, I kept track of the current party all agents had. The party table provided me information I would only otherwise have by measuring gift Pokémon event completion. It also sometimes showed some fun scenarios.</p>
+<div style="text-align: center;">
+<p><img src="assets/partytable.png" alt="" /></p>
+</div>
+<p>For context, to get a Mr. Mime, the player must catch an Abra (extremely difficult to catch) and then perform an in-game train.</p>
+<h3 id="the-map-overlay">
+  The Map Overlay
+  <a class="anchor" href="#the-map-overlay">#</a>
+</h3>
+<div style="text-align: center;">
+<p><img src="assets/heatmap.png" alt="" /></p>
+</div>
+<p>Joseph Suarez at PufferAI also wrote a nifty heatmap of where the agent has visited during the experiment. I&rsquo;ve made modifications since to show where the agent has visited during the episode. The map provided me a way of seeing where the agents were focusing effort when the live map was too hard to follow.</p>
+<p>The heatmap showed some interesting behavior from the agents. For example, it clued me into how the agents would not focus on maximizing exploration in the Safari Zone, the agents&rsquo; exploiting the hidden object reward (mostly through gambling), and the agents&rsquo; preference to avoid battles (as a way to not lose exploration reward possibilities for a mini-episode).</p>
+<div style="text-align: center;">
+<p><img src="assets/safari.png" alt="" /></p>
+</div>
+<p>Sometimes the heatmap would also clue me into &ldquo;routes&rdquo; the agents&rsquo; policy would collapse to. For example when I mis-weighted tree cutting rewards, the heatmap pointed out that the agents&rsquo; would optimize for a route that would maximize their ability to cut trees in an episode.</p>
+<div style="text-align: center;">
+<p><img src="assets/maxcut.png" alt="" /></p>
+</div>
+<p>The map could also show me more intelligent routing from the agents like when they found the optimal path through Rock Tunnel (wild battles were disabled for this run).</p>
+<div style="text-align: center;">
+<p><img src="assets/rocktunnel.png" alt="" /></p>
+</div></article>
  
       
 
@@ -494,7 +562,17 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-live-map">The Live Map</a></li>
+    <li><a href="#weights-and-biases">Weights and Biases</a>
+      <ul>
+        <li><a href="#charts">Charts</a></li>
+        <li><a href="#the-map-overlay">The Map Overlay</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
