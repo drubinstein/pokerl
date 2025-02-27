@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/pokerl/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=pokerl/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Reading GameBoy ASM
+  #
+
+I have metrics, I have observations, I have the rewards. But I needed a surefire way of knowing what the values were. There isn&rsquo;t an easy way. If I had a model that could read the screen and tell me all the values I needed, then I could probably use that model to beat Pokémon.
+But I don&rsquo;t have that model. However, I have PRET. I have read an extraordinary amount of GameBoy ASM (also learned GameBoy ASM from gbdev) for this project.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-3/reading-asm/">
+  <meta property="og:site_name" content="Pokémon RL">
+  <meta property="og:title" content="Reading RAM">
+  <meta property="og:description" content="Reading GameBoy ASM # I have metrics, I have observations, I have the rewards. But I needed a surefire way of knowing what the values were. There isn’t an easy way. If I had a model that could read the screen and tell me all the values I needed, then I could probably use that model to beat Pokémon.
+But I don’t have that model. However, I have PRET. I have read an extraordinary amount of GameBoy ASM (also learned GameBoy ASM from gbdev) for this project.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Reading RAM | Pokémon RL</title>
+<link rel="icon" href="/pokerl/favicon.png" >
+<link rel="manifest" href="/pokerl/manifest.json">
+<link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-3/reading-asm/">
+<link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
+  <script defer src="/pokerl/fuse.min.js"></script>
+  <script defer src="/pokerl/en.search.min.609089bdf0d2128ecc6610d73567268095da34d009e846197f9b37980606a962.js" integrity="sha256-YJCJvfDSEo7MZhDXNWcmgJXaNNAJ6EYZf5s3mAYGqWI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 1: RL and the Pokémon Environment</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/the-loop/" class="">RL Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/env-setup/" class="">Setting up the Environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Breaking Down Pokémon</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/intro/" class="">Intro</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/battling/" class="">Battling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/8badges/" class="">The 8 Badges</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/field_interactions/" class="">Field Interactions and Exploration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/team_rocket/" class="">Team Rocket</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/route/" class="">The &#34;Route&#34;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/risk_management/" class="">Risk Management</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 2: Observations, Rewards, and Policy</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/observations/" class="">Observations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/rewards/" class="">Rewards</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/policy/" class="">Policy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 3: Building and Running the System</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/running/running/" class="">Running</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/reading-asm/" class="active">Reading RAM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/metrics/" class="">Metrics and Visualization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/swarm/" class="">The Swarm</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 4: Concluding Thoughts</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/results/" class="">Results</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/future/" class="">Future</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Reading RAM</h3>
+
+  <label for="toc-control">
+    
+    <img src="/pokerl/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-simple-case---reading-memory">The Simple Case - Reading Memory</a></li>
+    <li><a href="#actually-retrieving-the-data">Actually Retrieving the Data</a></li>
+    <li><a href="#pyboy-hooks">PyBoy Hooks</a></li>
+    <li><a href="#my-strategy-for-reading-disassembly">My Strategy for Reading Disassembly</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="reading-gameboy-asm">
+  Reading GameBoy ASM
+  <a class="anchor" href="#reading-gameboy-asm">#</a>
+</h1>
+<p>I have metrics, I have observations, I have the rewards. But I needed a surefire way of knowing what the values were. There isn&rsquo;t an easy way. If I had a model that could read the screen and tell me all the values I needed, then I could probably use that model to beat Pokémon.</p>
+<p>But I don&rsquo;t have that model. However, I have <a href="https://github.com/pret/pokered/tree/master">PRET</a>. I have read an extraordinary amount of GameBoy ASM (also learned GameBoy ASM from <a href="https://gbdev.io/gb-asm-tutorial/">gbdev</a>) for this project.</p>
+<h2 id="the-simple-case---reading-memory">
+  The Simple Case - Reading Memory
+  <a class="anchor" href="#the-simple-case---reading-memory">#</a>
+</h2>
+<p>PyBoy provides a <code>.memory</code> function for reading RAM. GameBoy games contain multiple banks of RAM. Each RAM bank contains a different purpose. <a href="https://github.com/pret/pokered/blob/master/ram/sram.asm">SRAM</a> is for saving, <a href="https://github.com/pret/pokered/blob/master/ram/hram.asm">HRAM</a> (high RAM) is volatile, highly available RAM on the CPU. <a href="https://github.com/pret/pokered/blob/master/ram/wram.asm">WRAM</a> (work RAM) contains the majority of useful memory addresses to look at.</p>
+<p>If you want to read your party information? That&rsquo;s in WRAM:</p>
+<pre tabindex="0"><code>SECTION &#34;Party Data&#34;, WRAM0
+
+wPartyDataStart::
+
+wPartyCount:: db
+wPartySpecies:: ds PARTY_LENGTH + 1
+
+wPartyMons::
+; wPartyMon1 - wPartyMon6
+FOR n, 1, PARTY_LENGTH + 1
+wPartyMon{d:n}:: party_struct wPartyMon{d:n}
+ENDR
+
+wPartyMonOT::
+; wPartyMon1OT - wPartyMon6OT
+FOR n, 1, PARTY_LENGTH + 1
+wPartyMon{d:n}OT:: ds NAME_LENGTH
+ENDR
+
+wPartyMonNicks::
+; wPartyMon1Nick - wPartyMon6Nick
+FOR n, 1, PARTY_LENGTH + 1
+wPartyMon{d:n}Nick:: ds NAME_LENGTH
+ENDR
+wPartyMonNicksEnd::
+
+wPartyDataEnd::
+</code></pre><p>In this example, any name that begins with <code>w</code> is the name of an addres in WRAM. <code>party_struct</code> is a macro that defines a party member.</p>
+<pre tabindex="0"><code>MACRO party_struct
+	box_struct \1
+\1Level::      db
+\1Stats::
+\1MaxHP::      dw
+\1Attack::     dw
+\1Defense::    dw
+\1Speed::      dw
+\1Special::    dw
+ENDM
+</code></pre><p>There are a ton of valuable memory locations to ready. <code>wEventFlags:: flag_array</code> provides the event array that I use for observations. <code>wPlayerDirection:: db</code> is a single byte that represents which of the 4 directions the player is facing. <code>wIsInBattle:: db</code> tells me if the agent is currently in battle or not and if that battle is a wild battle or trainer battle. <code>wSafariSteps:: dw</code> is a 2 byte value that represents the number of steps left in the Safari Zone.</p>
+<h2 id="actually-retrieving-the-data">
+  Actually Retrieving the Data
+  <a class="anchor" href="#actually-retrieving-the-data">#</a>
+</h2>
+<p>You probably noticed I only mentioned the <em>names</em> of the variables. Names are great, but are not sufficient for getting the value of that variable. I need to get the RAM value&rsquo;s address. When I first started, I was counting byte offsets by hand to find address locations for PyBoy to retrieve. However, PRET provides a <em><a href="https://github.com/pret/pokered/blob/symbols/pokered.sym">symbol table</a></em> that maps labels in ASM to their addresses.</p>
+<pre tabindex="0"><code>00:d16b wPartyMon1Species
+00:d16b wPartyMons
+00:d16b wPartyMon1
+00:d16c wPartyMon1HP
+00:d16e wPartyMon1BoxLevel
+00:d16f wPartyMon1Status
+00:d170 wPartyMon1Type
+00:d170 wPartyMon1Type1
+00:d171 wPartyMon1Type2
+00:d172 wPartyMon1CatchRate
+00:d173 wPartyMon1Moves
+00:d177 wPartyMon1OTID
+00:d179 wPartyMon1Exp
+00:d17c wPartyMon1HPExp
+</code></pre><p>In this example, the addresses for specific variables are on the left. I can use this lookup table to reference a variable by name and pass the discovered address to PyBoy (PyBoy now supports symbol names as input).</p>
+<h2 id="pyboy-hooks">
+  PyBoy Hooks
+  <a class="anchor" href="#pyboy-hooks">#</a>
+</h2>
+<p>If you read the symbol table you&rsquo;ll notice that not all values are WRAM values. What gives? Well the symbol table also tracks ASM <em>labels</em>. Labels point to addresses in the ROM while the game is playing. If the player interacts with an in-game script, a label may be passed!</p>
+<p>PyBoy happens to provide a useful mechanism for injecting code at these labels. For example, there is no WRAM value to tell if CUT was successfully used. There is however the CUT subroutine.</p>
+<pre tabindex="0"><code>UsedCut:
+	xor a
+	ld [wActionResultOrTookBattleTurn], a ; initialise to failure value
+	ld a, [wCurMapTileset]
+	and a ; OVERWORLD
+	jr z, .overworld
+	cp GYM
+	jr nz, .nothingToCut
+	ld a, [wTileInFrontOfPlayer]
+	cp $50 ; gym cut tree
+	jr nz, .nothingToCut
+	jr .canCut
+.overworld
+	dec a
+	ld a, [wTileInFrontOfPlayer]
+	cp $3d ; cut tree
+	jr z, .canCut
+	cp $52 ; grass
+	jr z, .canCut
+.nothingToCut
+	ld hl, .NothingToCutText
+	jp PrintText
+
+.NothingToCutText
+	text_far _NothingToCutText
+	text_end
+</code></pre><p>I could inject hooks at <code>.nothingToCut</code> and <code>.canCut</code> to tell if (a) CUT was attempted and (b) CUT was successful or not.</p>
+<h2 id="my-strategy-for-reading-disassembly">
+  My Strategy for Reading Disassembly
+  <a class="anchor" href="#my-strategy-for-reading-disassembly">#</a>
+</h2>
+<p>With this I had a strategy for navigating the Pokémon Red disassembly.</p>
+<ol>
+<li>Search the disassembly or symbol table for key words related to what you want to obtain information for, e.g., &ldquo;cut,&rdquo; &ldquo;StartMenu&rdquo;, &ldquo;HealingMachine.&rdquo; If you know of a location, you can go straight to the location&rsquo;s <code>scripts</code> or <code>map_header</code> file.</li>
+<li>Find relevant scripts in the disassembly.</li>
+<li>Follow the disassembly subroutines and see if the area matches what you are looking for.</li>
+<li>If the value is in HRAM or WRAM, then read those, else create a hook at the closest label.</li>
+</ol>
+<p>This method scaled tremendously. I access over 80 symbols for all of training.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-simple-case---reading-memory">The Simple Case - Reading Memory</a></li>
+    <li><a href="#actually-retrieving-the-data">Actually Retrieving the Data</a></li>
+    <li><a href="#pyboy-hooks">PyBoy Hooks</a></li>
+    <li><a href="#my-strategy-for-reading-disassembly">My Strategy for Reading Disassembly</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
+
+
+
   Learning Pokémon With Reinforcement Learning
   #
 
@@ -24,7 +27,7 @@ As of February 2025, I confidently can say that I have an RL system that can lea
 <link rel="canonical" href="http://localhost:1313/pokerl/">
 <link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
   <script defer src="/pokerl/fuse.min.js"></script>
-  <script defer src="/pokerl/en.search.min.1cf198c8682c4283df4c3320ac96d752b44ec2cbf9a5a9a4b481b988efcecfa8.js" integrity="sha256-HPGYyGgsQoPfTDMgrJbXUrROwsv5pamktIG5iO/Oz6g=" crossorigin="anonymous"></script>
+  <script defer src="/pokerl/en.search.min.609089bdf0d2128ecc6610d73567268095da34d009e846197f9b37980606a962.js" integrity="sha256-YJCJvfDSEo7MZhDXNWcmgJXaNNAJ6EYZf5s3mAYGqWI=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/pokerl/index.xml" title="Pokémon RL" />
 <!--
 Made with Book Theme
@@ -300,7 +303,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-3/running/" class="">Running</a>
+    <a href="/pokerl/docs/chapter-3/running/running/" class="">Running</a>
   
 
         </li>
@@ -313,7 +316,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-3/reading-ram/" class="">Reading RAM</a>
+    <a href="/pokerl/docs/chapter-3/reading-asm/" class="">Reading RAM</a>
   
 
         </li>
@@ -445,9 +448,9 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#Pokémon-red-primer">Pokémon Red Primer?</a></li>
-    <li><a href="#why-Pokémon-red">Why Pokémon Red</a></li>
-    <li><a href="#why-Pokémon-red-with-rl">Why Pokémon Red with RL</a></li>
+    <li><a href="#pokémon-red-primer">Pokémon Red Primer</a></li>
+    <li><a href="#why-pokémon-red">Why Pokémon Red</a></li>
+    <li><a href="#why-pokémon-red-with-rl">Why Pokémon Red with RL</a></li>
     <li><a href="#changelog">Changelog</a></li>
   </ul>
 </nav>
@@ -461,17 +464,20 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="learning-Pokémon-with-reinforcement-learning">
+  <article class="markdown book-article"><div style="text-align: center;">
+<p><img src="logo.png" alt="" /></p>
+</div>
+<h1 id="learning-pokémon-with-reinforcement-learning">
   Learning Pokémon With Reinforcement Learning
-  <a class="anchor" href="#learning-Pokémon-with-reinforcement-learning">#</a>
+  <a class="anchor" href="#learning-pok%c3%a9mon-with-reinforcement-learning">#</a>
 </h1>
 <p>Hi! Since 2020, I&rsquo;ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.
-As of February 2025, I confidently can say that I have an RL system that <em>can learn</em> to beat Pokémon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent&rsquo;s current state. <a href="https://github.com/thatguy11325/Pokémonred_puffer">All code is open sourced and available for you, the reader, to try.</a></p>
+As of February 2025, I confidently can say that I have an RL system that <em>can learn</em> to beat Pokémon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent&rsquo;s current state. <a href="https://github.com/thatguy11325/Pok%c3%a9monred_puffer">All code is open sourced and available for you, the reader, to try.</a></p>
 <p>As I improve and add to this website, I will update the changelog. Before you dive into the website,
 let me provide some background on Pokémon and my motivation for using RL.</p>
-<h2 id="Pokémon-red-primer">
-  Pokémon Red Primer?
-  <a class="anchor" href="#Pokémon-red-primer">#</a>
+<h2 id="pokémon-red-primer">
+  Pokémon Red Primer
+  <a class="anchor" href="#pok%c3%a9mon-red-primer">#</a>
 </h2>
 <p>Pokémon Red, released in 1996, is a single player Japanese role playing game (JRPG).
 Players follow the journey of a new “Pokémon Trainer.” Players capture Pokémon “creatures” to battle against opposing Pokémon,
@@ -481,9 +487,9 @@ explore the world and progress through the game’s storyline. Pokémon has two 
 <li>Become the “champion.”</li>
 </ul>
 <p>Most players focus on becoming the champion, which will be the focus of my work.</p>
-<h2 id="why-Pokémon-red">
+<h2 id="why-pokémon-red">
   Why Pokémon Red
-  <a class="anchor" href="#why-Pokémon-red">#</a>
+  <a class="anchor" href="#why-pok%c3%a9mon-red">#</a>
 </h2>
 <p>Why do I care about developing an agent to beat Pokémon with machine learning?
 The answer is really a bit higher level. I care about solving <em>JRPGs</em> with machine learning as a stepping stone towards AGI. JRPGs:</p>
@@ -497,9 +503,9 @@ The answer is really a bit higher level. I care about solving <em>JRPGs</em> wit
 <p>Of JRPGs, Pokémon is relatively easy to program for.
 The <a href="https://github.com/pret">Pokémon Reverse Engineering Team</a> (PRET) and the <a href="https://github.com/Baekalfen/PyBoy">PyBoy Python Gameboy Emulation</a> projects have
 made it extremely easy to introspect the game and extract data as needed. Throughout this website, I&rsquo;ll show many examples of how I leveraged these tools for this work.</p>
-<h2 id="why-Pokémon-red-with-rl">
+<h2 id="why-pokémon-red-with-rl">
   Why Pokémon Red with RL
-  <a class="anchor" href="#why-Pokémon-red-with-rl">#</a>
+  <a class="anchor" href="#why-pok%c3%a9mon-red-with-rl">#</a>
 </h2>
 <p>I could’ve taken many approaches if wanted an agent to Pokémon with machine learning.</p>
 <ul>
@@ -570,9 +576,9 @@ out of date. If you can build a system that can create new data on the fly, you 
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#Pokémon-red-primer">Pokémon Red Primer?</a></li>
-    <li><a href="#why-Pokémon-red">Why Pokémon Red</a></li>
-    <li><a href="#why-Pokémon-red-with-rl">Why Pokémon Red with RL</a></li>
+    <li><a href="#pokémon-red-primer">Pokémon Red Primer</a></li>
+    <li><a href="#why-pokémon-red">Why Pokémon Red</a></li>
+    <li><a href="#why-pokémon-red-with-rl">Why Pokémon Red with RL</a></li>
     <li><a href="#changelog">Changelog</a></li>
   </ul>
 </nav>
