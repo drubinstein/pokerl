@@ -50,7 +50,7 @@ I could see if my pokecenter healing reward was finally tuned correctly.
 
 </div>
 
-And finally, I kept track of the current party all agents had. The party table provided me information I would only otherwise have by measuring gift Pokemon event completion. It also sometimes showed some fun scenarios.
+And finally, I kept track of the current party all agents had. The party table provided me information I would only otherwise have by measuring gift Pokémon event completion. It also sometimes showed some fun scenarios.
 
 <div style="text-align: center;">
 

@@ -5,7 +5,7 @@ weight = 43
 
 # The Swarm
 
-I know I haven’t gotten to the final run yet. I have not mentioned an important modification I made to the normal PPO loop. Pokemon is a nearly open world game. Unfortunately, the experiential data can get “non-coherent” and the agents can become detached from each other. 
+I know I haven’t gotten to the final run yet. I have not mentioned an important modification I made to the normal PPO loop. Pokémon is a nearly open world game. Unfortunately, the experiential data can get “non-coherent” and the agents can become detached from each other. 
 
 Without sufficiently coherent data, the policy will not improve. This plagued me for *months*. Eventually, I took inspiration from the [Go-Explore](https://arxiv.org/abs/1901.10995) paper. I changed the way training is done. I made assurances that the data would remain coherent. 
 

@@ -7,26 +7,26 @@
   Risk Management
   #
 
-Even though I simplified the game, I still needed risk mitigation. Pokemon contains numerous game ending risks including:
+Even though I simplified the game, I still needed risk mitigation. Pokémon contains numerous game ending risks including:
 
-Permanently losing vital Pokemon
-Catching Pokemon and not having enough space for the Lapras or any other Pokemon that can learn Surf
+Permanently losing vital Pokémon
+Catching Pokémon and not having enough space for the Lapras or any other Pokémon that can learn Surf
 Item management. If the agent obtains too many items, then there may not be enough room for key items
 Money management. It is possible to soft-lock if you cannot obtain any more money at the time the Safari Zone objectives need to be completed.
-Only having Pokemon with non-damaging moves.
+Only having Pokémon with non-damaging moves.
 
-I’d like to emphasize again that none of these issues require teaching the agent how to best Pokemon battles.">
+I’d like to emphasize again that none of these issues require teaching the agent how to best Pokémon battles.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/breakdown/risk_management/">
-  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:site_name" content="Pokémon RL">
   <meta property="og:title" content="Risk Management">
-  <meta property="og:description" content="Risk Management # Even though I simplified the game, I still needed risk mitigation. Pokemon contains numerous game ending risks including:
-Permanently losing vital Pokemon Catching Pokemon and not having enough space for the Lapras or any other Pokemon that can learn Surf Item management. If the agent obtains too many items, then there may not be enough room for key items Money management. It is possible to soft-lock if you cannot obtain any more money at the time the Safari Zone objectives need to be completed. Only having Pokemon with non-damaging moves. I’d like to emphasize again that none of these issues require teaching the agent how to best Pokemon battles.">
+  <meta property="og:description" content="Risk Management # Even though I simplified the game, I still needed risk mitigation. Pokémon contains numerous game ending risks including:
+Permanently losing vital Pokémon Catching Pokémon and not having enough space for the Lapras or any other Pokémon that can learn Surf Item management. If the agent obtains too many items, then there may not be enough room for key items Money management. It is possible to soft-lock if you cannot obtain any more money at the time the Safari Zone objectives need to be completed. Only having Pokémon with non-damaging moves. I’d like to emphasize again that none of these issues require teaching the agent how to best Pokémon battles.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Risk Management | Pokemon RL</title>
+<title>Risk Management | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/breakdown/risk_management/">
@@ -48,7 +48,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -84,7 +84,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -123,7 +123,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Breaking Down Pokemon</span>
+    <span>Breaking Down Pokémon</span>
   
 
           
@@ -469,15 +469,15 @@ https://github.com/alex-shpak/hugo-book
   Risk Management
   <a class="anchor" href="#risk-management">#</a>
 </h1>
-<p>Even though I simplified the game, I still needed risk mitigation. Pokemon contains numerous game ending risks including:</p>
+<p>Even though I simplified the game, I still needed risk mitigation. Pokémon contains numerous game ending risks including:</p>
 <ul>
-<li>Permanently losing vital Pokemon</li>
-<li>Catching Pokemon and not having enough space for the Lapras or any other Pokemon that can learn Surf</li>
+<li>Permanently losing vital Pokémon</li>
+<li>Catching Pokémon and not having enough space for the Lapras or any other Pokémon that can learn Surf</li>
 <li>Item management. If the agent obtains too many items, then there may not be enough room for key items</li>
 <li>Money management. It is possible to soft-lock if you cannot obtain any more money at the time the Safari Zone objectives need to be completed.</li>
-<li>Only having Pokemon with non-damaging moves.</li>
+<li>Only having Pokémon with non-damaging moves.</li>
 </ul>
-<p>I’d like to emphasize again that <em>none</em> of these issues require teaching the agent how to best Pokemon battles.</p>
+<p>I’d like to emphasize again that <em>none</em> of these issues require teaching the agent how to best Pokémon battles.</p>
 <h2 id="scripting-vs-emergence">
   Scripting vs. Emergence
   <a class="anchor" href="#scripting-vs-emergence">#</a>
@@ -487,7 +487,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>Scripted:</strong> Meaning actions taken by the agent not controlled by the policy.</li>
 <li><strong>Emergent:</strong> Allowing the agent to discover its own strategies.</li>
 </ul>
-<p>Ideally, no scripted behavior would be needed. However, I needed scripts. I aimed to only script behaviors that require human intuition or tasks that are not really a core part of Pokemon. These included.</p>
+<p>Ideally, no scripted behavior would be needed. However, I needed scripts. I aimed to only script behaviors that require human intuition or tasks that are not really a core part of Pokémon. These included.</p>
 <ul>
 <li>Item management - the agent will toss all non-key items if the agent fills their inventory.</li>
 <li>Money management - the agent will have infinite money.</li>
@@ -498,8 +498,8 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>Teaching HMs.</li>
 <li>Using HMs outside of battle.</li>
-<li>Using Pokeflute.</li>
-<li>Maxxing the Pokemon’s stats.</li>
+<li>Using Pokéflute.</li>
+<li>Maxxing the Pokémon’s stats.</li>
 <li>Automatic insertion of drinks for the Saffron guards if the agent <em>entered</em> the Celadon Mart.</li>
 <li>Automating elevator usage. If an agent entered an elevator, the elevator would go to the next floor modulo number of floors.</li>
 <li>Disabling wild battles to simplify dungeons.</li>

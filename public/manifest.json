@@ -1,6 +1,6 @@
 {
-  "name": "Pokemon RL",
-  "short_name": "Pokemon RL",
+  "name": "Pokémon RL",
+  "short_name": "Pokémon RL",
   "start_url": "/pokerl/",
   "scope": "/pokerl/",
   "display": "standalone",

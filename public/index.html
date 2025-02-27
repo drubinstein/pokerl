@@ -5,27 +5,27 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Learning Pokemon With Reinforcement Learning
+  Learning Pokémon With Reinforcement Learning
   #
 
-Hi! Since 2020, I&rsquo;ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokemon Red.
-As of February 2025, I confidently can say that I have an RL system that can learn to beat Pokemon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent&rsquo;s current state. All code is open sourced and available for you, the reader, to try.">
+Hi! Since 2020, I&rsquo;ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.
+As of February 2025, I confidently can say that I have an RL system that can learn to beat Pokémon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent&rsquo;s current state. All code is open sourced and available for you, the reader, to try.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/">
-  <meta property="og:site_name" content="Pokemon RL">
-  <meta property="og:title" content="Learning Pokemon With Reinforcement Learning">
-  <meta property="og:description" content="Learning Pokemon With Reinforcement Learning # Hi! Since 2020, I’ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokemon Red. As of February 2025, I confidently can say that I have an RL system that can learn to beat Pokemon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent’s current state. All code is open sourced and available for you, the reader, to try.">
+  <meta property="og:site_name" content="Pokémon RL">
+  <meta property="og:title" content="Learning Pokémon With Reinforcement Learning">
+  <meta property="og:description" content="Learning Pokémon With Reinforcement Learning # Hi! Since 2020, I’ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red. As of February 2025, I confidently can say that I have an RL system that can learn to beat Pokémon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent’s current state. All code is open sourced and available for you, the reader, to try.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
-<title>Learning Pokemon With Reinforcement Learning | Pokemon RL</title>
+<title>Learning Pokémon With Reinforcement Learning | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
 <link rel="canonical" href="http://localhost:1313/pokerl/">
 <link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
   <script defer src="/pokerl/fuse.min.js"></script>
   <script defer src="/pokerl/en.search.min.1cf198c8682c4283df4c3320ac96d752b44ec2cbf9a5a9a4b481b988efcecfa8.js" integrity="sha256-HPGYyGgsQoPfTDMgrJbXUrROwsv5pamktIG5iO/Oz6g=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/pokerl/index.xml" title="Pokemon RL" />
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/pokerl/index.xml" title="Pokémon RL" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -41,7 +41,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -77,7 +77,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -116,7 +116,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Breaking Down Pokemon</span>
+    <span>Breaking Down Pokémon</span>
   
 
           
@@ -429,7 +429,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Learning Pokemon With Reinforcement Learning</h3>
+  <h3>Learning Pokémon With Reinforcement Learning</h3>
 
   <label for="toc-control">
     
@@ -445,9 +445,9 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#pokemon-red-primer">Pokemon Red Primer?</a></li>
-    <li><a href="#why-pokemon-red">Why Pokemon Red</a></li>
-    <li><a href="#why-pokemon-red-with-rl">Why Pokemon Red with RL</a></li>
+    <li><a href="#Pokémon-red-primer">Pokémon Red Primer?</a></li>
+    <li><a href="#why-Pokémon-red">Why Pokémon Red</a></li>
+    <li><a href="#why-Pokémon-red-with-rl">Why Pokémon Red with RL</a></li>
     <li><a href="#changelog">Changelog</a></li>
   </ul>
 </nav>
@@ -461,31 +461,31 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="learning-pokemon-with-reinforcement-learning">
-  Learning Pokemon With Reinforcement Learning
-  <a class="anchor" href="#learning-pokemon-with-reinforcement-learning">#</a>
+  <article class="markdown book-article"><h1 id="learning-Pokémon-with-reinforcement-learning">
+  Learning Pokémon With Reinforcement Learning
+  <a class="anchor" href="#learning-Pokémon-with-reinforcement-learning">#</a>
 </h1>
-<p>Hi! Since 2020, I&rsquo;ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokemon Red.
-As of February 2025, I confidently can say that I have an RL system that <em>can learn</em> to beat Pokemon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent&rsquo;s current state. <a href="https://github.com/thatguy11325/pokemonred_puffer">All code is open sourced and available for you, the reader, to try.</a></p>
+<p>Hi! Since 2020, I&rsquo;ve been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.
+As of February 2025, I confidently can say that I have an RL system that <em>can learn</em> to beat Pokémon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent&rsquo;s current state. <a href="https://github.com/thatguy11325/Pokémonred_puffer">All code is open sourced and available for you, the reader, to try.</a></p>
 <p>As I improve and add to this website, I will update the changelog. Before you dive into the website,
-let me provide some background on Pokemon and my motivation for using RL.</p>
-<h2 id="pokemon-red-primer">
-  Pokemon Red Primer?
-  <a class="anchor" href="#pokemon-red-primer">#</a>
+let me provide some background on Pokémon and my motivation for using RL.</p>
+<h2 id="Pokémon-red-primer">
+  Pokémon Red Primer?
+  <a class="anchor" href="#Pokémon-red-primer">#</a>
 </h2>
-<p>Pokemon Red, released in 1996, is a single player Japanese role playing game (JRPG).
-Players follow the journey of a new “Pokemon Trainer.” Players capture Pokemon “creatures” to battle against opposing Pokemon,
-explore the world and progress through the game’s storyline. Pokemon has two goals:</p>
+<p>Pokémon Red, released in 1996, is a single player Japanese role playing game (JRPG).
+Players follow the journey of a new “Pokémon Trainer.” Players capture Pokémon “creatures” to battle against opposing Pokémon,
+explore the world and progress through the game’s storyline. Pokémon has two goals:</p>
 <ul>
-<li>Catch all possible Pokemon species.</li>
+<li>Catch all possible Pokémon species.</li>
 <li>Become the “champion.”</li>
 </ul>
 <p>Most players focus on becoming the champion, which will be the focus of my work.</p>
-<h2 id="why-pokemon-red">
-  Why Pokemon Red
-  <a class="anchor" href="#why-pokemon-red">#</a>
+<h2 id="why-Pokémon-red">
+  Why Pokémon Red
+  <a class="anchor" href="#why-Pokémon-red">#</a>
 </h2>
-<p>Why do I care about developing an agent to beat Pokemon with machine learning?
+<p>Why do I care about developing an agent to beat Pokémon with machine learning?
 The answer is really a bit higher level. I care about solving <em>JRPGs</em> with machine learning as a stepping stone towards AGI. JRPGs:</p>
 <ul>
 <li>Involve complex reasoning and decision making.</li>
@@ -494,14 +494,14 @@ The answer is really a bit higher level. I care about solving <em>JRPGs</em> wit
 <li>Require multi-task reasoning.</li>
 <li>Have non-obvious reward functions.</li>
 </ul>
-<p>Of JRPGs, Pokemon is relatively easy to program for.
-The <a href="https://github.com/pret">Pokemon Reverse Engineering Team</a> (PRET) and the <a href="https://github.com/Baekalfen/PyBoy">PyBoy Python Gameboy Emulation</a> projects have
+<p>Of JRPGs, Pokémon is relatively easy to program for.
+The <a href="https://github.com/pret">Pokémon Reverse Engineering Team</a> (PRET) and the <a href="https://github.com/Baekalfen/PyBoy">PyBoy Python Gameboy Emulation</a> projects have
 made it extremely easy to introspect the game and extract data as needed. Throughout this website, I&rsquo;ll show many examples of how I leveraged these tools for this work.</p>
-<h2 id="why-pokemon-red-with-rl">
-  Why Pokemon Red with RL
-  <a class="anchor" href="#why-pokemon-red-with-rl">#</a>
+<h2 id="why-Pokémon-red-with-rl">
+  Why Pokémon Red with RL
+  <a class="anchor" href="#why-Pokémon-red-with-rl">#</a>
 </h2>
-<p>I could’ve taken many approaches if wanted an agent to Pokemon with machine learning.</p>
+<p>I could’ve taken many approaches if wanted an agent to Pokémon with machine learning.</p>
 <ul>
 <li>
 <p>I could’ve chosen a supervised learning approach, but that would have needed a well
@@ -570,9 +570,9 @@ out of date. If you can build a system that can create new data on the fly, you 
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#pokemon-red-primer">Pokemon Red Primer?</a></li>
-    <li><a href="#why-pokemon-red">Why Pokemon Red</a></li>
-    <li><a href="#why-pokemon-red-with-rl">Why Pokemon Red with RL</a></li>
+    <li><a href="#Pokémon-red-primer">Pokémon Red Primer?</a></li>
+    <li><a href="#why-Pokémon-red">Why Pokémon Red</a></li>
+    <li><a href="#why-Pokémon-red-with-rl">Why Pokémon Red with RL</a></li>
     <li><a href="#changelog">Changelog</a></li>
   </ul>
 </nav>

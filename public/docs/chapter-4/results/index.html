@@ -7,17 +7,17 @@
   Results and Concluding Thoughts
   #
 
-So how did this agent perform? Well, I now have an agent that beats Pokemon with a few caveats. The code is open sourced for anyone to play with. Currently, I&rsquo;m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.">
+So how did this agent perform? Well, I now have an agent that beats Pokémon with a few caveats. The code is open sourced for anyone to play with. Currently, I&rsquo;m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-4/results/">
-  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:site_name" content="Pokémon RL">
   <meta property="og:title" content="Results">
-  <meta property="og:description" content="Results and Concluding Thoughts # So how did this agent perform? Well, I now have an agent that beats Pokemon with a few caveats. The code is open sourced for anyone to play with. Currently, I’m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.">
+  <meta property="og:description" content="Results and Concluding Thoughts # So how did this agent perform? Well, I now have an agent that beats Pokémon with a few caveats. The code is open sourced for anyone to play with. Currently, I’m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Results | Pokemon RL</title>
+<title>Results | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-4/results/">
@@ -39,7 +39,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -75,7 +75,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -114,7 +114,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Breaking Down Pokemon</span>
+    <span>Breaking Down Pokémon</span>
   
 
           
@@ -460,13 +460,13 @@ https://github.com/alex-shpak/hugo-book
   Results and Concluding Thoughts
   <a class="anchor" href="#results-and-concluding-thoughts">#</a>
 </h1>
-<p>So how did this agent perform? Well, I now have an agent that beats Pokemon with a few caveats. The code is open sourced for anyone to play with. Currently, I&rsquo;m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.</p>
+<p>So how did this agent perform? Well, I now have an agent that beats Pokémon with a few caveats. The code is open sourced for anyone to play with. Currently, I&rsquo;m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.</p>
 <h2 id="what-did-i-learn">
   What did I learn?
   <a class="anchor" href="#what-did-i-learn">#</a>
 </h2>
 <p>I learned that reward shaping is super important. I learned that my initial belief was right. JRPGs are special and I still believe they are a stepping stone towards AGI.</p>
-<p>There’s a lot more to learn though. There are still scripts to remove. What if I could have the agent strength puzzles? I think at this point, more compromises will have to be made and the small model will be insufficient. I’m curious what is possible with LLMs. Recently, <a href="https://www.anthropic.com/research/visible-extended-thinking">Claude showed interesting results playing Pokemon Red with an LLM</a>. Although Claude isn&rsquo;t using RL to play the game and the agent was most likely trained with Pokemon data (and therefore not a zero-shot approach), I’m curious when an LLM will replace my entire approach. I wish I could remove the swarming technique and many of the in-game knowledge rewards I provided, especially event rewards, but I don’t think I can without making compromises on training speed.</p>
+<p>There’s a lot more to learn though. There are still scripts to remove. What if I could have the agent strength puzzles? I think at this point, more compromises will have to be made and the small model will be insufficient. I’m curious what is possible with LLMs. Recently, <a href="https://www.anthropic.com/research/visible-extended-thinking">Claude showed interesting results playing Pokémon Red with an LLM</a>. Although Claude isn&rsquo;t using RL to play the game and the agent was most likely trained with Pokémon data (and therefore not a zero-shot approach), I’m curious when an LLM will replace my entire approach. I wish I could remove the swarming technique and many of the in-game knowledge rewards I provided, especially event rewards, but I don’t think I can without making compromises on training speed.</p>
 <p>Map ID rewards are still my least favorite addition overall, but without the ability for the agent to understand in-game text I don’t know how they can be removed.</p>
 <p>But finally, exploration really is super powerful, but hard to tune. I think more time should be placed on how to explore as opposed to exploiting it.</p>
 </article>

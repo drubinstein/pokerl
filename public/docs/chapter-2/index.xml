@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chapter 2: Observations, Rewards, and Policy on Pokemon RL</title>
+    <title>Chapter 2: Observations, Rewards, and Policy on Pokémon RL</title>
     <link>http://localhost:1313/pokerl/docs/chapter-2/</link>
-    <description>Recent content in Chapter 2: Observations, Rewards, and Policy on Pokemon RL</description>
+    <description>Recent content in Chapter 2: Observations, Rewards, and Policy on Pokémon RL</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/pokerl/docs/chapter-2/index.xml" rel="self" type="application/rss+xml" />
@@ -12,7 +12,7 @@
       <link>http://localhost:1313/pokerl/docs/chapter-2/observations/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/pokerl/docs/chapter-2/observations/</guid>
-      <description>&lt;h1 id=&#34;observations&#34;&gt;&#xA;  Observations&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#observations&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent&amp;rsquo;s current inventory. Pokemon contains tons of visible and invisible pieces of information.&lt;/p&gt;&#xA;&lt;p&gt;It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. I desired to make the agent play the game as a new player would. When in doubt, I tried to stick to one rule when designing my observations:&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;observations&#34;&gt;&#xA;  Observations&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#observations&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent&amp;rsquo;s current inventory. Pokémon contains tons of visible and invisible pieces of information.&lt;/p&gt;&#xA;&lt;p&gt;It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. I desired to make the agent play the game as a new player would. When in doubt, I tried to stick to one rule when designing my observations:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Rewards</title>

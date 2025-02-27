@@ -7,19 +7,19 @@
   Observations
   #
 
-As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent&rsquo;s current inventory. Pokemon contains tons of visible and invisible pieces of information.
+As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent&rsquo;s current inventory. Pokémon contains tons of visible and invisible pieces of information.
 It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. I desired to make the agent play the game as a new player would. When in doubt, I tried to stick to one rule when designing my observations:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-2/observations/">
-  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:site_name" content="Pokémon RL">
   <meta property="og:title" content="Observations">
-  <meta property="og:description" content="Observations # As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent’s current inventory. Pokemon contains tons of visible and invisible pieces of information.
+  <meta property="og:description" content="Observations # As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent’s current inventory. Pokémon contains tons of visible and invisible pieces of information.
 It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. I desired to make the agent play the game as a new player would. When in doubt, I tried to stick to one rule when designing my observations:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Observations | Pokemon RL</title>
+<title>Observations | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-2/observations/">
@@ -41,7 +41,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -77,7 +77,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -116,7 +116,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Breaking Down Pokemon</span>
+    <span>Breaking Down Pokémon</span>
   
 
           
@@ -478,10 +478,10 @@ https://github.com/alex-shpak/hugo-book
   Observations
   <a class="anchor" href="#observations">#</a>
 </h1>
-<p>As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent&rsquo;s current inventory. Pokemon contains tons of visible and invisible pieces of information.</p>
+<p>As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent&rsquo;s current inventory. Pokémon contains tons of visible and invisible pieces of information.</p>
 <p>It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. I desired to make the agent play the game as a new player would. When in doubt, I tried to stick to one rule when designing my observations:</p>
 <p><em>The observation can not contain any in-game knowledge a human player would not have access to.</em></p>
-<p>What does this mean in practice? No knowledge of a Pokemon’s hidden stats. No knowledge of a Pokemon’s future moves. No knowledge of an enemy’s moveset. No knowledge of the whole game map until a new area was visited. etc.</p>
+<p>What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No knowledge of a Pokémon’s future moves. No knowledge of an enemy’s moveset. No knowledge of the whole game map until a new area was visited. etc.</p>
 <h2 id="my-first-observations">
   My First Observations
   <a class="anchor" href="#my-first-observations">#</a>
@@ -491,11 +491,11 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#the-current-game-screen-downsampled-by-2-72x80-pixels-in-grayscale">#</a>
 </h3>
 <ul>
-<li>Pokemon Red was released as a grayscale game. The color information does not provide any extra information until later generations.</li>
+<li>Pokémon Red was released as a grayscale game. The color information does not provide any extra information until later generations.</li>
 <li>Downsampling the screen still provided enough information to determine where the character is.</li>
 <li>The screen gives the agent the most direct knowledge of what it is doing.</li>
 <li>An alternative would be to collect all entity information for the current screen from RAM. However, I felt that the game screen provided the best parallel to how a human interacts with a Gameboy</li>
-<li>Another alternative would be to provide the sprites as an observation. Again, I like how using pixels mimics how a human would play Pokemon Red.</li>
+<li>Another alternative would be to provide the sprites as an observation. Again, I like how using pixels mimics how a human would play Pokémon Red.</li>
 </ul>
 <h3 id="the-visited-mask">
   The &ldquo;Visited Mask&rdquo;
@@ -538,7 +538,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#the-map-id-an-agent-will-return-to-if-they-lose-a-battle-blackout-map-id">#</a>
 </h3>
 <ul>
-<li>This is not necessary, but was a way to help the agent understand to use Pokemon Centers, a form of checkpointing.</li>
+<li>This is not necessary, but was a way to help the agent understand to use Pokémon Centers, a form of checkpointing.</li>
 </ul>
 <h3 id="the-items-in-the-agents-inventory-along-with-quantities">
   The items in the agent’s inventory along with quantities

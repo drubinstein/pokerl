@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chapter 3: Building and Running the System on Pokemon RL</title>
+    <title>Chapter 3: Building and Running the System on Pokémon RL</title>
     <link>http://localhost:1313/pokerl/docs/chapter-3/</link>
-    <description>Recent content in Chapter 3: Building and Running the System on Pokemon RL</description>
+    <description>Recent content in Chapter 3: Building and Running the System on Pokémon RL</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/pokerl/docs/chapter-3/index.xml" rel="self" type="application/rss+xml" />
@@ -33,7 +33,7 @@
       <link>http://localhost:1313/pokerl/docs/chapter-3/swarm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/pokerl/docs/chapter-3/swarm/</guid>
-      <description>&lt;h1 id=&#34;the-swarm&#34;&gt;&#xA;  The Swarm&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-swarm&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;I know I haven’t gotten to the final run yet. I have not mentioned an important modification I made to the normal PPO loop. Pokemon is a nearly open world game. Unfortunately, the experiential data can get “non-coherent” and the agents can become detached from each other.&lt;/p&gt;&#xA;&lt;p&gt;Without sufficiently coherent data, the policy will not improve. This plagued me for &lt;em&gt;months&lt;/em&gt;. Eventually, I took inspiration from the &lt;a href=&#34;https://arxiv.org/abs/1901.10995&#34;&gt;Go-Explore&lt;/a&gt; paper. I changed the way training is done. I made assurances that the data would remain coherent.&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;the-swarm&#34;&gt;&#xA;  The Swarm&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#the-swarm&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;I know I haven’t gotten to the final run yet. I have not mentioned an important modification I made to the normal PPO loop. Pokémon is a nearly open world game. Unfortunately, the experiential data can get “non-coherent” and the agents can become detached from each other.&lt;/p&gt;&#xA;&lt;p&gt;Without sufficiently coherent data, the policy will not improve. This plagued me for &lt;em&gt;months&lt;/em&gt;. Eventually, I took inspiration from the &lt;a href=&#34;https://arxiv.org/abs/1901.10995&#34;&gt;Go-Explore&lt;/a&gt; paper. I changed the way training is done. I made assurances that the data would remain coherent.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -26,9 +26,9 @@ The policy ended up being ≈10 million parameters or 40MB. For context, that's 
 
 I mentioned the observation I input to the policy, but did not mention its members’ *data types*. As I’ll explain later, I wanted to keep the size (in bytes) of the observation as small as possible. I also needed to transform the observation into a form the model dictating the policy could use for optimization.
 
-### Pokemon Red Policy
+### Pokémon Red Policy
 
-{{% details "Pokemon Red Policy" open %}}
+{{% details "Pokémon Red Policy" open %}}
 {{< mermaid >}}
 ---
 config:
@@ -218,7 +218,7 @@ The map ID and blackout map IDs are passed to the policy as integers, but in the
 Items held in the agent's bag are also identified by ID. The Item IDs are passed to their own embedding layer. I scale the item embeddings by the item's quantities; a number between 0 and 1 where 0 maps to 0 and 1 maps the max number of the same item an agent can have.
 
 ## Party Network
-All party data is concatenated together and passed through a small dense layer to create a “pokemon” space.
+All party data is concatenated together and passed through a small dense layer to create a “Pokémon” space.
 
 ## Binary Vectors
 In RAM, events are a packed binary vector with each bit representing one in-game completed event. I unpack this vector and pass it on to the policy. The event vector in RAM does not include Lapras, Rival 3 and the Saffron Guard. I pass these in separately as they are "event"-like in my opinion.

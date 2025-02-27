@@ -5,23 +5,23 @@ weight = 30
 
 # Observations
 
-As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent's current inventory. Pokemon contains tons of visible and invisible pieces of information.
+As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent's current inventory. Pokémon contains tons of visible and invisible pieces of information.
 
 It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. I desired to make the agent play the game as a new player would. When in doubt, I tried to stick to one rule when designing my observations:
 
 _The observation can not contain any in-game knowledge a human player would not have access to._
 
-What does this mean in practice? No knowledge of a Pokemon’s hidden stats. No knowledge of a Pokemon’s future moves. No knowledge of an enemy’s moveset. No knowledge of the whole game map until a new area was visited. etc. 
+What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No knowledge of a Pokémon’s future moves. No knowledge of an enemy’s moveset. No knowledge of the whole game map until a new area was visited. etc. 
 
 
 ## My First Observations
 
 ### The current game screen downsampled by 2 (72x80 pixels) in grayscale.
-- Pokemon Red was released as a grayscale game. The color information does not provide any extra information until later generations.
+- Pokémon Red was released as a grayscale game. The color information does not provide any extra information until later generations.
 - Downsampling the screen still provided enough information to determine where the character is.
 - The screen gives the agent the most direct knowledge of what it is doing. 
 - An alternative would be to collect all entity information for the current screen from RAM. However, I felt that the game screen provided the best parallel to how a human interacts with a Gameboy  
-- Another alternative would be to provide the sprites as an observation. Again, I like how using pixels mimics how a human would play Pokemon Red.
+- Another alternative would be to provide the sprites as an observation. Again, I like how using pixels mimics how a human would play Pokémon Red.
 
 ### The "Visited Mask"
 
@@ -51,7 +51,7 @@ Along the way, I added more observations to handle specific in-game complexity.
 - This provided an extra hint to teach the agent about what player sprite maps to what orientation.
 
 ### The map ID an agent will return to if they lose a battle (Blackout Map ID)
-- This is not necessary, but was a way to help the agent understand to use Pokemon Centers, a form of checkpointing.
+- This is not necessary, but was a way to help the agent understand to use Pokémon Centers, a form of checkpointing.
 
 ### The items in the agent’s inventory along with quantities  
 - If the agent ever learned about what items it could use, this is how.   

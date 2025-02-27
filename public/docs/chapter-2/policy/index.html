@@ -23,7 +23,7 @@ I went with the easiest to integrate solution, an LSTM. An LSTM contains an inte
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-2/policy/">
-  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:site_name" content="Pokémon RL">
   <meta property="og:title" content="Policy">
   <meta property="og:description" content="RL Algorithm and Policy # For training, I adopted the on-policy algorithm Proximal Policy Optimization (PPO). PPO supports vectorized environments well and there is a large amount of online code examples surrounding it.
 I tried to keep the policy itself simple. I wanted a policy that
@@ -32,7 +32,7 @@ Modify my observation to stack frames. Each frame would linearly increase the mo
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Policy | Pokemon RL</title>
+<title>Policy | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-2/policy/">
@@ -54,7 +54,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -90,7 +90,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -129,7 +129,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Breaking Down Pokemon</span>
+    <span>Breaking Down Pokémon</span>
   
 
           
@@ -460,7 +460,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#feature-engineering-the-policy">Feature Engineering the Policy</a>
       <ul>
-        <li><a href="#pokemon-red-policy">Pokemon Red Policy</a></li>
+        <li><a href="#Pokémon-red-policy">Pokémon Red Policy</a></li>
       </ul>
     </li>
     <li><a href="#the-cnn">The CNN</a></li>
@@ -505,11 +505,11 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#feature-engineering-the-policy">#</a>
 </h2>
 <p>I mentioned the observation I input to the policy, but did not mention its members’ <em>data types</em>. As I’ll explain later, I wanted to keep the size (in bytes) of the observation as small as possible. I also needed to transform the observation into a form the model dictating the policy could use for optimization.</p>
-<h3 id="pokemon-red-policy">
-  Pokemon Red Policy
-  <a class="anchor" href="#pokemon-red-policy">#</a>
+<h3 id="Pokémon-red-policy">
+  Pokémon Red Policy
+  <a class="anchor" href="#Pokémon-red-policy">#</a>
 </h3>
-<details open><summary>Pokemon Red Policy</summary>
+<details open><summary>Pokémon Red Policy</summary>
   <div class="markdown-inner">
 <pre class="mermaid">
 ---
@@ -774,7 +774,7 @@ flowchart TB
   Party Network
   <a class="anchor" href="#party-network">#</a>
 </h2>
-<p>All party data is concatenated together and passed through a small dense layer to create a “pokemon” space.</p>
+<p>All party data is concatenated together and passed through a small dense layer to create a “Pokémon” space.</p>
 <h2 id="binary-vectors">
   Binary Vectors
   <a class="anchor" href="#binary-vectors">#</a>
@@ -833,7 +833,7 @@ flowchart TB
   <ul>
     <li><a href="#feature-engineering-the-policy">Feature Engineering the Policy</a>
       <ul>
-        <li><a href="#pokemon-red-policy">Pokemon Red Policy</a></li>
+        <li><a href="#Pokémon-red-policy">Pokémon Red Policy</a></li>
       </ul>
     </li>
     <li><a href="#the-cnn">The CNN</a></li>

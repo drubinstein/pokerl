@@ -7,19 +7,19 @@
   Battling
   #
 
-Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokemon with RL.
-The Pokemon battle system is pretty straight forward. Pokemon is an advanced game of rock-paper-scissors. Pokemon have moves that can be used to either inflict status effects against other Pokemon, damage other Pokemon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokemon relative to the move and overall stats. Moves are given priority based on a Pokemon&rsquo;s SPEED stat or based on a move&rsquo;s priority. Damage is based on the Pokemon&rsquo;s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokemon&rsquo;s ACCURACY stats.">
+Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokémon with RL.
+The Pokémon battle system is pretty straight forward. Pokémon is an advanced game of rock-paper-scissors. Pokémon have moves that can be used to either inflict status effects against other Pokémon, damage other Pokémon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokémon relative to the move and overall stats. Moves are given priority based on a Pokémon&rsquo;s SPEED stat or based on a move&rsquo;s priority. Damage is based on the Pokémon&rsquo;s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokémon&rsquo;s ACCURACY stats.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/breakdown/battling/">
-  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:site_name" content="Pokémon RL">
   <meta property="og:title" content="Battling">
-  <meta property="og:description" content="Battling # Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokemon with RL.
-The Pokemon battle system is pretty straight forward. Pokemon is an advanced game of rock-paper-scissors. Pokemon have moves that can be used to either inflict status effects against other Pokemon, damage other Pokemon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokemon relative to the move and overall stats. Moves are given priority based on a Pokemon’s SPEED stat or based on a move’s priority. Damage is based on the Pokemon’s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokemon’s ACCURACY stats.">
+  <meta property="og:description" content="Battling # Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokémon with RL.
+The Pokémon battle system is pretty straight forward. Pokémon is an advanced game of rock-paper-scissors. Pokémon have moves that can be used to either inflict status effects against other Pokémon, damage other Pokémon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokémon relative to the move and overall stats. Moves are given priority based on a Pokémon’s SPEED stat or based on a move’s priority. Damage is based on the Pokémon’s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokémon’s ACCURACY stats.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Battling | Pokemon RL</title>
+<title>Battling | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/breakdown/battling/">
@@ -41,7 +41,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -77,7 +77,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -116,7 +116,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Breaking Down Pokemon</span>
+    <span>Breaking Down Pokémon</span>
   
 
           
@@ -458,12 +458,12 @@ https://github.com/alex-shpak/hugo-book
   Battling
   <a class="anchor" href="#battling">#</a>
 </h1>
-<p>Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokemon with RL.</p>
-<p>The Pokemon battle system is pretty straight forward. Pokemon is an advanced game of rock-paper-scissors. Pokemon have moves that can be used to either inflict status effects against other Pokemon, damage other Pokemon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokemon relative to the move and overall stats. Moves are given priority based on a Pokemon&rsquo;s SPEED stat or based on a move&rsquo;s priority. Damage is based on the Pokemon&rsquo;s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokemon&rsquo;s ACCURACY stats.</p>
-<p>During battles, the agent can additionally switch their current Pokemon in-battle or use items to heal their Pokemon.</p>
-<p>There are two types of battles in Pokemon. The first type are <em>wild</em> battles where the agent will battle against a single Pokemon. Wild battles generally begin with a random encounter in grassy areas or dungeons. The second type are <em>trainer</em> battles. Trainer battles place the agent against a team of one or more Pokemon. Trainers have access to the same item and party switch actions the agent has.</p>
-<p>Battles end when all Pokemon on one side have fainted. Fainting is when a Pokemon&rsquo;s health drops to zero. Additionally, during a wild battle, the agent has the option to <em>run</em> and leave the wild battle without penalty or <em>catch</em> the opposing Pokemon and have the opposing Pokemon join their party.</p>
-<p>If the agent&rsquo;s Pokemon knocks out the opposing Pokemon, they gain experience (EXP). With enough EXP, a Pokemon will level up. Levelling up provides a mechanism to increase the Pokemon&rsquo;s stats. Levelling up to increase stats gives a mechanism to ignore worrying about battling. If the agent “grinds,” that is, let Pokemon level up or retry trainers infinite times, the agent will eventually win outside of a couple of very unlikely situations.</p>
+<p>Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokémon with RL.</p>
+<p>The Pokémon battle system is pretty straight forward. Pokémon is an advanced game of rock-paper-scissors. Pokémon have moves that can be used to either inflict status effects against other Pokémon, damage other Pokémon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokémon relative to the move and overall stats. Moves are given priority based on a Pokémon&rsquo;s SPEED stat or based on a move&rsquo;s priority. Damage is based on the Pokémon&rsquo;s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokémon&rsquo;s ACCURACY stats.</p>
+<p>During battles, the agent can additionally switch their current Pokémon in-battle or use items to heal their Pokémon.</p>
+<p>There are two types of battles in Pokémon. The first type are <em>wild</em> battles where the agent will battle against a single Pokémon. Wild battles generally begin with a random encounter in grassy areas or dungeons. The second type are <em>trainer</em> battles. Trainer battles place the agent against a team of one or more Pokémon. Trainers have access to the same item and party switch actions the agent has.</p>
+<p>Battles end when all Pokémon on one side have fainted. Fainting is when a Pokémon&rsquo;s health drops to zero. Additionally, during a wild battle, the agent has the option to <em>run</em> and leave the wild battle without penalty or <em>catch</em> the opposing Pokémon and have the opposing Pokémon join their party.</p>
+<p>If the agent&rsquo;s Pokémon knocks out the opposing Pokémon, they gain experience (EXP). With enough EXP, a Pokémon will level up. Levelling up provides a mechanism to increase the Pokémon&rsquo;s stats. Levelling up to increase stats gives a mechanism to ignore worrying about battling. If the agent “grinds,” that is, let Pokémon level up or retry trainers infinite times, the agent will eventually win outside of a couple of very unlikely situations.</p>
 <p>Consequentially, I ignored creating a policy for battling and focused on providing suitable conditions for levelling up when needed.</p>
 </article>
  

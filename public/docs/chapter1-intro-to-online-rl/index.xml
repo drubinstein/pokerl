@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chapter 1: Building the RL System on Pokemon RL</title>
+    <title>Chapter 1: Building the RL System on Pokémon RL</title>
     <link>http://localhost:1313/pokerl/docs/chapter1-intro-to-online-rl/</link>
-    <description>Recent content in Chapter 1: Building the RL System on Pokemon RL</description>
+    <description>Recent content in Chapter 1: Building the RL System on Pokémon RL</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/pokerl/docs/chapter1-intro-to-online-rl/index.xml" rel="self" type="application/rss+xml" />
@@ -12,7 +12,7 @@
       <link>http://localhost:1313/pokerl/docs/chapter1-intro-to-online-rl/the-loop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/pokerl/docs/chapter1-intro-to-online-rl/the-loop/</guid>
-      <description>&lt;h1 id=&#34;rl-quickstart&#34;&gt;&#xA;  RL Quickstart&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rl-quickstart&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Before I focus on Pokemon, I&amp;rsquo;d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokemon training system.&lt;/p&gt;&#xA;&lt;p&gt;In a typical RL framework, there will be 2 components.&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;rl-quickstart&#34;&gt;&#xA;  RL Quickstart&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rl-quickstart&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Before I focus on Pokémon, I&amp;rsquo;d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokémon training system.&lt;/p&gt;&#xA;&lt;p&gt;In a typical RL framework, there will be 2 components.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

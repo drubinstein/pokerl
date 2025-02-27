@@ -3,19 +3,19 @@ title = 'Intro'
 weight = 20
 +++
 
-# Breaking Down Pokemon
+# Breaking Down Pokémon
 
-Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
+Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
 
 Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.
 
-To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:
+To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokémon, you must:
 
 1. Beat the 8 Gym Leaders. Gym leaders are a form of video game “boss.”  
 2. Acquire items to teach the moves CUT, STRENGTH, and, SURF. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.  
-3. Acquire Pokemon that can learn the field moves CUT, STRENGTH, and SURF. 
+3. Acquire Pokémon that can learn the field moves CUT, STRENGTH, and SURF. 
 4. Acquire any items required for field interactions. Like field moves, there are items that are required to unlock new areas.  
-5. Teach available Pokemon the field moves CUT, STRENGTH, and SURF   
+5. Teach available Pokémon the field moves CUT, STRENGTH, and SURF   
 6. Use field moves or items for field interactions to remove any game blocking obstacles.  
 7. Complete the Team Rocket storyline.     
 8. Beat the 6 required rival battles  
@@ -31,7 +31,7 @@ config:
   layout: elk
 ---
 flowchart TD
-    AA(Acquire starter Pokemon from Prof. Oak)
+    AA(Acquire starter Pokémon from Prof. Oak)
     AA --> AAA(Acquire Parcel from Viridian Mart) --> AAAA(Deliver Parcel to Prof. Oak)
     AAAA --> A(Defeat Brock) --> B(Traverse Mt. Moon)
     B --> C(Defeat Misty)
@@ -48,10 +48,10 @@ flowchart TD
     H --> J(Defeat Erika) 
     H --> MM(Obtain a drink from the vendeing machines at the top of Celadon Mart) 
     MM --> M(Deliver Drink to Saffron Guard) --> O
-    L --> N(Obtain Pokeflute)
+    L --> N(Obtain Pokéflute)
     L --> OO(Defeat Rival 5 in Silph Co) --> O(Defeat Giovanni in Silph Co) --> P(Defeat Sabrina)
-    N --> Q(Use Pokeflute on at least one Snorlax)
-    Q --> R(Obtain HM03 - Surf from the Safari Zone) --> T(Acquire the Secret Key from Pokemon Mansion) --> U(Defeat Blaine)
+    N --> Q(Use Pokéflute on at least one Snorlax)
+    Q --> R(Obtain HM03 - Surf from the Safari Zone) --> T(Acquire the Secret Key from Pokémon Mansion) --> U(Defeat Blaine)
     Q --> V(Defeat Koga) --> T
     Q --> SS(Obtain the Gold Teeth from the Safari Zone) --> S(Deliver the Gold Teeth to the old man in Fuchsia City to acquire HM04 - Strength)
     I --> W(Defeat Giovanni in Viridian Gym) --> X(Defeat Rival 6) --> Y(Traverse Victory Road)
@@ -63,4 +63,4 @@ flowchart TD
 {{< /mermaid >}}
 
 
-I broke down these objectives to understand what is and is not important for beating Pokemon Red.
+I broke down these objectives to understand what is and is not important for beating Pokémon Red.

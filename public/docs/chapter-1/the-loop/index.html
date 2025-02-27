@@ -7,19 +7,19 @@
   RL Quickstart
   #
 
-Before I focus on Pokemon, I&rsquo;d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokemon training system.
+Before I focus on Pokémon, I&rsquo;d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokémon training system.
 In a typical RL framework, there will be 2 components.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/the-loop/">
-  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:site_name" content="Pokémon RL">
   <meta property="og:title" content="RL Quickstart">
-  <meta property="og:description" content="RL Quickstart # Before I focus on Pokemon, I’d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokemon training system.
+  <meta property="og:description" content="RL Quickstart # Before I focus on Pokémon, I’d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokémon training system.
 In a typical RL framework, there will be 2 components.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>RL Quickstart | Pokemon RL</title>
+<title>RL Quickstart | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/the-loop/">
@@ -41,7 +41,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -77,7 +77,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -116,7 +116,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Breaking Down Pokemon</span>
+    <span>Breaking Down Pokémon</span>
   
 
           
@@ -471,13 +471,13 @@ https://github.com/alex-shpak/hugo-book
   RL Quickstart
   <a class="anchor" href="#rl-quickstart">#</a>
 </h1>
-<p>Before I focus on Pokemon, I&rsquo;d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokemon training system.</p>
+<p>Before I focus on Pokémon, I&rsquo;d like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokémon training system.</p>
 <p>In a typical RL framework, there will be 2 components.</p>
 <ol>
 <li>The Environment - Represents the world context.</li>
 <li>The Agent - Responsible for generating actions to perform in the environment</li>
 </ol>
-<p>The agent contains a <em>policy</em> for generating an action given a state of the environment using a . The environment evaluates the action and returns an <em>observation</em> and a <em>reward</em>. These actions, observations and rewards can be used to update the agent&rsquo;s policy. <a href="https://en.wikipedia.org/wiki/Deep_reinforcement_learning">Deep Reinforcement Learning</a> (DRL) uses a neural network for the policy. I&rsquo;ll be using DRL for Pokemon.</p>
+<p>The agent contains a <em>policy</em> for generating an action given a state of the environment using a . The environment evaluates the action and returns an <em>observation</em> and a <em>reward</em>. These actions, observations and rewards can be used to update the agent&rsquo;s policy. <a href="https://en.wikipedia.org/wiki/Deep_reinforcement_learning">Deep Reinforcement Learning</a> (DRL) uses a neural network for the policy. I&rsquo;ll be using DRL for Pokémon.</p>
 
 
 <pre class="mermaid">
@@ -553,7 +553,7 @@ flowchart LR
   <a class="anchor" href="#training-the-policy">#</a>
 </h3>
 <p>Now that we have created our Tic-Tac-Toe RL system, we can attempt to train a policy to be the best Tic-Tac-Toe player ever. At the start of training, the policy will play random moves, but as it obtains more experience, it will learn to exploit the reward function.</p>
-<p>For Pokemon, I am going to breakdown the game similarly. Let&rsquo;s dig in.</p>
+<p>For Pokémon, I am going to breakdown the game similarly. Let&rsquo;s dig in.</p>
 </article>
  
       

@@ -5,7 +5,7 @@ weight = 41
 
 # Reading GameBoy ASM
 
-I have metrics, I have observations, I have the rewards. But I needed a surefire way of knowing what the values were. There isn't an easy way. If I had a model that could read the screen and tell me all the values I needed, then I could probably use that model to beat Pokemon.
+I have metrics, I have observations, I have the rewards. But I needed a surefire way of knowing what the values were. There isn't an easy way. If I had a model that could read the screen and tell me all the values I needed, then I could probably use that model to beat Pokémon.
 
 But I don't have that model. However, I have [PRET](https://github.com/pret/pokered/tree/master). I have read an extraordinary amount of GameBoy ASM (also learned GameBoy ASM from [gbdev](https://gbdev.io/gb-asm-tutorial/)) for this project.
 
@@ -124,7 +124,7 @@ I could inject hooks at `.nothingToCut` and `.canCut` to tell if (a) CUT was att
 
 ## My Strategy for Reading Disassembly
 
-With this I had a strategy for navigating the Pokemon Red disassembly.
+With this I had a strategy for navigating the Pokémon Red disassembly.
 
 1. Search the disassembly or symbol table for key words related to what you want to obtain information for, e.g., "cut," "StartMenu", "HealingMachine." If you know of a location, you can go straight to the location's `scripts` or `map_header` file.
 2. Find relevant scripts in the disassembly.
