@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Breaking Down Pokemon
+  Breaking Down Pokémon
   #
 
-Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
+Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
 Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.
-To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:">
+To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokémon, you must:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/pokemon-breakdown/">
-  <meta property="og:site_name" content="Pokemon RL">
-  <meta property="og:title" content="Breaking Down Pokemon">
-  <meta property="og:description" content="Breaking Down Pokemon # Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/Pokémon-breakdown/">
+  <meta property="og:site_name" content="Pokémon RL">
+  <meta property="og:title" content="Breaking Down Pokémon">
+  <meta property="og:description" content="Breaking Down Pokémon # Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
 Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.
-To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:">
+To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokémon, you must:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Breaking Down Pokemon | Pokemon RL</title>
+<title>Breaking Down Pokémon | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
-<link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/pokemon-breakdown/">
+<link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/Pokémon-breakdown/">
 <link rel="stylesheet" href="/pokerl/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/pokerl/fuse.min.js"></script>
   <script defer src="/pokerl/en.search.min.2d3e025c86fb726e69745b352cdefabce04030cbca3ff356ba0eca3a1b78b11c.js" integrity="sha256-LT4CXIb7cm5pdFs1LN76vOBAMMvKP/NWug7KOht4sRw=" crossorigin="anonymous"></script>
@@ -43,7 +43,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -79,7 +79,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -118,7 +118,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-1/pokemon-breakdown/" class="active">Breaking Down Pokemon</a>
+    <a href="/pokerl/docs/chapter-1/Pokémon-breakdown/" class="active">Breaking Down Pokémon</a>
   
 
         </li>
@@ -133,7 +133,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-647d1501251fa16dacc89324c8f5611c" class="toggle"  />
     <label for="section-647d1501251fa16dacc89324c8f5611c" class="flex justify-between">
-      <a role="button" class="">Breaking Down Pokemon</a>
+      <a role="button" class="">Breaking Down Pokémon</a>
     </label>
   
 
@@ -276,7 +276,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Breaking Down Pokemon</h3>
+  <h3>Breaking Down Pokémon</h3>
 
   <label for="toc-control">
     
@@ -309,7 +309,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#obtaining-hm03---surf">Obtaining HM03 - SURF</a></li>
         <li><a href="#obtaining-hm04---strength">Obtaining HM04 - Strength</a></li>
         <li><a href="#using-an-hm">Using an HM</a></li>
-        <li><a href="#obtaining-and-using-the-pokeflute">Obtaining and Using the Pokeflute</a></li>
+        <li><a href="#obtaining-and-using-the-Pokéflute">Obtaining and Using the Pokéflute</a></li>
       </ul>
     </li>
     <li><a href="#team-rocket-storyline">Team Rocket Storyline</a></li>
@@ -331,19 +331,19 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="breaking-down-pokemon">
-  Breaking Down Pokemon
-  <a class="anchor" href="#breaking-down-pokemon">#</a>
+  <article class="markdown book-article"><h1 id="breaking-down-Pokémon">
+  Breaking Down Pokémon
+  <a class="anchor" href="#breaking-down-Pokémon">#</a>
 </h1>
-<p>Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.</p>
+<p>Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.</p>
 <p>Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.</p>
-<p>To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:</p>
+<p>To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokémon, you must:</p>
 <ol>
 <li>Beat the 8 Gym Leaders. Gym leaders are a form of video game “boss.”</li>
 <li>Acquire items to teach the moves CUT, STRENGTH, and, SURF. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.</li>
-<li>Acquire Pokemon that can learn the field moves CUT, STRENGTH, and SURF.</li>
+<li>Acquire Pokémon that can learn the field moves CUT, STRENGTH, and SURF.</li>
 <li>Acquire any items required for field interactions. Like field moves, there are items that are required to unlock new areas.</li>
-<li>Teach available Pokemon the field moves CUT, STRENGTH, and SURF</li>
+<li>Teach available Pokémon the field moves CUT, STRENGTH, and SURF</li>
 <li>Use field moves or items for field interactions to remove any game blocking obstacles.</li>
 <li>Complete the Team Rocket storyline.</li>
 <li>Beat the 6 required rival battles</li>
@@ -354,7 +354,7 @@ https://github.com/alex-shpak/hugo-book
 
 <pre class="mermaid">
 flowchart TD
-    AA(Acquire starter Pokemon from Prof. Oak)
+    AA(Acquire starter Pokémon from Prof. Oak)
     AA --> AAA(Acquire Parcel from Viridian Mart) --> AAAA(Deliver Parcel to Prof. Oak)
     AAAA --> A(Defeat Brock) --> B(Traverse Mt. Moon)
     B --> C(Defeat Misty)
@@ -371,10 +371,10 @@ flowchart TD
     H --> J(Defeat Erika) 
     H --> MM(Obtain a drink from the vendeing machines at the top of Celadon Mart) 
     MM --> M(Deliver Drink to Saffron Guard) --> O
-    L --> N(Obtain Pokeflute)
+    L --> N(Obtain Pokéflute)
     L --> OO(Defeat Rival 5 in Silph Co) --> O(Defeat Giovanni in Silph Co) --> P(Defeat Sabrina)
-    N --> Q(Use Pokeflute on at least one Snorlax)
-    Q --> R(Obtain HM03 - Surf from the Safari Zone) --> T(Acquire the Secret Key from Pokemon Mansion) --> U(Defeat Blaine)
+    N --> Q(Use Pokéflute on at least one Snorlax)
+    Q --> R(Obtain HM03 - Surf from the Safari Zone) --> T(Acquire the Secret Key from Pokémon Mansion) --> U(Defeat Blaine)
     Q --> V(Koga) --> T
     Q --> SS(Obtain the Gold Teeth from the Safari Zone) --> S(Deliver the Gold Teeth to the old man in Fuchsia City to acquire HM04 - Strength)
     I --> W(Defeat Giovanni in Viridian Gym) --> X(Defeat Rival 6) --> Y(Traverse Victory Road)
@@ -385,23 +385,23 @@ flowchart TD
     Y --> Z(Defeat the Elite 4) --> ZZ(Defeat the Champion)
 </pre>
 
-<p>I broke down these objectives to understand what is and is not important for beating Pokemon Red.</p>
+<p>I broke down these objectives to understand what is and is not important for beating Pokémon Red.</p>
 <h2 id="battling">
   Battling
   <a class="anchor" href="#battling">#</a>
 </h2>
-<p>Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokemon with RL.</p>
-<p>The Pokemon battle system is pretty straight forward. Pokemon is an advanced game of rock-paper-scissors. Pokemon have moves that can be used to either inflict status effects against other Pokemon, damage other Pokemon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokemon relative to the move and overall stats. Moves are given priority based on a Pokemon&rsquo;s SPEED stat or based on a move&rsquo;s priority. Damage is based on the Pokemon&rsquo;s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokemon&rsquo;s ACCURACY stats.</p>
-<p>During battles, the agent can additionally switch their current Pokemon in-battle or use items to heal their Pokemon.</p>
-<p>There are two types of battles in Pokemon. The first type are <em>wild</em> battles where the agent will battle against a single Pokemon. Wild battles generally begin with a random encounter in grassy areas or dungeons. The second type are <em>trainer</em> battles. Trainer battles place the agent against a team of one or more Pokemon. Trainers have access to the same item and party switch actions the agent has.</p>
-<p>Battles end when all Pokemon on one side have fainted. Fainting is when a Pokemon&rsquo;s health drops to zero. Additionally, during a wild battle, the agent has the option to <em>run</em> and leave the wild battle without penalty or <em>catch</em> the opposing Pokemon and have the opposing Pokemon join their party.</p>
-<p>If the agent&rsquo;s Pokemon knocks out the opposing Pokemon, they gain experience (EXP). With enough EXP, a Pokemon will level up. Levelling up provides a mechanism to increase the Pokemon&rsquo;s stats. Levelling up to increase stats gives a mechanism to ignore worrying about battling. If the agent “grinds,” that is, let Pokemon level up or retry trainers infinite times, the agent will eventually win outside of a couple of very unlikely situations.</p>
+<p>Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokémon with RL.</p>
+<p>The Pokémon battle system is pretty straight forward. Pokémon is an advanced game of rock-paper-scissors. Pokémon have moves that can be used to either inflict status effects against other Pokémon, damage other Pokémon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokémon relative to the move and overall stats. Moves are given priority based on a Pokémon&rsquo;s SPEED stat or based on a move&rsquo;s priority. Damage is based on the Pokémon&rsquo;s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokémon&rsquo;s ACCURACY stats.</p>
+<p>During battles, the agent can additionally switch their current Pokémon in-battle or use items to heal their Pokémon.</p>
+<p>There are two types of battles in Pokémon. The first type are <em>wild</em> battles where the agent will battle against a single Pokémon. Wild battles generally begin with a random encounter in grassy areas or dungeons. The second type are <em>trainer</em> battles. Trainer battles place the agent against a team of one or more Pokémon. Trainers have access to the same item and party switch actions the agent has.</p>
+<p>Battles end when all Pokémon on one side have fainted. Fainting is when a Pokémon&rsquo;s health drops to zero. Additionally, during a wild battle, the agent has the option to <em>run</em> and leave the wild battle without penalty or <em>catch</em> the opposing Pokémon and have the opposing Pokémon join their party.</p>
+<p>If the agent&rsquo;s Pokémon knocks out the opposing Pokémon, they gain experience (EXP). With enough EXP, a Pokémon will level up. Levelling up provides a mechanism to increase the Pokémon&rsquo;s stats. Levelling up to increase stats gives a mechanism to ignore worrying about battling. If the agent “grinds,” that is, let Pokémon level up or retry trainers infinite times, the agent will eventually win outside of a couple of very unlikely situations.</p>
 <p>Consequentially, I ignored creating a policy for battling and focused on providing suitable conditions for levelling up when needed.</p>
 <h2 id="the-8-badges">
   The 8 Badges
   <a class="anchor" href="#the-8-badges">#</a>
 </h2>
-<p>Next, I focused on what it takes to beat the 8 gym leaders. The gym leaders upon defeat, give the main character a “badge.” Badges either unlock the ability to use a taught field move or apply permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokemon, their types and what they unlock.</p>
+<p>Next, I focused on what it takes to beat the 8 gym leaders. The gym leaders upon defeat, give the main character a “badge.” Badges either unlock the ability to use a taught field move or apply permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokémon, their types and what they unlock.</p>
 <table>
   <thead>
       <tr>
@@ -480,7 +480,7 @@ flowchart TD
   Blaine&rsquo;s Gym Gimmick
   <a class="anchor" href="#blaines-gym-gimmick">#</a>
 </h3>
-<p>To enter Blaine’s gym the agent must first <em>Surf</em> to Cinnabar Island where the gym is located. Subsequently, the agent must acquire the “SECRET KEY” from the Pokemon Mansion next door to his gym <em>Surf</em>. To battle Blaine, the agent must complete a series of optional True/False quizzes. If the agent incorrectly answers, the agent battles a trainer.</p>
+<p>To enter Blaine’s gym the agent must first <em>Surf</em> to Cinnabar Island where the gym is located. Subsequently, the agent must acquire the “SECRET KEY” from the Pokémon Mansion next door to his gym <em>Surf</em>. To battle Blaine, the agent must complete a series of optional True/False quizzes. If the agent incorrectly answers, the agent battles a trainer.</p>
 <h3 id="giovannis-gym-gimmick">
   Giovanni&rsquo;s Gym Gimmick
   <a class="anchor" href="#giovannis-gym-gimmick">#</a>
@@ -491,8 +491,8 @@ flowchart TD
   Field Interactions and Exploration
   <a class="anchor" href="#field-interactions-and-exploration">#</a>
 </h2>
-<p>As mentioned previously, field moves taught to Pokemon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokemon.</p>
-<p>The 5 field moves of Pokemon are</p>
+<p>As mentioned previously, field moves taught to Pokémon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokémon.</p>
+<p>The 5 field moves of Pokémon are</p>
 <ul>
 <li><strong>HM01 - CUT</strong></li>
 <li>HM02 - FLY</li>
@@ -531,13 +531,13 @@ flowchart TD
   Using an HM
   <a class="anchor" href="#using-an-hm">#</a>
 </h3>
-<p><em>Teaching</em> and using an HM requires a minimum of 17 actions along with a Pokemon in the agent&rsquo;s party that is capable of learning the HM. 17+ actions are hard enough to give the agent context for. Incentivizing the agent to have HM capable party members when it is playing Pokemon for the first time without a guide is an even harder task!</p>
-<h3 id="obtaining-and-using-the-pokeflute">
-  Obtaining and Using the Pokeflute
-  <a class="anchor" href="#obtaining-and-using-the-pokeflute">#</a>
+<p><em>Teaching</em> and using an HM requires a minimum of 17 actions along with a Pokémon in the agent&rsquo;s party that is capable of learning the HM. 17+ actions are hard enough to give the agent context for. Incentivizing the agent to have HM capable party members when it is playing Pokémon for the first time without a guide is an even harder task!</p>
+<h3 id="obtaining-and-using-the-Pokéflute">
+  Obtaining and Using the Pokéflute
+  <a class="anchor" href="#obtaining-and-using-the-Pokéflute">#</a>
 </h3>
-<p>Along with field moves, the agent will need to use the item Pokeflute for one field interaction. Pokeflute can remove two roadblocks (at least one is required) so the agent can gain access to Fuchsia City.</p>
-<p>However, using PokeFlute is very similar to using an HM. A level of convenience that I will use when ensuring the agent can perform the action.</p>
+<p>Along with field moves, the agent will need to use the item Pokéflute for one field interaction. Pokéflute can remove two roadblocks (at least one is required) so the agent can gain access to Fuchsia City.</p>
+<p>However, using Pokéflute is very similar to using an HM. A level of convenience that I will use when ensuring the agent can perform the action.</p>
 <h2 id="team-rocket-storyline">
   Team Rocket Storyline
   <a class="anchor" href="#team-rocket-storyline">#</a>
@@ -557,7 +557,7 @@ flowchart TD
 <li>Go to BF4 using the elevator key.</li>
 <li>Beat Giovanni in Rocket Hideout.</li>
 <li>Pick up the Silph Scope Giovanni drops.</li>
-<li>Go to the Pokemon Tower in Lavender Town.</li>
+<li>Go to the Pokémon Tower in Lavender Town.</li>
 <li>Use the Silph Scope to defeat the ghost waiting at the staircase to the second-to-top floor of Lavender Tower.</li>
 <li>Save Mr. Fuji at the top of Lavender Tower  .</li>
 <li>Obtain a drink from the vending machine of Celadon City (can be done any time before this).</li>
@@ -570,9 +570,9 @@ flowchart TD
   Defining a &ldquo;Route&rdquo;
   <a class="anchor" href="#defining-a-route">#</a>
 </h2>
-<p>For the agent to complete all objectives, I wanted to simplify the number of game as much as possible to maximizing the likelihood of success. To limit non-determinism, I started the agent after the &ldquo;Parcel Delivery&rdquo; event. Starting the agent with a specific Pokemon would guarantee later stages of the game would be possible. Given the previous breakdown, here’s the <em>route</em> I wanted the agent to learn:</p>
+<p>For the agent to complete all objectives, I wanted to simplify the number of game as much as possible to maximizing the likelihood of success. To limit non-determinism, I started the agent after the &ldquo;Parcel Delivery&rdquo; event. Starting the agent with a specific Pokémon would guarantee later stages of the game would be possible. Given the previous breakdown, here’s the <em>route</em> I wanted the agent to learn:</p>
 <ul>
-<li>Start with Bulbasaur or Charmander to guarantee a Pokemon who can use CUT.</li>
+<li>Start with Bulbasaur or Charmander to guarantee a Pokémon who can use CUT.</li>
 <li>Defeat Brock.</li>
 <li>In any order:
 <ul>
@@ -596,15 +596,15 @@ flowchart TD
   Risk Management
   <a class="anchor" href="#risk-management">#</a>
 </h2>
-<p>Even though I simplified the game, I still needed risk mitigation. Pokemon contains numerous game ending risks including:</p>
+<p>Even though I simplified the game, I still needed risk mitigation. Pokémon contains numerous game ending risks including:</p>
 <ul>
-<li>Permanently losing vital Pokemon</li>
-<li>Catching Pokemon and not having enough space for the Lapras or any other Pokemon that can learn Surf</li>
+<li>Permanently losing vital Pokémon</li>
+<li>Catching Pokémon and not having enough space for the Lapras or any other Pokémon that can learn Surf</li>
 <li>Item management. If the agent obtains too many items, then there may not be enough room for key items</li>
 <li>Money management. It is possible to soft-lock if you cannot obtain any more money at the time the Safari Zone objectives need to be completed.</li>
-<li>Only having Pokemon with non-damaging moves.</li>
+<li>Only having Pokémon with non-damaging moves.</li>
 </ul>
-<p>I’d like to emphasize again that <em>none</em> of these issues require teaching the agent how to best Pokemon battles.</p>
+<p>I’d like to emphasize again that <em>none</em> of these issues require teaching the agent how to best Pokémon battles.</p>
 <h3 id="scripting-vs-emergence">
   Scripting vs. Emergence
   <a class="anchor" href="#scripting-vs-emergence">#</a>
@@ -614,7 +614,7 @@ flowchart TD
 <li><strong>Scripted:</strong> Meaning actions taken by the agent not controlled by the policy.</li>
 <li><strong>Emergent:</strong> Allowing the agent to discover its own strategies.</li>
 </ul>
-<p>Ideally, no scripted behavior would be needed. However, I needed scripts. I aimed to only script behaviors that require human intuition or tasks that are not really a core part of Pokemon. These included.</p>
+<p>Ideally, no scripted behavior would be needed. However, I needed scripts. I aimed to only script behaviors that require human intuition or tasks that are not really a core part of Pokémon. These included.</p>
 <ul>
 <li>Item management - the agent will toss all non-key items if the agent fills their inventory.</li>
 <li>Money management - the agent will have infinite money.</li>
@@ -625,8 +625,8 @@ flowchart TD
 <ul>
 <li>Teaching HMs.</li>
 <li>Using HMs outside of battle.</li>
-<li>Using Pokeflute.</li>
-<li>Maxxing the Pokemon’s stats.</li>
+<li>Using Pokéflute.</li>
+<li>Maxxing the Pokémon’s stats.</li>
 <li>Automatic insertion of drinks for the Saffron guards if the agent <em>entered</em> the Celadon Mart.</li>
 <li>Automating elevator usage. If an agent entered an elevator, the elevator would go to the next floor modulo number of floors.</li>
 <li>Disabling wild battles to simplify dungeons.</li>
@@ -689,7 +689,7 @@ flowchart TD
         <li><a href="#obtaining-hm03---surf">Obtaining HM03 - SURF</a></li>
         <li><a href="#obtaining-hm04---strength">Obtaining HM04 - Strength</a></li>
         <li><a href="#using-an-hm">Using an HM</a></li>
-        <li><a href="#obtaining-and-using-the-pokeflute">Obtaining and Using the Pokeflute</a></li>
+        <li><a href="#obtaining-and-using-the-Pokéflute">Obtaining and Using the Pokéflute</a></li>
       </ul>
     </li>
     <li><a href="#team-rocket-storyline">Team Rocket Storyline</a></li>

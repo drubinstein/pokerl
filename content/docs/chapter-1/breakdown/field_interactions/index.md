@@ -5,9 +5,9 @@ weight = 24
 
 # Field Interactions and Exploration
 
-As mentioned previously, field moves taught to Pokemon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokemon.
+As mentioned previously, field moves taught to Pokémon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokémon.
 
-The 5 field moves of Pokemon are
+The 5 field moves of Pokémon are
 
 - **HM01 - CUT**  
 - HM02 - FLY  
@@ -18,7 +18,7 @@ The 5 field moves of Pokemon are
 Only CUT, SURF, and STRENGTH are required for game progression. Although useful, FLY and FLASH aren’t required. They only allow for faster game progression.
 
 ## Using an HM
-*Teaching* and using an HM requires a minimum of 17 actions along with a Pokemon in the agent's party that is capable of learning the HM. 17+ actions are hard enough to give the agent context for. Incentivizing the agent to have HM capable party members when it is playing Pokemon for the first time without a guide is an even harder task!
+*Teaching* and using an HM requires a minimum of 17 actions along with a Pokémon in the agent's party that is capable of learning the HM. 17+ actions are hard enough to give the agent context for. Incentivizing the agent to have HM capable party members when it is playing Pokémon for the first time without a guide is an even harder task!
 
 ## Obtaining HM01 - CUT
 
@@ -62,14 +62,14 @@ To obtain STRENGTH, the agent must:
 The old man will then reward the agent with the item HM04
 
 
-## Obtaining and Using the Pokeflute
+## Obtaining and Using the Pokéflute
 
 <div style="text-align: center;">
 
-![](assets/use_pokeflute.gif)
+![](assets/use_Pokéflute.gif)
 
 </div>
 
-Along with field moves, the agent will need to use the item Pokeflute for one field interaction. Pokeflute can remove two roadblocks (at least one is required) so the agent can gain access to Fuchsia City. 
+Along with field moves, the agent will need to use the item Pokéflute for one field interaction. Pokéflute can remove two roadblocks (at least one is required) so the agent can gain access to Fuchsia City. 
 
-However, using PokeFlute is very similar to using an HM. A level of convenience that I will use when ensuring the agent can perform the action.
+However, using Pokéflute is very similar to using an HM. A level of convenience that I will use when ensuring the agent can perform the action.

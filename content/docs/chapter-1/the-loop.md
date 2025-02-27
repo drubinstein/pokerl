@@ -4,14 +4,14 @@ weight = 1
 +++
 # RL Quickstart
 
-Before I focus on Pokemon, I'd like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokemon training system.
+Before I focus on Pokémon, I'd like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokémon training system.
 
 In a typical RL framework, there will be 2 components.
 
 1. The Environment - Represents the world context.
 2. The Agent - Responsible for generating actions to perform in the environment
 
-The agent contains a *policy* for generating an action given a state of the environment using a . The environment evaluates the action and returns an *observation* and a *reward*. These actions, observations and rewards can be used to update the agent's policy. [Deep Reinforcement Learning](https://en.wikipedia.org/wiki/Deep_reinforcement_learning) (DRL) uses a neural network for the policy. I'll be using DRL for Pokemon.
+The agent contains a *policy* for generating an action given a state of the environment using a . The environment evaluates the action and returns an *observation* and a *reward*. These actions, observations and rewards can be used to update the agent's policy. [Deep Reinforcement Learning](https://en.wikipedia.org/wiki/Deep_reinforcement_learning) (DRL) uses a neural network for the policy. I'll be using DRL for Pokémon.
 
 {{< mermaid >}}
 ---
@@ -84,5 +84,5 @@ We can even be simpler and say +1 if the player wins, -1 if the player loses. Th
 Now that we have created our Tic-Tac-Toe RL system, we can attempt to train a policy to be the best Tic-Tac-Toe player ever. At the start of training, the policy will play random moves, but as it obtains more experience, it will learn to exploit the reward function.
 
 
-For Pokemon, I am going to breakdown the game similarly. Let's dig in.
+For Pokémon, I am going to breakdown the game similarly. Let's dig in.
 

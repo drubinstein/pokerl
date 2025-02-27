@@ -17,7 +17,7 @@ Rewards was where I was willing to be a bit more flexible and leak some informat
 
 Exploration became the foundation for all dense rewards.
 
-I originally believed that an agent had successfully learned Pokemon if the agent could visit every coordinate in the game’s world. I loosened that definition. I now consider *any* interaction a form of exploration.
+I originally believed that an agent had successfully learned Pokémon if the agent could visit every coordinate in the game’s world. I loosened that definition. I now consider *any* interaction a form of exploration.
 
 However, onnly using exploration rewards are not enough. The mix of sparse and dense rewards is what makes the policy successful! If I were to only reward for unique coordinates, the agent may never interact with Brock, the first gym leader. Instead, the agent would wander the world forever collecting new locations until it ran out of locations.
 
@@ -26,10 +26,10 @@ In the end, I rewarded for:
 - The number of unique coordinates visited during a mini-episode.
 - The number of signs interacted the agent interacts with during a mini-episode.
 - The number of unique moves taught.
-- The number of valid and invalid uses of HMs/Pokeflute in the overworld.   
-- The number of tile types an HM/Pokeflute was used on.
+- The number of valid and invalid uses of HMs/Pokéflute in the overworld.   
+- The number of tile types an HM/Pokéflute was used on.
 - The number of unique map ID transitions (warps) visited during a mini-episode.   
-- The number of unique seen and caught pokemon.
+- The number of unique seen and caught Pokémon.
 - The current level of the agent’s party with a cutoff to prevent grinding (not exploration related).
 
 I tried to also reward for all locations an agent has pressed A on and the number of unique menus the agent visited during an epiosde. However, the A press and unique menus reward provided no gain and slowed down training tremendously.
@@ -46,7 +46,7 @@ Without these rewards, the agent would ultimately wander until the mini-episode 
 
 ## Map ID Rewards
 
-I additionally gave the option for a "boosted" reward if the agent explored a currently important map ID. I understand this is a controversial choice. On one hand, I am potentially putting the game on rails. On the other hand, I experienced that the agent would have no clue where to go next unless I added boosted rewards for specific map IDs since the agent could not understand text. Often in Pokemon, an NPC will tell the player where to go next. The agent not being able to understand text obviously could not know where to go so I compromised.
+I additionally gave the option for a "boosted" reward if the agent explored a currently important map ID. I understand this is a controversial choice. On one hand, I am potentially putting the game on rails. On the other hand, I experienced that the agent would have no clue where to go next unless I added boosted rewards for specific map IDs since the agent could not understand text. Often in Pokémon, an NPC will tell the player where to go next. The agent not being able to understand text obviously could not know where to go so I compromised.
 
 Specific map IDs start the game with a _boosted_ exploration reward *until* the map ID’s objective is complete. For example, a gym has boosted reward until it is beaten. Only two map IDs break this rule. 
 

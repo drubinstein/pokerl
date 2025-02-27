@@ -5,9 +5,9 @@ weight = 26
 
 # Defining a "Route"
 
-For the agent to complete all objectives, I wanted to simplify the number of game as much as possible to maximizing the likelihood of success. To limit non-determinism, I started the agent after the "Parcel Delivery" event. Starting the agent with a specific Pokemon would guarantee later stages of the game would be possible. Given the previous breakdown, here’s the *route* I wanted the agent to learn:
+For the agent to complete all objectives, I wanted to simplify the number of game as much as possible to maximizing the likelihood of success. To limit non-determinism, I started the agent after the "Parcel Delivery" event. Starting the agent with a specific Pokémon would guarantee later stages of the game would be possible. Given the previous breakdown, here’s the *route* I wanted the agent to learn:
 
-* Start with Bulbasaur or Charmander to guarantee a Pokemon who can use CUT. 
+* Start with Bulbasaur or Charmander to guarantee a Pokémon who can use CUT. 
 * Defeat Brock.
 * In any order:  
   * Defeat Misty. 

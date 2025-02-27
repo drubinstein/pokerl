@@ -17,19 +17,19 @@ In most video game DRL projects I've observed a reset will happen when an agent
 - Encounters a failure state, such as losing all their lives.
 - Reaches a predefined time or action limit, such as 100 tetriminos in Tetris,
 
-Pokemon is in the realm of “long episodic RL.” Long episodes mean that the agent may not get large rewards for a very long time. If the agent only receives large rewards at the end of an episode, it may have trouble creating long term policies.
+Pokémon is in the realm of “long episodic RL.” Long episodes mean that the agent may not get large rewards for a very long time. If the agent only receives large rewards at the end of an episode, it may have trouble creating long term policies.
 
-Imagine if in the Tic-Tac-Toe example, the grid was 100x100. That means the agent wouldn't receive a reward for up to a max 5000 steps. Imagine having to plan out a 5000 step strategy. It's not easy! Later, I'll go over how I handled rewards for Pokemon's long episodes.
+Imagine if in the Tic-Tac-Toe example, the grid was 100x100. That means the agent wouldn't receive a reward for up to a max 5000 steps. Imagine having to plan out a 5000 step strategy. It's not easy! Later, I'll go over how I handled rewards for Pokémon's long episodes.
 
 Based on prior work, I began with an episode being a fixed number of steps. Over time, I tried multiple additional strategies including dynamically increasing the number of steps per episode as the agent performed important milestones. However, I believe an episode *should be* the based on a goal or when the agent achieves an unrecoverable state (soft-lock), e.g., such as running out of money. 
 
-What's the **goal** of Pokemon I aimed to complete? To be the champion! Therefore, I came up with a compromise. I created “mini-episodes.” An episode would be the duration of an entire game. However, the agent's state would periodically reset mid-episode, but the emulator state would not. 
+What's the **goal** of Pokémon I aimed to complete? To be the champion! Therefore, I came up with a compromise. I created “mini-episodes.” An episode would be the duration of an entire game. However, the agent's state would periodically reset mid-episode, but the emulator state would not. 
 
 ## Steps
 
 Step handles actions meant for the environment and returns observations based on a taken action, any logging info and whether or not to reset the environment.
 
-Our step function for Pokemon can naively be written as:
+Our step function for Pokémon can naively be written as:
 
 - Receive a button press action
 - Send the button press to the gameboy emulator

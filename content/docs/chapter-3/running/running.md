@@ -11,13 +11,13 @@ Before I begin though, I am obligated to give thanks to Joseph Suarez, the creat
 
 Good hardware although not necessary, massively sped up training.
 
-But what was more important than good hardware? Good software! I want to discuss some of the challenges of the Pokemon environment and mitigations I had in place for those challenges. In the end, I 10x’d the steps per second (sps) of training to a peak of 10000 sps with a lot of extra engineering effort. Potentially more effort than I put into everything I mentioned previously.
+But what was more important than good hardware? Good software! I want to discuss some of the challenges of the Pokémon environment and mitigations I had in place for those challenges. In the end, I 10x’d the steps per second (sps) of training to a peak of 10000 sps with a lot of extra engineering effort. Potentially more effort than I put into everything I mentioned previously.
 
-## Pokemon is CPU Bound
+## Pokémon is CPU Bound
 
 ### The Emulator
 
-Before I started working on the RL side of this project, it was commonly voiced in the Pokemon RL Discord that PyBoy slow. PyBoy happens to provide a very convenient interface for RL and is relatively well performant for Python. However, using an emulator comes with its downsides. Namely, PyBoy is emulating every instruction from the ROM. That means no compiler optimizations, no link time optimizations etc. I could have attempted to rewrite Pokemon in a modern language, but that would have been a Herculean effort on its own. Instead, PyBoy got faster.
+Before I started working on the RL side of this project, it was commonly voiced in the Pokémon RL Discord that PyBoy slow. PyBoy happens to provide a very convenient interface for RL and is relatively well performant for Python. However, using an emulator comes with its downsides. Namely, PyBoy is emulating every instruction from the ROM. That means no compiler optimizations, no link time optimizations etc. I could have attempted to rewrite Pokémon in a modern language, but that would have been a Herculean effort on its own. Instead, PyBoy got faster.
 
 A slow PyBoy *was* the case. But I’ve been in frequent communication with the creator of PyBoy for a while and we (mostly him) have put a lot of effort into improving PyBoy since late 2023. PyBoy has released a number of updates that have improved runtime speed and developer ergonomics dramatically including:
 
@@ -27,7 +27,7 @@ A slow PyBoy *was* the case. But I’ve been in frequent communication with the 
 - Data layout optimization.
 - The addition of hooks.
 
-Most of these changes are in PyBoy’s core. Hooks are a special addition that let me inject Python code at specified instructions. Although the context switch back to Python slows down execution, the less frequent RAM reads hooks allow have led to an overall speedup in Pokemon. However, even now, the environment still uses the majority of training time!
+Most of these changes are in PyBoy’s core. Hooks are a special addition that let me inject Python code at specified instructions. Although the context switch back to Python slows down execution, the less frequent RAM reads hooks allow have led to an overall speedup in Pokémon. However, even now, the environment still uses the majority of training time!
 
 <div style="text-align: center;">
 
@@ -37,7 +37,7 @@ Most of these changes are in PyBoy’s core. Hooks are a special addition that l
 
 ### Collecting Screen Data
 
-With the working emulator, did I need to collect data *every* frame? Short answer, no. In fact, it is suboptimal to do so. Pokemon only uses action information sparingly. This is well documented in Peter Whidden’s video. In order to use PyBoy effectively: 
+With the working emulator, did I need to collect data *every* frame? Short answer, no. In fact, it is suboptimal to do so. Pokémon only uses action information sparingly. This is well documented in Peter Whidden’s video. In order to use PyBoy effectively: 
 
 - I render the game headless. No UI means less CPU time spent rendering the game.  
 - For every action, I tick PyBoy 24 times and record the game screen on the *last* step.   

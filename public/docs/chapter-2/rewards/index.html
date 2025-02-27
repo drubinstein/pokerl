@@ -16,14 +16,14 @@ Sparse rewards were the rewards I chose that were very high value but rarely occ
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-2/rewards/">
-  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:site_name" content="Pokémon RL">
   <meta property="og:title" content="Rewards">
   <meta property="og:description" content="Rewards # Rewards was where I was willing to be a bit more flexible and leak some information that an agent wouldn’t normally have access to. Only rewarding the storyline is very sparse. It can be thousands of steps before a high value event is attempted. The agent needs some way knowing it is making progress in between these high value sparse rewards.
 Sparse vs. Dense Rewards # Sparse rewards were the rewards I chose that were very high value but rarely occur, e.g. gym battles. If we were to only reward the sparse rewards, the agent would most likely never leave the starting point in Pallet Town.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Rewards | Pokemon RL</title>
+<title>Rewards | Pokémon RL</title>
 <link rel="icon" href="/pokerl/favicon.png" >
 <link rel="manifest" href="/pokerl/manifest.json">
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-2/rewards/">
@@ -45,7 +45,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  <a class="flex align-center" href="/pokerl/"><span>Pokémon RL</span>
   </a>
 </h2>
 
@@ -81,7 +81,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Chapter 1: RL and the Pokemon Environment</span>
+    <span>Chapter 1: RL and the Pokémon Environment</span>
   
 
           
@@ -120,7 +120,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>Breaking Down Pokemon</span>
+    <span>Breaking Down Pokémon</span>
   
 
           
@@ -486,16 +486,16 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#is-exploration-all-you-need">#</a>
 </h3>
 <p>Exploration became the foundation for all dense rewards.</p>
-<p>I originally believed that an agent had successfully learned Pokemon if the agent could visit every coordinate in the game’s world. I loosened that definition. I now consider <em>any</em> interaction a form of exploration.</p>
+<p>I originally believed that an agent had successfully learned Pokémon if the agent could visit every coordinate in the game’s world. I loosened that definition. I now consider <em>any</em> interaction a form of exploration.</p>
 <p>However, onnly using exploration rewards are not enough. The mix of sparse and dense rewards is what makes the policy successful! If I were to only reward for unique coordinates, the agent may never interact with Brock, the first gym leader. Instead, the agent would wander the world forever collecting new locations until it ran out of locations.</p>
 <p>In the end, I rewarded for:</p>
 <ul>
 <li>The number of unique coordinates visited during a mini-episode.</li>
 <li>The number of signs interacted the agent interacts with during a mini-episode.</li>
 <li>The number of unique moves taught.</li>
-<li>The number of valid and invalid uses of HMs/Pokeflute in the overworld.</li>
+<li>The number of valid and invalid uses of HMs/Pokéflute in the overworld.</li>
 <li>The number of unique map ID transitions (warps) visited during a mini-episode.</li>
-<li>The number of unique seen and caught pokemon.</li>
+<li>The number of unique seen and caught Pokémon.</li>
 <li>The current level of the agent’s party with a cutoff to prevent grinding (not exploration related).</li>
 </ul>
 <p>I tried to also reward for all locations an agent has pressed A on and the number of unique menus the agent visited during an epiosde. However, the A press and unique menus reward provided no gain and slowed down training tremendously.</p>
@@ -514,7 +514,7 @@ https://github.com/alex-shpak/hugo-book
   Map ID Rewards
   <a class="anchor" href="#map-id-rewards">#</a>
 </h2>
-<p>I additionally gave the option for a &ldquo;boosted&rdquo; reward if the agent explored a currently important map ID. I understand this is a controversial choice. On one hand, I am potentially putting the game on rails. On the other hand, I experienced that the agent would have no clue where to go next unless I added boosted rewards for specific map IDs since the agent could not understand text. Often in Pokemon, an NPC will tell the player where to go next. The agent not being able to understand text obviously could not know where to go so I compromised.</p>
+<p>I additionally gave the option for a &ldquo;boosted&rdquo; reward if the agent explored a currently important map ID. I understand this is a controversial choice. On one hand, I am potentially putting the game on rails. On the other hand, I experienced that the agent would have no clue where to go next unless I added boosted rewards for specific map IDs since the agent could not understand text. Often in Pokémon, an NPC will tell the player where to go next. The agent not being able to understand text obviously could not know where to go so I compromised.</p>
 <p>Specific map IDs start the game with a <em>boosted</em> exploration reward <em>until</em> the map ID’s objective is complete. For example, a gym has boosted reward until it is beaten. Only two map IDs break this rule.</p>
 <ul>
 <li>Route 23 does not get boosted until all gyms are beaten</li>

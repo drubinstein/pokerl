@@ -1,6 +1,6 @@
 baseURL = 'https://thatguy11325.github.io/pokerl'
 languageCode = 'en-us'
-title = 'Pokemon RL'
+title = 'Pokémon RL'
 theme = 'hugo-book'
 
 [markup]

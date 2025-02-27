@@ -1,30 +1,30 @@
 ---
-title: Learning Pokemon With Reinforcement Learning 
+title: Learning Pokémon With Reinforcement Learning 
 type: docs
 ---
 
-# Learning Pokemon With Reinforcement Learning
+# Learning Pokémon With Reinforcement Learning
 
-Hi! Since 2020, I've been developing a reinforcement learning (RL) agent to beat the 1996 game Pokemon Red.
-As of February 2025, I confidently can say that I have an RL system that _can learn_ to beat Pokemon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent's current state. [All code is open sourced and available for you, the reader, to try.](https://github.com/thatguy11325/pokemonred_puffer)
+Hi! Since 2020, I've been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.
+As of February 2025, I confidently can say that I have an RL system that _can learn_ to beat Pokémon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent's current state. [All code is open sourced and available for you, the reader, to try.](https://github.com/thatguy11325/Pokémonred_puffer)
 
 As I improve and add to this website, I will update the changelog. Before you dive into the website,
-let me provide some background on Pokemon and my motivation for using RL.
+let me provide some background on Pokémon and my motivation for using RL.
 
-## Pokemon Red Primer?
+## Pokémon Red Primer
 
-Pokemon Red, released in 1996, is a single player Japanese role playing game (JRPG). 
-Players follow the journey of a new “Pokemon Trainer.” Players capture Pokemon “creatures” to battle against opposing Pokemon, 
-explore the world and progress through the game’s storyline. Pokemon has two goals:
+Pokémon Red, released in 1996, is a single player Japanese role playing game (JRPG). 
+Players follow the journey of a new “Pokémon Trainer.” Players capture Pokémon “creatures” to battle against opposing Pokémon, 
+explore the world and progress through the game’s storyline. Pokémon has two goals:
 
-- Catch all possible Pokemon species.
+- Catch all possible Pokémon species.
 - Become the “champion.”
 
 Most players focus on becoming the champion, which will be the focus of my work.
 
-## Why Pokemon Red
+## Why Pokémon Red
 
-Why do I care about developing an agent to beat Pokemon with machine learning? 
+Why do I care about developing an agent to beat Pokémon with machine learning? 
 The answer is really a bit higher level. I care about solving _JRPGs_ with machine learning as a stepping stone towards AGI. JRPGs: 
 
 - Involve complex reasoning and decision making.
@@ -33,12 +33,12 @@ The answer is really a bit higher level. I care about solving _JRPGs_ with machi
 - Require multi-task reasoning.
 - Have non-obvious reward functions.
 
-Of JRPGs, Pokemon is relatively easy to program for. 
-The [Pokemon Reverse Engineering Team](https://github.com/pret) (PRET) and the [PyBoy Python Gameboy Emulation](https://github.com/Baekalfen/PyBoy) projects have 
+Of JRPGs, Pokémon is relatively easy to program for. 
+The [Pokémon Reverse Engineering Team](https://github.com/pret) (PRET) and the [PyBoy Python Gameboy Emulation](https://github.com/Baekalfen/PyBoy) projects have 
 made it extremely easy to introspect the game and extract data as needed. Throughout this website, I'll show many examples of how I leveraged these tools for this work.
 
-## Why Pokemon Red with RL
-I could’ve taken many approaches if wanted an agent to Pokemon with machine learning.
+## Why Pokémon Red with RL
+I could’ve taken many approaches if wanted an agent to Pokémon with machine learning.
 
 - I could’ve chosen a supervised learning approach, but that would have needed a well 
 labelled and plentiful dataset and honestly a model larger than I had the budget to support.

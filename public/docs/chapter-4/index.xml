@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chapter 4: Concluding Thoughts on Pokemon RL</title>
+    <title>Chapter 4: Concluding Thoughts on Pokémon RL</title>
     <link>http://localhost:1313/pokerl/docs/chapter-4/</link>
-    <description>Recent content in Chapter 4: Concluding Thoughts on Pokemon RL</description>
+    <description>Recent content in Chapter 4: Concluding Thoughts on Pokémon RL</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/pokerl/docs/chapter-4/index.xml" rel="self" type="application/rss+xml" />
@@ -12,7 +12,7 @@
       <link>http://localhost:1313/pokerl/docs/chapter-4/results/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/pokerl/docs/chapter-4/results/</guid>
-      <description>&lt;h1 id=&#34;results-and-concluding-thoughts&#34;&gt;&#xA;  Results and Concluding Thoughts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#results-and-concluding-thoughts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;So how did this agent perform? Well, I now have an agent that beats Pokemon with a few caveats. The code is open sourced for anyone to play with. Currently, I&amp;rsquo;m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;results-and-concluding-thoughts&#34;&gt;&#xA;  Results and Concluding Thoughts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#results-and-concluding-thoughts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;So how did this agent perform? Well, I now have an agent that beats Pokémon with a few caveats. The code is open sourced for anyone to play with. Currently, I&amp;rsquo;m still struggling to get a stable enough run to prove that I can beat it with all my scripts disabled. I have tried runs with each script individually removed so I know it can be done, but there are a couple of bugs that sometimes occur that I need to iron out.&lt;/p&gt;</description>
     </item>
     <item>
       <title></title>
