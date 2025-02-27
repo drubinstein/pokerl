@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chapter 2: Observations, Rewards, and Policy on Pokemon RL</title>
+    <link>http://localhost:1313/pokerl/docs/chapter-2/</link>
+    <description>Recent content in Chapter 2: Observations, Rewards, and Policy on Pokemon RL</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/pokerl/docs/chapter-2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Observations</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-2/observations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-2/observations/</guid>
+      <description>&lt;h1 id=&#34;observations&#34;&gt;&#xA;  Observations&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#observations&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;As mentioned previously, observations are a representation of the state of the environment. In the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a screen image and the agent&amp;rsquo;s current inventory. Pokemon contains tons of visible and invisible pieces of information.&lt;/p&gt;&#xA;&lt;p&gt;It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. I desired to make the agent play the game as a new player would. When in doubt, I tried to stick to one rule when designing my observations:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rewards</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-2/rewards/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-2/rewards/</guid>
+      <description>&lt;h1 id=&#34;rewards&#34;&gt;&#xA;  Rewards&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rewards&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Rewards was where I was willing to be a bit more flexible and leak some information that an agent wouldn’t normally have access to. Only rewarding the storyline is very sparse. It can be thousands of steps before a high value event is attempted. The agent needs some way knowing it is making progress in between these high value sparse rewards.&lt;/p&gt;&#xA;&lt;h3 id=&#34;sparse-vs-dense-rewards&#34;&gt;&#xA;  Sparse vs. Dense Rewards&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#sparse-vs-dense-rewards&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Sparse rewards&lt;/strong&gt; were the rewards I chose that were very high value but rarely occur, e.g. gym battles. If we were to only reward the sparse rewards, the agent would most likely never leave the starting point in Pallet Town.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Policy</title>
+      <link>http://localhost:1313/pokerl/docs/chapter-2/policy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pokerl/docs/chapter-2/policy/</guid>
+      <description>&lt;h1 id=&#34;rl-algorithm-and-policy&#34;&gt;&#xA;  RL Algorithm and Policy&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rl-algorithm-and-policy&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;For training, I adopted the &lt;a href=&#34;https://towardsdatascience.com/on-policy-v-s-off-policy-learning-75089916bc2f/&#34;&gt;on-policy&lt;/a&gt; algorithm &lt;a href=&#34;https://en.wikipedia.org/wiki/Proximal_policy_optimization&#34;&gt;Proximal Policy Optimization&lt;/a&gt; (PPO). PPO supports vectorized environments well and there is a large amount of online code examples surrounding it.&lt;/p&gt;&#xA;&lt;p&gt;I tried to keep the policy itself simple. I wanted a policy that&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Could have some way of processing sequential (time) data.&lt;/li&gt;&#xA;&lt;li&gt;Was small for faster training.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;To handle time dependence I considered a few options:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Modify my observation to stack frames. Each frame would linearly increase the model’s input. Then use some form of model that handles batches of sequential data, e.g., a 3D &lt;a href=&#34;https://en.wikipedia.org/wiki/Convolutional_neural_network&#34;&gt;CNN&lt;/a&gt; or &lt;a href=&#34;https://en.wikipedia.org/wiki/Attention_%28machine_learning%29&#34;&gt;attention&lt;/a&gt; layer. These models would have heavily slowed down training and require more VRAM than I had at the time&lt;/li&gt;&#xA;&lt;li&gt;Use a &lt;a href=&#34;https://en.wikipedia.org/wiki/Recurrent_neural_network&#34;&gt;recurrent neural network&lt;/a&gt; such as an &lt;a href=&#34;https://en.wikipedia.org/wiki/Long_short-term_memory&#34;&gt;LSTM&lt;/a&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Use a &lt;a href=&#34;https://huggingface.co/blog/lbourdois/get-on-the-ssm-train&#34;&gt;state space model&lt;/a&gt; (SSM).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I went with the easiest to integrate solution, an LSTM. An LSTM contains an internal state that gets input to the model alongside the most recent data point. Although LSTMs can only remember up to ≈1000 steps, that was enough history for an effective policy.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

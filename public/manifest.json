@@ -1,0 +1,15 @@
+{
+  "name": "Pokemon RL",
+  "short_name": "Pokemon RL",
+  "start_url": "/pokerl/",
+  "scope": "/pokerl/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/pokerl/favicon.svg",
+      "sizes": "512x512"
+    }
+  ]
+}

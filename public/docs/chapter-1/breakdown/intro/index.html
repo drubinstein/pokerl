@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/pokerl/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=pokerl/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Breaking Down Pokemon
+  #
+
+Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
+Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.
+To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/breakdown/intro/">
+  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:title" content="Intro">
+  <meta property="og:description" content="Breaking Down Pokemon # Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
+Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.
+To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Intro | Pokemon RL</title>
+<link rel="icon" href="/pokerl/favicon.png" >
+<link rel="manifest" href="/pokerl/manifest.json">
+<link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/breakdown/intro/">
+<link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
+  <script defer src="/pokerl/fuse.min.js"></script>
+  <script defer src="/pokerl/en.search.min.1cf198c8682c4283df4c3320ac96d752b44ec2cbf9a5a9a4b481b988efcecfa8.js" integrity="sha256-HPGYyGgsQoPfTDMgrJbXUrROwsv5pamktIG5iO/Oz6g=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 1: RL and the Pokemon Environment</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/the-loop/" class="">RL Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/env-setup/" class="">Setting up the Environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Breaking Down Pokemon</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/intro/" class="active">Intro</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/battling/" class="">Battling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/8badges/" class="">The 8 Badges</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/field_interactions/" class="">Field Interactions and Exploration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/team_rocket/" class="">Team Rocket</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/route/" class="">The &#34;Route&#34;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/risk_management/" class="">Risk Management</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 2: Observations, Rewards, and Policy</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/observations/" class="">Observations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/rewards/" class="">Rewards</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/policy/" class="">Policy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 3: Building and Running the System</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/running/" class="">Running</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/reading-ram/" class="">Reading RAM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/metrics/" class="">Metrics and Visualization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/swarm/" class="">The Swarm</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 4: Concluding Thoughts</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/results/" class="">Results</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/future/" class="">Future</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Intro</h3>
+
+  <label for="toc-control">
+    
+    <img src="/pokerl/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="breaking-down-pokemon">
+  Breaking Down Pokemon
+  <a class="anchor" href="#breaking-down-pokemon">#</a>
+</h1>
+<p>Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.</p>
+<p>Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.</p>
+<p>To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:</p>
+<ol>
+<li>Beat the 8 Gym Leaders. Gym leaders are a form of video game “boss.”</li>
+<li>Acquire items to teach the moves CUT, STRENGTH, and, SURF. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.</li>
+<li>Acquire Pokemon that can learn the field moves CUT, STRENGTH, and SURF.</li>
+<li>Acquire any items required for field interactions. Like field moves, there are items that are required to unlock new areas.</li>
+<li>Teach available Pokemon the field moves CUT, STRENGTH, and SURF</li>
+<li>Use field moves or items for field interactions to remove any game blocking obstacles.</li>
+<li>Complete the Team Rocket storyline.</li>
+<li>Beat the 6 required rival battles</li>
+<li>Beat the Elite 4 and Champion</li>
+</ol>
+<p>Or, if we want to be more detailed&hellip;</p>
+
+
+<pre class="mermaid">
+---
+config:
+  theme: mc
+  look: handDrawn
+  layout: elk
+---
+flowchart TD
+    AA(Acquire starter Pokemon from Prof. Oak)
+    AA --> AAA(Acquire Parcel from Viridian Mart) --> AAAA(Deliver Parcel to Prof. Oak)
+    AAAA --> A(Defeat Brock) --> B(Traverse Mt. Moon)
+    B --> C(Defeat Misty)
+    B --> D(Nugget Bridge) --> E(Get the SS Anne ticket from Bill) --> F(Defeat Cerulean Rocket Grunt) --> G(Defeat Rival on the SS Anne) --> H(Obtain HM01 - Cut from the Captain on the SS Anne)
+    C --> I
+    C --> J
+    C --> K
+    C --> M
+    H --> HH(Defeat Rocket grunt protecting Rocket Hideout) --> HHH(Flip switch in Celadon Game Corner to unlock the Rocket Hideout)
+    HHH --> KK(Defeat Rocket grunt with Lift Key) --> KKK(Obtain the Lift Key) --> K(Defeat Giovanni in Rocket Hideout) 
+    K --> LL(Collect the Silph Scope from Giovanni) --> LLL(Use the Silph Scope on the ghost in Lavender Tower) 
+    LLL --> L(Save Mr. Fuji at the top floor of Lavender Tower) 
+    H --> I(Defeat Lt. Surge)
+    H --> J(Defeat Erika) 
+    H --> MM(Obtain a drink from the vendeing machines at the top of Celadon Mart) 
+    MM --> M(Deliver Drink to Saffron Guard) --> O
+    L --> N(Obtain Pokeflute)
+    L --> OO(Defeat Rival 5 in Silph Co) --> O(Defeat Giovanni in Silph Co) --> P(Defeat Sabrina)
+    N --> Q(Use Pokeflute on at least one Snorlax)
+    Q --> R(Obtain HM03 - Surf from the Safari Zone) --> T(Acquire the Secret Key from Pokemon Mansion) --> U(Defeat Blaine)
+    Q --> V(Defeat Koga) --> T
+    Q --> SS(Obtain the Gold Teeth from the Safari Zone) --> S(Deliver the Gold Teeth to the old man in Fuchsia City to acquire HM04 - Strength)
+    I --> W(Defeat Giovanni in Viridian Gym) --> X(Defeat Rival 6) --> Y(Traverse Victory Road)
+    J --> W
+    P --> W
+    U --> W
+    S --> Y
+    Y --> Z(Defeat the Elite 4) --> ZZ(Defeat the Champion)
+</pre>
+
+<p>I broke down these objectives to understand what is and is not important for beating Pokemon Red.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

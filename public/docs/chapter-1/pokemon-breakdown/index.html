@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/pokerl/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=pokerl/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Breaking Down Pokemon
+  #
+
+Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
+Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.
+To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/pokemon-breakdown/">
+  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:title" content="Breaking Down Pokemon">
+  <meta property="og:description" content="Breaking Down Pokemon # Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
+Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.
+To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Breaking Down Pokemon | Pokemon RL</title>
+<link rel="icon" href="/pokerl/favicon.png" >
+<link rel="manifest" href="/pokerl/manifest.json">
+<link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/pokemon-breakdown/">
+<link rel="stylesheet" href="/pokerl/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/pokerl/fuse.min.js"></script>
+  <script defer src="/pokerl/en.search.min.2d3e025c86fb726e69745b352cdefabce04030cbca3ff356ba0eca3a1b78b11c.js" integrity="sha256-LT4CXIb7cm5pdFs1LN76vOBAMMvKP/NWug7KOht4sRw=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 1: RL and the Pokemon Environment</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/the-loop/" class="">RL Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/env-setup/" class="">Setting up the Environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/pokemon-breakdown/" class="active">Breaking Down Pokemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-647d1501251fa16dacc89324c8f5611c" class="toggle"  />
+    <label for="section-647d1501251fa16dacc89324c8f5611c" class="flex justify-between">
+      <a role="button" class="">Breaking Down Pokemon</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/battling/" class="">Battling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/8badges/" class="">The 8 Badges</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/field_interactions/" class="">Field Interactions and Exploration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/intro/" class="">Intro</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/team_rocket/" class="">Team Rocket</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/route/" class="">The &#34;Route&#34;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/risk_management/" class="">Risk Management</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Breaking Down Pokemon</h3>
+
+  <label for="toc-control">
+    
+    <img src="/pokerl/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#battling">Battling</a></li>
+    <li><a href="#the-8-badges">The 8 Badges</a>
+      <ul>
+        <li><a href="#lt-surges-gym-gimmick">Lt. Surge&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#erikas-gym-gimmick">Erika&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#kogas-gym-gimmick">Koga&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#sabrinas-gym-gimmick">Sabrina&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#blaines-gym-gimmick">Blaine&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#giovannis-gym-gimmick">Giovanni&rsquo;s Gym Gimmick</a></li>
+      </ul>
+    </li>
+    <li><a href="#field-interactions-and-exploration">Field Interactions and Exploration</a>
+      <ul>
+        <li><a href="#obtaining-hm01---cut">Obtaining HM01 - CUT</a></li>
+        <li><a href="#obtaining-hm03---surf">Obtaining HM03 - SURF</a></li>
+        <li><a href="#obtaining-hm04---strength">Obtaining HM04 - Strength</a></li>
+        <li><a href="#using-an-hm">Using an HM</a></li>
+        <li><a href="#obtaining-and-using-the-pokeflute">Obtaining and Using the Pokeflute</a></li>
+      </ul>
+    </li>
+    <li><a href="#team-rocket-storyline">Team Rocket Storyline</a></li>
+    <li><a href="#defining-a-route">Defining a &ldquo;Route&rdquo;</a></li>
+    <li><a href="#risk-management">Risk Management</a>
+      <ul>
+        <li><a href="#scripting-vs-emergence">Scripting vs. Emergence</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="breaking-down-pokemon">
+  Breaking Down Pokemon
+  <a class="anchor" href="#breaking-down-pokemon">#</a>
+</h1>
+<p>Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokemon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.</p>
+<p>Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.</p>
+<p>To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokemon, you must:</p>
+<ol>
+<li>Beat the 8 Gym Leaders. Gym leaders are a form of video game “boss.”</li>
+<li>Acquire items to teach the moves CUT, STRENGTH, and, SURF. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.</li>
+<li>Acquire Pokemon that can learn the field moves CUT, STRENGTH, and SURF.</li>
+<li>Acquire any items required for field interactions. Like field moves, there are items that are required to unlock new areas.</li>
+<li>Teach available Pokemon the field moves CUT, STRENGTH, and SURF</li>
+<li>Use field moves or items for field interactions to remove any game blocking obstacles.</li>
+<li>Complete the Team Rocket storyline.</li>
+<li>Beat the 6 required rival battles</li>
+<li>Beat the Elite 4 and Champion</li>
+</ol>
+<p>Or, if we want to be more detailed&hellip;</p>
+
+
+<pre class="mermaid">
+flowchart TD
+    AA(Acquire starter Pokemon from Prof. Oak)
+    AA --> AAA(Acquire Parcel from Viridian Mart) --> AAAA(Deliver Parcel to Prof. Oak)
+    AAAA --> A(Defeat Brock) --> B(Traverse Mt. Moon)
+    B --> C(Defeat Misty)
+    B --> D(Nugget Bridge) --> E(Get the SS Anne ticket from Bill) --> F(Defeat Cerulean Rocket Grunt) --> G(Defeat Rival on the SS Anne) --> H(Obtain HM01 - Cut from the Captain on the SS Anne)
+    C --> I
+    C --> J
+    C --> K
+    C --> M
+    H --> HH(Defeat Rocket grunt protecting Rocket Hideout) --> HHH(Flip switch in Celadon Game Corner to unlock the Rocket Hideout)
+    HHH --> KK(Defeat Rocket grunt with Lift Key) --> KKK(Obtain the Lift Key) --> K(Defeat Giovanni in Rocket Hideout) 
+    K --> LL(Collect the Silph Scope from Giovanni) --> LLL(Use the Silph Scope on the ghost in Lavender Tower) 
+    LLL --> L(Save Mr. Fuji at the top floor of Lavender Tower) 
+    H --> I(Defeat Lt. Surge)
+    H --> J(Defeat Erika) 
+    H --> MM(Obtain a drink from the vendeing machines at the top of Celadon Mart) 
+    MM --> M(Deliver Drink to Saffron Guard) --> O
+    L --> N(Obtain Pokeflute)
+    L --> OO(Defeat Rival 5 in Silph Co) --> O(Defeat Giovanni in Silph Co) --> P(Defeat Sabrina)
+    N --> Q(Use Pokeflute on at least one Snorlax)
+    Q --> R(Obtain HM03 - Surf from the Safari Zone) --> T(Acquire the Secret Key from Pokemon Mansion) --> U(Defeat Blaine)
+    Q --> V(Koga) --> T
+    Q --> SS(Obtain the Gold Teeth from the Safari Zone) --> S(Deliver the Gold Teeth to the old man in Fuchsia City to acquire HM04 - Strength)
+    I --> W(Defeat Giovanni in Viridian Gym) --> X(Defeat Rival 6) --> Y(Traverse Victory Road)
+    J --> W
+    P --> W
+    U --> W
+    S --> Y
+    Y --> Z(Defeat the Elite 4) --> ZZ(Defeat the Champion)
+</pre>
+
+<p>I broke down these objectives to understand what is and is not important for beating Pokemon Red.</p>
+<h2 id="battling">
+  Battling
+  <a class="anchor" href="#battling">#</a>
+</h2>
+<p>Half of the previously mentioned objectives involve battling and winning against other trainers. However, I concluded that teaching battling is not required to make an agent capable of completing Pokemon with RL.</p>
+<p>The Pokemon battle system is pretty straight forward. Pokemon is an advanced game of rock-paper-scissors. Pokemon have moves that can be used to either inflict status effects against other Pokemon, damage other Pokemon or boost their own abilities or self-heal. The strength of each move is affected by the strengths and weaknesses of each Pokemon relative to the move and overall stats. Moves are given priority based on a Pokemon&rsquo;s SPEED stat or based on a move&rsquo;s priority. Damage is based on the Pokemon&rsquo;s ATTACK, SPECIAL and DEFENSE stats depending on the move. Additionally, moves can miss based on a move and Pokemon&rsquo;s ACCURACY stats.</p>
+<p>During battles, the agent can additionally switch their current Pokemon in-battle or use items to heal their Pokemon.</p>
+<p>There are two types of battles in Pokemon. The first type are <em>wild</em> battles where the agent will battle against a single Pokemon. Wild battles generally begin with a random encounter in grassy areas or dungeons. The second type are <em>trainer</em> battles. Trainer battles place the agent against a team of one or more Pokemon. Trainers have access to the same item and party switch actions the agent has.</p>
+<p>Battles end when all Pokemon on one side have fainted. Fainting is when a Pokemon&rsquo;s health drops to zero. Additionally, during a wild battle, the agent has the option to <em>run</em> and leave the wild battle without penalty or <em>catch</em> the opposing Pokemon and have the opposing Pokemon join their party.</p>
+<p>If the agent&rsquo;s Pokemon knocks out the opposing Pokemon, they gain experience (EXP). With enough EXP, a Pokemon will level up. Levelling up provides a mechanism to increase the Pokemon&rsquo;s stats. Levelling up to increase stats gives a mechanism to ignore worrying about battling. If the agent “grinds,” that is, let Pokemon level up or retry trainers infinite times, the agent will eventually win outside of a couple of very unlikely situations.</p>
+<p>Consequentially, I ignored creating a policy for battling and focused on providing suitable conditions for levelling up when needed.</p>
+<h2 id="the-8-badges">
+  The 8 Badges
+  <a class="anchor" href="#the-8-badges">#</a>
+</h2>
+<p>Next, I focused on what it takes to beat the 8 gym leaders. The gym leaders upon defeat, give the main character a “badge.” Badges either unlock the ability to use a taught field move or apply permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokemon, their types and what they unlock.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Gym Leader</strong></th>
+          <th style="text-align: center"><strong>Type</strong></th>
+          <th style="text-align: center"><strong>Reward</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Brock</td>
+          <td style="text-align: center">Rock</td>
+          <td style="text-align: center"><div align="left">- 12.5% ATTACK boost<br/>- Can use FLASH outside of battle</align></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Misty</td>
+          <td style="text-align: center">Water</td>
+          <td style="text-align: center"><div align="left">- Can use CUT outside of battle</align></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Lt. Surge</strong></td>
+          <td style="text-align: center">Electric</td>
+          <td style="text-align: center"><div align="left">- 12.5% DEFENSE boost<br/>- Can use FLY outside of battle</align></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Erika</strong></td>
+          <td style="text-align: center">Grass</td>
+          <td style="text-align: center"><div align="left">- Can use STRENGTH outside of battle</align></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Koga</strong></td>
+          <td style="text-align: center">Poison</td>
+          <td style="text-align: center"><div align="left">- 12.5% SPEED boost<br/>- Can use SURF outside of battle</align></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Sabrina</strong></td>
+          <td style="text-align: center">Psychic</td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Blaine</strong></td>
+          <td style="text-align: center">Fire</td>
+          <td style="text-align: center"><div align="left">-12.5% SPECIAL</align> boost</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Giovanni</td>
+          <td style="text-align: center">Ground</td>
+          <td style="text-align: center"></td>
+      </tr>
+  </tbody>
+</table>
+<p>I emphasized 5 gym leaders. Why? Because these gym leaders can be accomplished in <em>nearly any order</em>. The vast majority of storyline events are gated by <strong>Misty, Erika, and Koga</strong> who give access to the field moves CUT, STRENGTH and SURF outside of battle. How to obtain these field moves will be discussed in a later section.</p>
+<p>Some gym leaders require solving puzzles or removing environmental guards.</p>
+<h3 id="lt-surges-gym-gimmick">
+  Lt. Surge&rsquo;s Gym Gimmick
+  <a class="anchor" href="#lt-surges-gym-gimmick">#</a>
+</h3>
+<p>To enter Lt. Surge’s gym you must remove a tree blocking the entrance to his gym with <em>Cut.</em></p>
+<p>Lt. Surge’s gym contains a button puzzle. To acquire the ability to battle Lt. Surge, you are given an array of trashcans. Two of the trashcans have a button that can be pressed. You must press the two buttons in a specific order. If you mess up, the buttons are randomly assigned to different trashcans.</p>
+<h3 id="erikas-gym-gimmick">
+  Erika&rsquo;s Gym Gimmick
+  <a class="anchor" href="#erikas-gym-gimmick">#</a>
+</h3>
+<p>To enter Erika&rsquo;s gym you must remove a tree blocking the entrance to her gym with cut. In her gym, she will be guarded by multiple trainers you must defeat <em>and</em> more trees to cut. Notably, the sprite for the trees within the gym are different from the tree sprite outside the gym.</p>
+<h3 id="kogas-gym-gimmick">
+  Koga&rsquo;s Gym Gimmick
+  <a class="anchor" href="#kogas-gym-gimmick">#</a>
+</h3>
+<p>Koga’s gym contains an easy maze made up of invisible barriers you have to traverse.</p>
+<h3 id="sabrinas-gym-gimmick">
+  Sabrina&rsquo;s Gym Gimmick
+  <a class="anchor" href="#sabrinas-gym-gimmick">#</a>
+</h3>
+<p>Sabrina’s gym can only be entered after completing the Team Rocket storyline. Her gym contains a teleporter maze. To get to Sabrina, you must find the teleporter that will transport you to her.</p>
+<h3 id="blaines-gym-gimmick">
+  Blaine&rsquo;s Gym Gimmick
+  <a class="anchor" href="#blaines-gym-gimmick">#</a>
+</h3>
+<p>To enter Blaine’s gym the agent must first <em>Surf</em> to Cinnabar Island where the gym is located. Subsequently, the agent must acquire the “SECRET KEY” from the Pokemon Mansion next door to his gym <em>Surf</em>. To battle Blaine, the agent must complete a series of optional True/False quizzes. If the agent incorrectly answers, the agent battles a trainer.</p>
+<h3 id="giovannis-gym-gimmick">
+  Giovanni&rsquo;s Gym Gimmick
+  <a class="anchor" href="#giovannis-gym-gimmick">#</a>
+</h3>
+<p>Giovanni’s gym is blocked until you beat all 7 prior gym leaders. Giovanni’s gym contains a maze puzzle with “spin tiles.”</p>
+<p>The agent must be capable of solving all these tasks.</p>
+<h2 id="field-interactions-and-exploration">
+  Field Interactions and Exploration
+  <a class="anchor" href="#field-interactions-and-exploration">#</a>
+</h2>
+<p>As mentioned previously, field moves taught to Pokemon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokemon.</p>
+<p>The 5 field moves of Pokemon are</p>
+<ul>
+<li><strong>HM01 - CUT</strong></li>
+<li>HM02 - FLY</li>
+<li><strong>HM03 - SURF</strong></li>
+<li><strong>HM04 - STRENGTH</strong></li>
+<li>HM05 - FLASH</li>
+</ul>
+<p>Only CUT, SURF, and STRENGTH are required for game progression. Although useful, FLY and FLASH aren’t required. They only allow for faster game progression.</p>
+<h3 id="obtaining-hm01---cut">
+  Obtaining HM01 - CUT
+  <a class="anchor" href="#obtaining-hm01---cut">#</a>
+</h3>
+<p>To acquire HM01, the agent must:</p>
+<ul>
+<li>Acquire the SS Anne ticket from Bill north of Cerulean City.</li>
+<li>Board the SS Anne and battle their rival</li>
+<li>Help the captain of the ship.</li>
+</ul>
+<p>The captain will reward the agent with the item HM01.</p>
+<h3 id="obtaining-hm03---surf">
+  Obtaining HM03 - SURF
+  <a class="anchor" href="#obtaining-hm03---surf">#</a>
+</h3>
+<p>To obtain SURF, the agent must reach the end of the Safari Zone in less than <em>500</em> steps. At the end, the Safari Zone Warden will reward the player with HM03</p>
+<h3 id="obtaining-hm04---strength">
+  Obtaining HM04 - Strength
+  <a class="anchor" href="#obtaining-hm04---strength">#</a>
+</h3>
+<p>To obtain STRENGTH, the agent must:</p>
+<ul>
+<li>Find the GOLD TEETH in the Safari Zone.</li>
+<li>Bring the GOLD TEETH to the old man NPC in Fuchsia City</li>
+</ul>
+<p>The old man will then reward the agent with the item HM04</p>
+<h3 id="using-an-hm">
+  Using an HM
+  <a class="anchor" href="#using-an-hm">#</a>
+</h3>
+<p><em>Teaching</em> and using an HM requires a minimum of 17 actions along with a Pokemon in the agent&rsquo;s party that is capable of learning the HM. 17+ actions are hard enough to give the agent context for. Incentivizing the agent to have HM capable party members when it is playing Pokemon for the first time without a guide is an even harder task!</p>
+<h3 id="obtaining-and-using-the-pokeflute">
+  Obtaining and Using the Pokeflute
+  <a class="anchor" href="#obtaining-and-using-the-pokeflute">#</a>
+</h3>
+<p>Along with field moves, the agent will need to use the item Pokeflute for one field interaction. Pokeflute can remove two roadblocks (at least one is required) so the agent can gain access to Fuchsia City.</p>
+<p>However, using PokeFlute is very similar to using an HM. A level of convenience that I will use when ensuring the agent can perform the action.</p>
+<h2 id="team-rocket-storyline">
+  Team Rocket Storyline
+  <a class="anchor" href="#team-rocket-storyline">#</a>
+</h2>
+<p>Beyond the gym battles and field moves, there are mandatory quests involving encounters with the antagonist group, Team Rocket. These events require defeating trainers, obtaining special items, and solving in-game puzzles. Thankfully, these quests must be accomplished in a linear order. For completeness, hare are all the tasks required to to complete the Rocket storyline:</p>
+<ul>
+<li>Defeat the rockets blocking the exit to Mt. Moon (post Brock).</li>
+<li>Defeat the rocket at the end of Nugget Bridge north of Cerulean City.</li>
+<li>Defeat the rocket at the exit of Cerulean City.</li>
+<li>Defeat the rocket guard in the Celadon City Casino.</li>
+<li>Press the poster switch the Celadon City Casino Rocket guard is guarding and enter the Rocket hideout.</li>
+<li>Solve the Rocket hideout maze puzzle on BF3 to get to BF4.</li>
+<li>Beat the Rocket grunt in BF4.</li>
+<li>Pick up the dropped elevator key from the BF4 Rocket Grunt.</li>
+<li>Solve the maze puzzle on BF2.</li>
+<li>Use the elevator key to enter the elevator on BF2.</li>
+<li>Go to BF4 using the elevator key.</li>
+<li>Beat Giovanni in Rocket Hideout.</li>
+<li>Pick up the Silph Scope Giovanni drops.</li>
+<li>Go to the Pokemon Tower in Lavender Town.</li>
+<li>Use the Silph Scope to defeat the ghost waiting at the staircase to the second-to-top floor of Lavender Tower.</li>
+<li>Save Mr. Fuji at the top of Lavender Tower  .</li>
+<li>Obtain a drink from the vending machine of Celadon City (can be done any time before this).</li>
+<li>Give a drink to one of the 4 Saffron City gate guards (can be done any time after obtaining the drink).</li>
+<li>Find the card key in Silph Co in Saffron City.</li>
+<li>Defeat Giovanni in Silph Co.</li>
+</ul>
+<p>It’s a lot of tasks. Unlike the gym leaders, the difficulty of the Team Rocket puzzles are highly variable, but brute-forceable. From these quests, I concluded the agent needed a desire to either explore the whole world or spend extra time building a policy capable of reading and interpreting text. I decided to focus on the former.</p>
+<h2 id="defining-a-route">
+  Defining a &ldquo;Route&rdquo;
+  <a class="anchor" href="#defining-a-route">#</a>
+</h2>
+<p>For the agent to complete all objectives, I wanted to simplify the number of game as much as possible to maximizing the likelihood of success. To limit non-determinism, I started the agent after the &ldquo;Parcel Delivery&rdquo; event. Starting the agent with a specific Pokemon would guarantee later stages of the game would be possible. Given the previous breakdown, here’s the <em>route</em> I wanted the agent to learn:</p>
+<ul>
+<li>Start with Bulbasaur or Charmander to guarantee a Pokemon who can use CUT.</li>
+<li>Defeat Brock.</li>
+<li>In any order:
+<ul>
+<li>Defeat Misty.</li>
+<li>Acquire HM01 and teach CUT to Bulbasaur.</li>
+</ul>
+</li>
+<li>In almost any order:
+<ul>
+<li>Defeat gyms 3-7.</li>
+<li>Acquire HM03 and HM04.</li>
+<li>Complete the Team Rocket Storyline.</li>
+<li>Acquire the gift Lapras in Silph Co and teach the Lapras Surf and Strength.</li>
+</ul>
+</li>
+<li>Defeat Gym 8.</li>
+<li>Defeat the 6th rival battle.</li>
+<li>Defeat the Elite 4 + Champion.</li>
+</ul>
+<h2 id="risk-management">
+  Risk Management
+  <a class="anchor" href="#risk-management">#</a>
+</h2>
+<p>Even though I simplified the game, I still needed risk mitigation. Pokemon contains numerous game ending risks including:</p>
+<ul>
+<li>Permanently losing vital Pokemon</li>
+<li>Catching Pokemon and not having enough space for the Lapras or any other Pokemon that can learn Surf</li>
+<li>Item management. If the agent obtains too many items, then there may not be enough room for key items</li>
+<li>Money management. It is possible to soft-lock if you cannot obtain any more money at the time the Safari Zone objectives need to be completed.</li>
+<li>Only having Pokemon with non-damaging moves.</li>
+</ul>
+<p>I’d like to emphasize again that <em>none</em> of these issues require teaching the agent how to best Pokemon battles.</p>
+<h3 id="scripting-vs-emergence">
+  Scripting vs. Emergence
+  <a class="anchor" href="#scripting-vs-emergence">#</a>
+</h3>
+<p>To handle these risks and difficulties, I split agent behavior into two classes:</p>
+<ul>
+<li><strong>Scripted:</strong> Meaning actions taken by the agent not controlled by the policy.</li>
+<li><strong>Emergent:</strong> Allowing the agent to discover its own strategies.</li>
+</ul>
+<p>Ideally, no scripted behavior would be needed. However, I needed scripts. I aimed to only script behaviors that require human intuition or tasks that are not really a core part of Pokemon. These included.</p>
+<ul>
+<li>Item management - the agent will toss all non-key items if the agent fills their inventory.</li>
+<li>Money management - the agent will have infinite money.</li>
+<li>Solving puzzles that require Strength.</li>
+<li>Blocking the Indigo Plateau exit at the end of the game.</li>
+</ul>
+<p>To make development easier, I wrote scripts to remove the following complexity and speed up development. These scripts can disabled for a successful run, but were invaluable during development. They included</p>
+<ul>
+<li>Teaching HMs.</li>
+<li>Using HMs outside of battle.</li>
+<li>Using Pokeflute.</li>
+<li>Maxxing the Pokemon’s stats.</li>
+<li>Automatic insertion of drinks for the Saffron guards if the agent <em>entered</em> the Celadon Mart.</li>
+<li>Automating elevator usage. If an agent entered an elevator, the elevator would go to the next floor modulo number of floors.</li>
+<li>Disabling wild battles to simplify dungeons.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#battling">Battling</a></li>
+    <li><a href="#the-8-badges">The 8 Badges</a>
+      <ul>
+        <li><a href="#lt-surges-gym-gimmick">Lt. Surge&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#erikas-gym-gimmick">Erika&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#kogas-gym-gimmick">Koga&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#sabrinas-gym-gimmick">Sabrina&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#blaines-gym-gimmick">Blaine&rsquo;s Gym Gimmick</a></li>
+        <li><a href="#giovannis-gym-gimmick">Giovanni&rsquo;s Gym Gimmick</a></li>
+      </ul>
+    </li>
+    <li><a href="#field-interactions-and-exploration">Field Interactions and Exploration</a>
+      <ul>
+        <li><a href="#obtaining-hm01---cut">Obtaining HM01 - CUT</a></li>
+        <li><a href="#obtaining-hm03---surf">Obtaining HM03 - SURF</a></li>
+        <li><a href="#obtaining-hm04---strength">Obtaining HM04 - Strength</a></li>
+        <li><a href="#using-an-hm">Using an HM</a></li>
+        <li><a href="#obtaining-and-using-the-pokeflute">Obtaining and Using the Pokeflute</a></li>
+      </ul>
+    </li>
+    <li><a href="#team-rocket-storyline">Team Rocket Storyline</a></li>
+    <li><a href="#defining-a-route">Defining a &ldquo;Route&rdquo;</a></li>
+    <li><a href="#risk-management">Risk Management</a>
+      <ul>
+        <li><a href="#scripting-vs-emergence">Scripting vs. Emergence</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/pokerl/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=pokerl/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Field Interactions and Exploration
+  #
+
+As mentioned previously, field moves taught to Pokemon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokemon.
+The 5 field moves of Pokemon are
+
+HM01 - CUT
+HM02 - FLY
+HM03 - SURF
+HM04 - STRENGTH
+HM05 - FLASH
+
+Only CUT, SURF, and STRENGTH are required for game progression. Although useful, FLY and FLASH aren’t required. They only allow for faster game progression.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/pokerl/docs/chapter-1/field_interactions/">
+  <meta property="og:site_name" content="Pokemon RL">
+  <meta property="og:title" content="Field Interactions and Exploration">
+  <meta property="og:description" content="Field Interactions and Exploration # As mentioned previously, field moves taught to Pokemon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokemon.
+The 5 field moves of Pokemon are
+HM01 - CUT HM02 - FLY HM03 - SURF HM04 - STRENGTH HM05 - FLASH Only CUT, SURF, and STRENGTH are required for game progression. Although useful, FLY and FLASH aren’t required. They only allow for faster game progression.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Field Interactions and Exploration | Pokemon RL</title>
+<link rel="icon" href="/pokerl/favicon.png" >
+<link rel="manifest" href="/pokerl/manifest.json">
+<link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-1/field_interactions/">
+<link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
+  <script defer src="/pokerl/fuse.min.js"></script>
+  <script defer src="/pokerl/en.search.min.e8e07d3625233e7b0ba271de3a3801a66fd489a2e8b72f8478c83e33cdd92188.js" integrity="sha256-6OB9NiUjPnsLonHeOjgBpm/UiaLoty&#43;EeMg&#43;M83ZIYg=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/pokerl/"><span>Pokemon RL</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 1: RL and the Pokemon Environment</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/the-loop/" class="">RL Quickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/env-setup/" class="">Setting up the Environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Breaking Down Pokemon</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/intro/" class="">Intro</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/battling/" class="">Battling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/8badges/" class="">The 8 Badges</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/team_rocket/" class="">Team Rocket</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/route/" class="">The &#34;Route&#34;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/breakdown/risk_management/" class="">Risk Management</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-1/field_interactions/" class="active">Field Interactions and Exploration</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 2: Observations, Rewards, and Policy</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/observations/" class="">Observations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/rewards/" class="">Rewards</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-2/policy/" class="">Policy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 3: Building and Running the System</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/running/" class="">Running</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/reading-ram/" class="">Reading RAM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/metrics/" class="">Metrics and Visualization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-3/swarm/" class="">The Swarm</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Chapter 4: Concluding Thoughts</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/results/" class="">Results</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/pokerl/docs/chapter-4/future/" class="">Future</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/pokerl/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Field Interactions and Exploration</h3>
+
+  <label for="toc-control">
+    
+    <img src="/pokerl/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-an-hm">Using an HM</a></li>
+    <li><a href="#obtaining-hm01---cut">Obtaining HM01 - CUT</a></li>
+    <li><a href="#obtaining-hm03---surf">Obtaining HM03 - SURF</a></li>
+    <li><a href="#obtaining-hm04---strength">Obtaining HM04 - Strength</a></li>
+    <li><a href="#obtaining-and-using-the-pokeflute">Obtaining and Using the Pokeflute</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="field-interactions-and-exploration">
+  Field Interactions and Exploration
+  <a class="anchor" href="#field-interactions-and-exploration">#</a>
+</h1>
+<p>As mentioned previously, field moves taught to Pokemon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokemon.</p>
+<p>The 5 field moves of Pokemon are</p>
+<ul>
+<li><strong>HM01 - CUT</strong></li>
+<li>HM02 - FLY</li>
+<li><strong>HM03 - SURF</strong></li>
+<li><strong>HM04 - STRENGTH</strong></li>
+<li>HM05 - FLASH</li>
+</ul>
+<p>Only CUT, SURF, and STRENGTH are required for game progression. Although useful, FLY and FLASH aren’t required. They only allow for faster game progression.</p>
+<h2 id="using-an-hm">
+  Using an HM
+  <a class="anchor" href="#using-an-hm">#</a>
+</h2>
+<p><em>Teaching</em> and using an HM requires a minimum of 17 actions along with a Pokemon in the agent&rsquo;s party that is capable of learning the HM. 17+ actions are hard enough to give the agent context for. Incentivizing the agent to have HM capable party members when it is playing Pokemon for the first time without a guide is an even harder task!</p>
+<h2 id="obtaining-hm01---cut">
+  Obtaining HM01 - CUT
+  <a class="anchor" href="#obtaining-hm01---cut">#</a>
+</h2>
+<div style="text-align: center;">
+<p><img src="assets/teach_use_cut.gif" alt="" /></p>
+</div>
+<p>To acquire HM01, the agent must:</p>
+<ul>
+<li>Acquire the SS Anne ticket from Bill north of Cerulean City.</li>
+<li>Board the SS Anne and battle their rival</li>
+<li>Help the captain of the ship.</li>
+</ul>
+<p>The captain will reward the agent with the item HM01.</p>
+<h2 id="obtaining-hm03---surf">
+  Obtaining HM03 - SURF
+  <a class="anchor" href="#obtaining-hm03---surf">#</a>
+</h2>
+<div style="text-align: center;">
+<p><img src="assets/teach_use_surf.gif" alt="" /></p>
+</div>
+<p>To obtain SURF, the agent must reach the end of the Safari Zone in less than <em>500</em> steps. At the end, the Safari Zone Warden will reward the player with HM03</p>
+<h2 id="obtaining-hm04---strength">
+  Obtaining HM04 - Strength
+  <a class="anchor" href="#obtaining-hm04---strength">#</a>
+</h2>
+<div style="text-align: center;">
+<p><img src="assets/teach_use_strength.gif" alt="" /></p>
+</div>
+<p>To obtain STRENGTH, the agent must:</p>
+<ul>
+<li>Find the GOLD TEETH in the Safari Zone.</li>
+<li>Bring the GOLD TEETH to the old man NPC in Fuchsia City</li>
+</ul>
+<p>The old man will then reward the agent with the item HM04</p>
+<h2 id="obtaining-and-using-the-pokeflute">
+  Obtaining and Using the Pokeflute
+  <a class="anchor" href="#obtaining-and-using-the-pokeflute">#</a>
+</h2>
+<p>Along with field moves, the agent will need to use the item Pokeflute for one field interaction. Pokeflute can remove two roadblocks (at least one is required) so the agent can gain access to Fuchsia City.</p>
+<p>However, using PokeFlute is very similar to using an HM. A level of convenience that I will use when ensuring the agent can perform the action.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-an-hm">Using an HM</a></li>
+    <li><a href="#obtaining-hm01---cut">Obtaining HM01 - CUT</a></li>
+    <li><a href="#obtaining-hm03---surf">Obtaining HM03 - SURF</a></li>
+    <li><a href="#obtaining-hm04---strength">Obtaining HM04 - Strength</a></li>
+    <li><a href="#obtaining-and-using-the-pokeflute">Obtaining and Using the Pokeflute</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
