@@ -19,7 +19,7 @@ Exploration became the foundation for all dense rewards.
 
 I originally believed that an agent had successfully learned Pokémon if the agent could visit every coordinate in the game’s world. I loosened that definition. I now consider *any* interaction a form of exploration.
 
-However, onnly using exploration rewards are not enough. The mix of sparse and dense rewards is what makes the policy successful! If I were to only reward for unique coordinates, the agent may never interact with Brock, the first gym leader. Instead, the agent would wander the world forever collecting new locations until it ran out of locations.
+However, only using exploration rewards are not enough. The mix of sparse and dense rewards is what makes the policy successful! If I were to only reward for unique coordinates, the agent may never interact with Brock, the first gym leader. Instead, the agent would wander the world forever collecting new locations until it ran out of locations.
 
 In the end, I rewarded for:
 

@@ -15,7 +15,7 @@ PyBoy provides a `.memory` function for reading RAM. GameBoy games contain multi
 
 If you want to read your party information? That's in WRAM:
 
-```
+```asm
 SECTION "Party Data", WRAM0
 
 wPartyDataStart::
@@ -47,7 +47,7 @@ wPartyDataEnd::
 
 In this example, any name that begins with `w` is the name of an addres in WRAM. `party_struct` is a macro that defines a party member.
 
-```
+```asm
 MACRO party_struct
 	box_struct \1
 \1Level::      db
@@ -91,33 +91,46 @@ If you read the symbol table you'll notice that not all values are WRAM values. 
 
 PyBoy happens to provide a useful mechanism for injecting code at these labels. For example, there is no WRAM value to tell if CUT was successfully used. There is however the CUT subroutine.
 
-```
+```asm
 UsedCut:
-	xor a
-	ld [wActionResultOrTookBattleTurn], a ; initialise to failure value
-	ld a, [wCurMapTileset]
-	and a ; OVERWORLD
-	jr z, .overworld
-	cp GYM
-	jr nz, .nothingToCut
-	ld a, [wTileInFrontOfPlayer]
-	cp $50 ; gym cut tree
-	jr nz, .nothingToCut
-	jr .canCut
+    xor a
+    ; Initialize to a failure value;
+    ld [wActionResultOrTookBattleTurn], a 
+    ld a, [wCurMapTileset]
+    and a ; OVERWORLD
+    ; If in the overworld, jump to .overworld (below);
+    jr z, .overworld
+    cp GYM
+    ; If not in a gym, jump to .nothingToCut (below);
+    jr nz, .nothingToCut
+    ; Load the tile in front of the player into register a.
+    ld a, [wTileInFrontOfPlayer]
+    ; Check if the tile in front is 0x50, a gym cut tree (applies to Erika's gym).
+    cp $50 ; gym cut tree
+    ; If the tile is not 0x50, then jump to .nothingToCut (below).
+    jr nz, .nothingToCut
+    ; The tree is cuttable! Jump to .canCut.
+    jr .canCut
 .overworld
-	dec a
-	ld a, [wTileInFrontOfPlayer]
-	cp $3d ; cut tree
-	jr z, .canCut
-	cp $52 ; grass
-	jr z, .canCut
+    dec a
+    ; Load the tile in front of the player into register a.
+    ld a, [wTileInFrontOfPlayer]
+    ; Check if the tile in front ix 0x3D.
+    cp $3d ; cut tree
+    ; If the tile is 0x3D, then jump to .canCut.
+    jr z, .canCut
+    ; Check if the tile in front ix 0x52.
+    cp $52 ; grass
+    ; If the tile is 0x52, jump to .canCut.
+    jr z, .canCut
 .nothingToCut
-	ld hl, .NothingToCutText
-	jp PrintText
+    ; Display text telling the player that there's nothing to cut.
+    ld hl, .NothingToCutText
+    jp PrintText
 
 .NothingToCutText
-	text_far _NothingToCutText
-	text_end
+    text_far _NothingToCutText
+    text_end
 ```
 
 I could inject hooks at `.nothingToCut` and `.canCut` to tell if (a) CUT was attempted and (b) CUT was successful or not.
