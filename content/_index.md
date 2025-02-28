@@ -12,7 +12,9 @@ type: docs
 # Learning Pokémon With Reinforcement Learning
 
 Hi! Since 2020, I've been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.
-As of February 2025, I confidently can say that I have an RL system that _can learn_ to beat Pokémon Red using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent's current state. [All code is open sourced and available for you, the reader, to try.](https://github.com/thatguy11325/Pokémonred_puffer)
+As of February 2025, I am able to beat Pokémon Red with Reinforcement Learning using minimal game knowledge with the caveat that the trained policy cannot be used to beat the game from scratch. This website acts as a journal describing my agent's current state. [All code is open sourced and available for you, the reader, to try.](https://github.com/thatguy11325/Pokémonred_puffer).
+
+![](assets/mapvid.gif)
 
 As I improve and add to this website, I will update the changelog. Before you dive into the website,
 let me provide some background on Pokémon and my motivation for using RL.

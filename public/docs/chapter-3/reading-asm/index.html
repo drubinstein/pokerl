@@ -25,7 +25,7 @@ But I don’t have that model. However, I have PRET. I have read an extraordinar
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-3/reading-asm/">
 <link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
   <script defer src="/pokerl/fuse.min.js"></script>
-  <script defer src="/pokerl/en.search.min.609089bdf0d2128ecc6610d73567268095da34d009e846197f9b37980606a962.js" integrity="sha256-YJCJvfDSEo7MZhDXNWcmgJXaNNAJ6EYZf5s3mAYGqWI=" crossorigin="anonymous"></script>
+  <script defer src="/pokerl/en.search.min.d74caf9e1f37654616fc5cd17d34e8f594f7ef9b66d47cc5300f616d0a8ac500.js" integrity="sha256-10yvnh83ZUYW/FzRfTTo9ZT375tm1HzFMA9hbQqKxQA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -300,7 +300,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-3/running/running/" class="">Running</a>
+    <a href="/pokerl/docs/chapter-3/running/" class="">Running</a>
   
 
         </li>
@@ -473,45 +473,45 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 <p>PyBoy provides a <code>.memory</code> function for reading RAM. GameBoy games contain multiple banks of RAM. Each RAM bank contains a different purpose. <a href="https://github.com/pret/pokered/blob/master/ram/sram.asm">SRAM</a> is for saving, <a href="https://github.com/pret/pokered/blob/master/ram/hram.asm">HRAM</a> (high RAM) is volatile, highly available RAM on the CPU. <a href="https://github.com/pret/pokered/blob/master/ram/wram.asm">WRAM</a> (work RAM) contains the majority of useful memory addresses to look at.</p>
 <p>If you want to read your party information? That&rsquo;s in WRAM:</p>
-<pre tabindex="0"><code>SECTION &#34;Party Data&#34;, WRAM0
-
-wPartyDataStart::
-
-wPartyCount:: db
-wPartySpecies:: ds PARTY_LENGTH + 1
-
-wPartyMons::
-; wPartyMon1 - wPartyMon6
-FOR n, 1, PARTY_LENGTH + 1
-wPartyMon{d:n}:: party_struct wPartyMon{d:n}
-ENDR
-
-wPartyMonOT::
-; wPartyMon1OT - wPartyMon6OT
-FOR n, 1, PARTY_LENGTH + 1
-wPartyMon{d:n}OT:: ds NAME_LENGTH
-ENDR
-
-wPartyMonNicks::
-; wPartyMon1Nick - wPartyMon6Nick
-FOR n, 1, PARTY_LENGTH + 1
-wPartyMon{d:n}Nick:: ds NAME_LENGTH
-ENDR
-wPartyMonNicksEnd::
-
-wPartyDataEnd::
-</code></pre><p>In this example, any name that begins with <code>w</code> is the name of an addres in WRAM. <code>party_struct</code> is a macro that defines a party member.</p>
-<pre tabindex="0"><code>MACRO party_struct
-	box_struct \1
-\1Level::      db
-\1Stats::
-\1MaxHP::      dw
-\1Attack::     dw
-\1Defense::    dw
-\1Speed::      dw
-\1Special::    dw
-ENDM
-</code></pre><p>There are a ton of valuable memory locations to ready. <code>wEventFlags:: flag_array</code> provides the event array that I use for observations. <code>wPlayerDirection:: db</code> is a single byte that represents which of the 4 directions the player is facing. <code>wIsInBattle:: db</code> tells me if the agent is currently in battle or not and if that battle is a wild battle or trainer battle. <code>wSafariSteps:: dw</code> is a 2 byte value that represents the number of steps left in the Safari Zone.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">SECTION</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">Party</span> <span style="color:#66d9ef">Data</span><span style="color:#960050;background-color:#1e0010">&#34;</span>, <span style="color:#66d9ef">WRAM0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wPartyDataStart:<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wPartyCount:<span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>wPartySpecies:<span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#a6e22e">ds</span> <span style="color:#66d9ef">PARTY_LENGTH</span> <span style="color:#960050;background-color:#1e0010">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wPartyMons:<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; wPartyMon1 - wPartyMon6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">FOR</span> <span style="color:#66d9ef">n</span>, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">PARTY_LENGTH</span> <span style="color:#960050;background-color:#1e0010">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">wPartyMon</span><span style="color:#960050;background-color:#1e0010">{</span><span style="color:#66d9ef">d</span>:<span style="color:#66d9ef">n</span><span style="color:#960050;background-color:#1e0010">}</span>:: <span style="color:#66d9ef">party_struct</span> <span style="color:#66d9ef">wPartyMon</span><span style="color:#960050;background-color:#1e0010">{</span><span style="color:#66d9ef">d</span>:<span style="color:#66d9ef">n</span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ENDR</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wPartyMonOT:<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; wPartyMon1OT - wPartyMon6OT
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">FOR</span> <span style="color:#66d9ef">n</span>, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">PARTY_LENGTH</span> <span style="color:#960050;background-color:#1e0010">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">wPartyMon</span><span style="color:#960050;background-color:#1e0010">{</span><span style="color:#66d9ef">d</span>:<span style="color:#66d9ef">n</span><span style="color:#960050;background-color:#1e0010">}</span><span style="color:#66d9ef">OT</span>:: <span style="color:#66d9ef">ds</span> <span style="color:#66d9ef">NAME_LENGTH</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ENDR</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wPartyMonNicks:<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; wPartyMon1Nick - wPartyMon6Nick
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">FOR</span> <span style="color:#66d9ef">n</span>, <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">PARTY_LENGTH</span> <span style="color:#960050;background-color:#1e0010">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">wPartyMon</span><span style="color:#960050;background-color:#1e0010">{</span><span style="color:#66d9ef">d</span>:<span style="color:#66d9ef">n</span><span style="color:#960050;background-color:#1e0010">}</span><span style="color:#66d9ef">Nick</span>:: <span style="color:#66d9ef">ds</span> <span style="color:#66d9ef">NAME_LENGTH</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ENDR</span>
+</span></span><span style="display:flex;"><span>wPartyMonNicksEnd:<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wPartyDataEnd:<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span></code></pre></div><p>In this example, any name that begins with <code>w</code> is the name of an addres in WRAM. <code>party_struct</code> is a macro that defines a party member.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">MACRO</span> <span style="color:#66d9ef">party_struct</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">box_struct</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\1</span>Level:<span style="color:#960050;background-color:#1e0010">:</span>      <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\1</span>Stats:<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\1</span>MaxHP:<span style="color:#960050;background-color:#1e0010">:</span>      <span style="color:#a6e22e">dw</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\1</span>Attack:<span style="color:#960050;background-color:#1e0010">:</span>     <span style="color:#a6e22e">dw</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\1</span>Defense:<span style="color:#960050;background-color:#1e0010">:</span>    <span style="color:#a6e22e">dw</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\1</span>Speed:<span style="color:#960050;background-color:#1e0010">:</span>      <span style="color:#a6e22e">dw</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\1</span>Special:<span style="color:#960050;background-color:#1e0010">:</span>    <span style="color:#a6e22e">dw</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ENDM</span>
+</span></span></code></pre></div><p>There are a ton of valuable memory locations to ready. <code>wEventFlags:: flag_array</code> provides the event array that I use for observations. <code>wPlayerDirection:: db</code> is a single byte that represents which of the 4 directions the player is facing. <code>wIsInBattle:: db</code> tells me if the agent is currently in battle or not and if that battle is a wild battle or trainer battle. <code>wSafariSteps:: dw</code> is a 2 byte value that represents the number of steps left in the Safari Zone.</p>
 <h2 id="actually-retrieving-the-data">
   Actually Retrieving the Data
   <a class="anchor" href="#actually-retrieving-the-data">#</a>
@@ -538,33 +538,46 @@ ENDM
 </h2>
 <p>If you read the symbol table you&rsquo;ll notice that not all values are WRAM values. What gives? Well the symbol table also tracks ASM <em>labels</em>. Labels point to addresses in the ROM while the game is playing. If the player interacts with an in-game script, a label may be passed!</p>
 <p>PyBoy happens to provide a useful mechanism for injecting code at these labels. For example, there is no WRAM value to tell if CUT was successfully used. There is however the CUT subroutine.</p>
-<pre tabindex="0"><code>UsedCut:
-	xor a
-	ld [wActionResultOrTookBattleTurn], a ; initialise to failure value
-	ld a, [wCurMapTileset]
-	and a ; OVERWORLD
-	jr z, .overworld
-	cp GYM
-	jr nz, .nothingToCut
-	ld a, [wTileInFrontOfPlayer]
-	cp $50 ; gym cut tree
-	jr nz, .nothingToCut
-	jr .canCut
-.overworld
-	dec a
-	ld a, [wTileInFrontOfPlayer]
-	cp $3d ; cut tree
-	jr z, .canCut
-	cp $52 ; grass
-	jr z, .canCut
-.nothingToCut
-	ld hl, .NothingToCutText
-	jp PrintText
-
-.NothingToCutText
-	text_far _NothingToCutText
-	text_end
-</code></pre><p>I could inject hooks at <code>.nothingToCut</code> and <code>.canCut</code> to tell if (a) CUT was attempted and (b) CUT was successful or not.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>UsedCut:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">xor</span> <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; Initialize to a failure value;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ld</span> [<span style="color:#66d9ef">wActionResultOrTookBattleTurn</span>], <span style="color:#66d9ef">a</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">ld</span> <span style="color:#66d9ef">a</span>, [<span style="color:#66d9ef">wCurMapTileset</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">and</span> <span style="color:#66d9ef">a</span> <span style="color:#75715e">; OVERWORLD
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">; If in the overworld, jump to .overworld (below);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">jr</span> <span style="color:#66d9ef">z</span>, <span style="color:#66d9ef">.overworld</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cp</span> <span style="color:#66d9ef">GYM</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; If not in a gym, jump to .nothingToCut (below);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">jr</span> <span style="color:#66d9ef">nz</span>, <span style="color:#66d9ef">.nothingToCut</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; Load the tile in front of the player into register a.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ld</span> <span style="color:#66d9ef">a</span>, [<span style="color:#66d9ef">wTileInFrontOfPlayer</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; Check if the tile in front is 0x50, a gym cut tree (applies to Erika&#39;s gym).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">cp</span> <span style="color:#66d9ef">$50</span> <span style="color:#75715e">; gym cut tree
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">; If the tile is not 0x50, then jump to .nothingToCut (below).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">jr</span> <span style="color:#66d9ef">nz</span>, <span style="color:#66d9ef">.nothingToCut</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; The tree is cuttable! Jump to .canCut.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">jr</span> <span style="color:#66d9ef">.canCut</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.overworld</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dec</span> <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; Load the tile in front of the player into register a.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ld</span> <span style="color:#66d9ef">a</span>, [<span style="color:#66d9ef">wTileInFrontOfPlayer</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; Check if the tile in front ix 0x3D.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">cp</span> <span style="color:#66d9ef">$3d</span> <span style="color:#75715e">; cut tree
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">; If the tile is 0x3D, then jump to .canCut.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">jr</span> <span style="color:#66d9ef">z</span>, <span style="color:#66d9ef">.canCut</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; Check if the tile in front ix 0x52.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">cp</span> <span style="color:#66d9ef">$52</span> <span style="color:#75715e">; grass
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">; If the tile is 0x52, jump to .canCut.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">jr</span> <span style="color:#66d9ef">z</span>, <span style="color:#66d9ef">.canCut</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.nothingToCut</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">; Display text telling the player that there&#39;s nothing to cut.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ld</span> <span style="color:#66d9ef">hl</span>, <span style="color:#66d9ef">.NothingToCutText</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">jp</span> <span style="color:#66d9ef">PrintText</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.NothingToCutText</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">text_far</span> <span style="color:#66d9ef">_NothingToCutText</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">text_end</span>
+</span></span></code></pre></div><p>I could inject hooks at <code>.nothingToCut</code> and <code>.canCut</code> to tell if (a) CUT was attempted and (b) CUT was successful or not.</p>
 <h2 id="my-strategy-for-reading-disassembly">
   My Strategy for Reading Disassembly
   <a class="anchor" href="#my-strategy-for-reading-disassembly">#</a>

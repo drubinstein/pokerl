@@ -25,7 +25,7 @@ Before I begin though, I am obligated to give thanks to Joseph Suarez, the creat
 <link rel="canonical" href="http://localhost:1313/pokerl/docs/chapter-3/running/">
 <link rel="stylesheet" href="/pokerl/book.min.20566c4d69204c7b44949aa70a954a16ae963f6de14a8871d403b3c690ffd867.css" integrity="sha256-IFZsTWkgTHtElJqnCpVKFq6WP23hSohx1AOzxpD/2Gc=" crossorigin="anonymous">
   <script defer src="/pokerl/fuse.min.js"></script>
-  <script defer src="/pokerl/en.search.min.1cf198c8682c4283df4c3320ac96d752b44ec2cbf9a5a9a4b481b988efcecfa8.js" integrity="sha256-HPGYyGgsQoPfTDMgrJbXUrROwsv5pamktIG5iO/Oz6g=" crossorigin="anonymous"></script>
+  <script defer src="/pokerl/en.search.min.d74caf9e1f37654616fc5cd17d34e8f594f7ef9b66d47cc5300f616d0a8ac500.js" integrity="sha256-10yvnh83ZUYW/FzRfTTo9ZT375tm1HzFMA9hbQqKxQA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -313,7 +313,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/pokerl/docs/chapter-3/reading-ram/" class="">Reading RAM</a>
+    <a href="/pokerl/docs/chapter-3/reading-asm/" class="">Reading RAM</a>
   
 
         </li>
@@ -445,7 +445,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#Pokémon-is-cpu-bound">Pokémon is CPU Bound</a>
+    <li><a href="#pokémon-is-cpu-bound">Pokémon is CPU Bound</a>
       <ul>
         <li><a href="#the-emulator">The Emulator</a></li>
         <li><a href="#collecting-screen-data">Collecting Screen Data</a></li>
@@ -479,9 +479,9 @@ https://github.com/alex-shpak/hugo-book
 <p>Before I begin though, I am obligated to give thanks to Joseph Suarez, the creator of PufferAI and PufferLib. Joseph graciously donated 4 machines to this effort. Each machine contained a NVIDIA 4090 GPU, Intel Core i9-14900K, 125 GB of RAM and 2TB of disk space. Before his contribution, I was paying $200/month using <a href="https://vast.ai/">vast.ai</a> for training with worse hardware.</p>
 <p>Good hardware although not necessary, massively sped up training.</p>
 <p>But what was more important than good hardware? Good software! I want to discuss some of the challenges of the Pokémon environment and mitigations I had in place for those challenges. In the end, I 10x’d the steps per second (sps) of training to a peak of 10000 sps with a lot of extra engineering effort. Potentially more effort than I put into everything I mentioned previously.</p>
-<h2 id="Pokémon-is-cpu-bound">
+<h2 id="pokémon-is-cpu-bound">
   Pokémon is CPU Bound
-  <a class="anchor" href="#Pokémon-is-cpu-bound">#</a>
+  <a class="anchor" href="#pok%c3%a9mon-is-cpu-bound">#</a>
 </h2>
 <h3 id="the-emulator">
   The Emulator
@@ -496,7 +496,10 @@ https://github.com/alex-shpak/hugo-book
 <li>Data layout optimization.</li>
 <li>The addition of hooks.</li>
 </ul>
-<p>Most of these changes are in PyBoy’s core. Hooks are a special addition that let me inject Python code at specified instructions. Although the context switch back to Python slows down execution, the less frequent RAM reads hooks allow have led to an overall speedup in Pokémon.</p>
+<p>Most of these changes are in PyBoy’s core. Hooks are a special addition that let me inject Python code at specified instructions. Although the context switch back to Python slows down execution, the less frequent RAM reads hooks allow have led to an overall speedup in Pokémon. However, even now, the environment still uses the majority of training time!</p>
+<div style="text-align: center; ">
+<p><img src="assets/flamegraph.png" alt="" /></p>
+</div>
 <h3 id="collecting-screen-data">
   Collecting Screen Data
   <a class="anchor" href="#collecting-screen-data">#</a>
@@ -663,7 +666,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#Pokémon-is-cpu-bound">Pokémon is CPU Bound</a>
+    <li><a href="#pokémon-is-cpu-bound">Pokémon is CPU Bound</a>
       <ul>
         <li><a href="#the-emulator">The Emulator</a></li>
         <li><a href="#collecting-screen-data">Collecting Screen Data</a></li>
