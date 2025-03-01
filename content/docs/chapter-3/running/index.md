@@ -19,7 +19,7 @@ But what was more important than good hardware? Good software! I want to discuss
 
 PyBoy happens to provide a very convenient interface for RL and is performant for Python. However, using an emulator comes with its downsides. Namely, PyBoy is emulating every instruction from the ROM. That means fewer compiler optimizations, no link time optimizations etc. I could have attempted to rewrite Pokémon in a modern language, but that would have been a Herculean effort on its own. Instead, PyBoy got faster.
 
-A slow PyBoy *was* the case. But I’ve been in frequent communication with the creator of PyBoy for a while and we (mostly him) have put a lot of effort into improving PyBoy since late 2023. PyBoy has released a number of updates that have improved runtime speed and developer ergonomics dramatically including:
+A slow PyBoy *was* the case. But I’ve been in frequent communication with the creator of PyBoy for a while and we (mostly him) have put a lot of effort into improving PyBoy since late 2023. PyBoy has released a number of updates that have improved runtime `SPEED` and developer ergonomics dramatically including:
 
 - Better usage of compiler optimization flags.
 - Better usage of Cython’s gil release options.
@@ -27,7 +27,7 @@ A slow PyBoy *was* the case. But I’ve been in frequent communication with the 
 - Data layout optimization.
 - The addition of hooks.
 
-Most of these changes are in PyBoy’s core. Hooks are a special addition that let me inject Python code at specified instructions. Although the context switch back to Python slows down execution, the less frequent RAM reads hooks allow have led to an overall speedup in Pokémon. However, even now, the environment still uses the majority of training time!
+Most of these changes are in PyBoy’s core. Hooks are a `SPECIAL` addition that let me inject Python code at specified instructions. Although the context switch back to Python slows down exe`CUT`ion, the less frequent RAM reads hooks allow have led to an overall `SPEED`up in Pokémon. However, even now, the environment still uses the majority of training time!
 
 <div style="text-align: center; ">
 
@@ -69,22 +69,22 @@ def run_action_on_emulator(self, action):
     self.pyboy.tick(1, render=True)
 ```
 
-If we look at the core functionality for running an action on the emulator, there is one small addition. Ticking while the agent does not have control. Waiting for control to return to the player removes certain levels of non-determinism. Most annoyingly, the extra animation when moving a boulder with strength.
+If we look at the core functionality for running an action on the emulator, there is one small addition. Ticking while the agent does not have control. Waiting for control to return to the player removes certain levels of non-determinism. Most annoyingly, the extra animation when moving a boulder with `STRENGTH`.
 
 ## When to Care About the GPU
 
-Generating data on the CPU has generally been the bottleneck, but training and inference do occur and during the training loop of my RL system, I am not running the emulator. I’m running the policy on the GPU with PyTorch. There are still gains to be had from speeding up the GPU side of training, even if it didn’t give me 2x returns.
+Generating data on the CPU has generally been the bottleneck, but training and inference do occur and during the training loop of my RL system, I am not running the emulator. I’m running the policy on the GPU with PyTorch. There are still gains to be had from `SPEED`ing up the GPU side of training, even if it didn’t give me 2x returns.
 
-There are many avenues for speeding up training:
+There are many avenues for `SPEED`ing up training:
 
 * Decrease the model size.
 * Decrease the data size.
 * Improve the GPU utilization.
 * Improve sample efficiency.
 
-There are some common techniques to improve the speedup. Some I contributed back to PufferLib (since early 2024 I have optimized pieces of PufferLib for a 2x speed up).  I achived a 30% GPU speed improvement on inference by using torch.compile improved the GPU utilization with [torch.compile](https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html). Torch compilation traces the execution graph of a PyTorch module and will create an optimized GPU execution graph.
+There are some common techniques to improve the `SPEED`up. Some I contributed back to PufferLib (since early 2024 I have optimized pieces of PufferLib for a 2x `SPEED` up).  I achived a 30% GPU `SPEED` improvement on inference by using torch.compile improved the GPU utilization with [torch.compile](https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html). Torch compilation traces the exe`CUT`ion graph of a PyTorch module and will create an optimized GPU exe`CUT`ion graph.
 
-The other major speed optimization in the training loop came from making sure I [pinned memory](https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/#pinned_host_memory) for any tensors I used on GPU. Pinning prevents an extra memory copy when moving data from the CPU host to the GPU device.
+The other major `SPEED` optimization in the training loop came from making sure I [pinned memory](https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/#pinned_host_memory) for any tensors I used on GPU. Pinning prevents an extra memory copy when moving data from the CPU host to the GPU device.
 
 ## Observation Size Matters
 
@@ -109,7 +109,7 @@ I can go one step further. GameBoy’s color system is 2 bit. Every pixel takes 
 
 --> Another 1/4 reduction in data size or 6kB --> ≈2kB
 
-And there I had a potential near 64x speed up in host\<-\>device communication. Now why does this work?
+And there I had a potential near 64x `SPEED` up in host\<-\>device communication. Now why does this work?
 
 To unpack on the GPU, I store two buffers, a bit mask and a number of shifts. I shift the bytes then apply the bit mask and voila hyper parallel decoding for both the visited mask and the game screen.
 

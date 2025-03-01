@@ -53,10 +53,10 @@ MACRO party_struct
 \1Level::      db
 \1Stats::
 \1MaxHP::      dw
-\1Attack::     dw
-\1Defense::    dw
-\1Speed::      dw
-\1Special::    dw
+\1`ATTACK`::     dw
+\1`DEFENSE`::    dw
+\1`SPEED`::      dw
+\1`SPECIAL`::    dw
 ENDM
 ```
 
@@ -89,10 +89,10 @@ In this example, the addresses for specific variables are on the left. I can use
 
 If you read the symbol table you'll notice that not all values are WRAM values. What gives? Well the symbol table also tracks ASM *labels*. Labels point to addresses in the ROM while the game is playing. If the player interacts with an in-game script, a label may be passed!
 
-PyBoy happens to provide a useful mechanism for injecting code at these labels. For example, there is no WRAM value to tell if CUT was successfully used. There is however the CUT subroutine.
+PyBoy happens to provide a useful mechanism for injecting code at these labels. For example, there is no WRAM value to tell if `CUT` was successfully used. There is however the `CUT` subroutine.
 
 ```asm
-UsedCut:
+Used`CUT`:
     xor a
     ; Initialize to a failure value;
     ld [wActionResultOrTookBattleTurn], a 
@@ -101,45 +101,45 @@ UsedCut:
     ; If in the overworld, jump to .overworld (below);
     jr z, .overworld
     cp GYM
-    ; If not in a gym, jump to .nothingToCut (below);
-    jr nz, .nothingToCut
+    ; If not in a gym, jump to .nothingTo`CUT` (below);
+    jr nz, .nothingTo`CUT`
     ; Load the tile in front of the player into register a.
     ld a, [wTileInFrontOfPlayer]
-    ; Check if the tile in front is 0x50, a gym cut tree (applies to Erika's gym).
-    cp $50 ; gym cut tree
-    ; If the tile is not 0x50, then jump to .nothingToCut (below).
-    jr nz, .nothingToCut
-    ; The tree is cuttable! Jump to .canCut.
-    jr .canCut
+    ; Check if the tile in front is 0x50, a gym `CUT` tree (applies to Erika's gym).
+    cp $50 ; gym `CUT` tree
+    ; If the tile is not 0x50, then jump to .nothingTo`CUT` (below).
+    jr nz, .nothingTo`CUT`
+    ; The tree is `CUT`table! Jump to .can`CUT`.
+    jr .can`CUT`
 .overworld
     dec a
     ; Load the tile in front of the player into register a.
     ld a, [wTileInFrontOfPlayer]
     ; Check if the tile in front ix 0x3D.
-    cp $3d ; cut tree
-    ; If the tile is 0x3D, then jump to .canCut.
-    jr z, .canCut
+    cp $3d ; `CUT` tree
+    ; If the tile is 0x3D, then jump to .can`CUT`.
+    jr z, .can`CUT`
     ; Check if the tile in front ix 0x52.
     cp $52 ; grass
-    ; If the tile is 0x52, jump to .canCut.
-    jr z, .canCut
-.nothingToCut
-    ; Display text telling the player that there's nothing to cut.
-    ld hl, .NothingToCutText
+    ; If the tile is 0x52, jump to .can`CUT`.
+    jr z, .can`CUT`
+.nothingTo`CUT`
+    ; Display text telling the player that there's nothing to `CUT`.
+    ld hl, .NothingTo`CUT`Text
     jp PrintText
 
-.NothingToCutText
-    text_far _NothingToCutText
+.NothingTo`CUT`Text
+    text_far _NothingTo`CUT`Text
     text_end
 ```
 
-I could inject hooks at `.nothingToCut` and `.canCut` to tell if (a) CUT was attempted and (b) CUT was successful or not.
+I could inject hooks at `.nothingTo`CUT`` and `.can`CUT`` to tell if (a) `CUT` was attempted and (b) `CUT` was successful or not.
 
 ## My Strategy for Reading Disassembly
 
 With this I had a strategy for navigating the Pokémon Red disassembly.
 
-1. Search the disassembly or symbol table for key words related to what you want to obtain information for, e.g., "cut," "StartMenu", "HealingMachine." If you know of a location, you can go straight to the location's `scripts` or `map_header` file.
+1. Search the disassembly or symbol table for key words related to what you want to obtain information for, e.g., "`CUT`," "StartMenu", "HealingMachine." If you know of a location, you can go straight to the location's `scripts` or `map_header` file.
 2. Find relevant scripts in the disassembly.
 3. Follow the disassembly subroutines and see if the area matches what you are looking for.
 4. If the value is in HRAM or WRAM, then read those, else create a hook at the closest label.

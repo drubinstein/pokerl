@@ -107,13 +107,13 @@ The heatmap showed some interesting behavior from the agents. For example, it cl
 
 </div>
 
-Sometimes the heatmap would also clue me into "routes" the agents' policy would collapse to. For example when I mis-weighted tree cutting rewards, the heatmap pointed out that the agents' would optimize for a route that would maximize their ability to cut trees in an episode.
+Sometimes the heatmap would also clue me into "routes" the agents' policy would collapse to. For example when I mis-weighted tree `CUT`ting rewards, the heatmap pointed out that the agents' would optimize for a route that would maximize their ability to `CUT` trees in an episode.
 
 <div style="text-align: center;">
 
 {{< figure
-  src="assets/maxcut.png"
-  caption="A screenshot of a heatmap on WandB mid-experiment where the agent is fixated on cutting multiple trees in a loop."
+  src="assets/max`CUT`.png"
+  caption="A screenshot of a heatmap on WandB mid-experiment where the agent is fixated on `CUT`ting multiple trees in a loop."
   class="ma0 w-75"
 >}}
 

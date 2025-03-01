@@ -16,7 +16,7 @@ weight = 25
 </div>
 
 
-Beyond the gym battles and field moves, there are mandatory quests involving encounters with the antagonist group, Team Rocket. These events require defeating trainers, obtaining special items, and solving in-game puzzles. Thankfully, these quests must be accomplished in a linear order. For completeness, hare are all the tasks required to to complete the Rocket storyline:
+Pokémon contains mandatory quests involving the game's antagonists, Team Rocket. These events require defeating trainers, obtaining special items, and solving in-game puzzles. Thankfully, these quests must be accomplished in a linear order. For completeness, hare are all the tasks required to to complete the Rocket storyline:
 
 - Defeat the rockets blocking the exit to Mt. Moon (post Brock).
 - Defeat the rocket at the end of Nugget Bridge north of Cerulean City.
@@ -35,4 +35,4 @@ Beyond the gym battles and field moves, there are mandatory quests involving enc
 - Find the card key in Silph Co in Saffron City.
 - Defeat Giovanni in Silph Co.
 
-It’s a lot of tasks. Unlike the gym leaders, the difficulty of the Team Rocket puzzles are highly variable, but brute-forceable. From these quests, I concluded the agent needed a desire to either explore the whole world or spend extra time building a policy capable of reading and interpreting text. I decided to focus on the former.
+Unlike the gym leaders, the difficulty of the Team Rocket puzzles are highly variable, but brute-forceable. From these quests, I concluded the player needed a desire to either explore the whole world or spend extra time building a policy capable of reading and interpreting text. I decided to focus on the former.

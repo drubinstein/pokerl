@@ -1,29 +1,70 @@
 +++
-title = 'Setting up the Environment'
+title = 'The Environment and Goal'
 weight = 2
 +++
 
-# Setting up the Environment
+# The Environment and Goal
 
-When I start designing an RL system, I start with the environment. The Python library [Gymnasium](https://gymnasium.farama.org/) provides a fairly straightforward API which can be simplified into two functions: Reset and Step
+The Python library [Gymnasium](https://gymnasium.farama.org/) provides a fairly straightforward API for defining an environment. The environment can be simplified into two functions: `Reset` and `Step`
 
 ## Resets, Episodes and the Goal
 
-Reset handles the initialization for a gameplay session also known as an "episode.”
+Reset handles the initialization for a gameplay session (episode).
 
-In most video game DRL projects I've observed a reset will happen when an agent
+A reset will happen when an agent:
 
 - Achieves a major milestone, such as defeating a boss.
 - Encounters a failure state, such as losing all their lives.
 - Reaches a predefined time or action limit, such as 100 tetriminos in Tetris,
 
-Pokémon is in the realm of "long episodic RL.” Long episodes mean that the agent may not get large rewards for a very long time. If the agent only receives large rewards at the end of an episode, it may have trouble creating long term policies.
+Pokémon is in the realm of "long episodic RL" as it takes 25 hours for the average person to beat. Long episodes mean that the agent may not get large rewards for a very long time. If the agent only receives large rewards at the end of an episode, the agent may have trouble creating long term policies.
 
-Imagine if in the Tic-Tac-Toe example, the grid was 100x100. That means the agent wouldn't receive a reward for up to a max 5000 steps. Imagine having to plan out a 5000 step strategy. It's not easy! Later, I'll go over how I handled rewards for Pokémon's long episodes.
+For example, if we were playing 100x100 Tic-Tac-Toe, the agent wouldn't receive a reward for up to a max 5000 steps. Imagine having to plan out a 5000 step strategy. It's not easy! Later, I'll go over how I handled rewards for Pokémon's long episodes.
 
-Based on prior work, I began with an episode being a fixed number of steps. Over time, I tried multiple additional strategies including dynamically increasing the number of steps per episode as the agent performed important milestones. However, I believe an episode *should be* the based on a goal or when the agent achieves an unrecoverable state (soft-lock), e.g., such as running out of money. 
+Based on Peter Whidden's prior work, I began with an episode as a fixed number of steps. Over time, I tried other strategies such as dynamically increasing the number of steps per episode as the agent performed important milestones. However, I believe an episode *should be* based on a goal or when the agent achieves an unrecoverable state (soft-lock), e.g., such as running out of money. 
 
-What's the **goal** of Pokémon I aimed to complete? To be the champion! Therefore, I came up with a compromise. I created "mini-episodes.” An episode would be the duration of an entire game. However, the agent's state would periodically reset mid-episode, but the emulator state would not. 
+Because the **goal** was to be the Champion, we compromised. We created "mini-episodes.” An episode would be the duration of an entire game. However, the agent's state would periodically reset mid-episode, but the emulator state would not. 
+
+```python
+class OnResetExplorationWrapper(gym.Wrapper):
+    """
+    Wrapper for experimenting with different reset strategies. The OnResetExplorationWrapper,
+    used in the majority of experiments, resets all memory every get_max_steps() steps + jitter.
+    """
+    def __init__(self, env: RedGymEnv, reward_config: DictConfig):
+        super().__init__(env)
+        self.full_reset_frequency = reward_config.full_reset_frequency
+        self.jitter = reward_config.jitter
+        self.counter = 0
+
+    def step(self, action):
+        if self.env.unwrapped.step_count >= self.env.unwrapped.get_max_steps():
+            if (self.counter + random.randint(0, self.jitter)) >= self.full_reset_frequency:
+                self.counter = 0
+                self.env.unwrapped.explore_map *= 0
+                self.env.unwrapped.reward_explore_map *= 0
+                self.env.unwrapped.`CUT`_explore_map *= 0
+                self.env.unwrapped.`CUT`_tiles.clear()
+                self.env.unwrapped.seen_coords.clear()
+                self.env.unwrapped.seen_map_ids *= 0
+                self.env.unwrapped.seen_npcs.clear()
+                self.env.unwrapped.valid_`CUT`_coords.clear()
+                self.env.unwrapped.invalid_`CUT`_coords.clear()
+                self.env.unwrapped.valid_pokeflute_coords.clear()
+                self.env.unwrapped.invalid_pokeflute_coords.clear()
+                self.env.unwrapped.pokeflute_tiles.clear()
+                self.env.unwrapped.valid_`SURF`_coords.clear()
+                self.env.unwrapped.invalid_`SURF`_coords.clear()
+                self.env.unwrapped.`SURF`_tiles.clear()
+                self.env.unwrapped.seen_warps.clear()
+                self.env.unwrapped.seen_hidden_objs.clear()
+                self.env.unwrapped.seen_signs.clear()
+                self.env.unwrapped.safari_zone_steps.update(
+                    (k, 0) for k in self.env.unwrapped.safari_zone_steps.keys()
+                )
+            self.counter += 1
+        return self.env.step(action)
+```
 
 ## Steps
 
@@ -37,4 +78,16 @@ Our step function for Pokémon can naively be written as:
 - Sample the environment
 - Return data based on the sample
 
-And that’s really it. Once I had the game loop running in a Gymnasium Environment, I could begin to implement game-specific functionality. 
+```python
+def step(self, action: int):
+    """
+    A simplified version of the step function run during training
+    """
+    self.pyboy.send_input(VALID_ACTIONS[action])
+    self.pyboy.send_input(VALID_RELEASE_ACTIONS[action], delay=8)
+    self.pyboy.tick(self.action_freq - 1, render=False)
+    return self.get_obs(), self.get_reward()
+```
+
+With a minimal environment defined, we could begin to think about what we wanted for 
+observations and rewards. 

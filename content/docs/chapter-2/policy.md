@@ -101,9 +101,9 @@ flowchart LR
         t2("Type 2")
         level("Level")
         MaxHp("Max HP")
-        Attack("Attack")
-        Defense("Defense")
-        Special("Special")
+        `ATTACK`("`ATTACK`")
+        `DEFENSE`("`DEFENSE`")
+        `SPECIAL`("`SPECIAL`")
         MovesE("Moves Embeddings")
         Moves("Moves")
         Flatten1("Flatten")
@@ -119,9 +119,9 @@ flowchart LR
     t2e --> Concat
     level --> Concat
     MaxHp --> Concat
-    Attack --> Concat
-    Defense --> Concat
-    Special --> Concat
+    `ATTACK` --> Concat
+    `DEFENSE` --> Concat
+    `SPECIAL` --> Concat
     Moves --> MovesE
     MovesE --> Concat
     Concat --> Linear1

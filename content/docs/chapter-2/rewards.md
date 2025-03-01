@@ -30,7 +30,7 @@ In the end, I rewarded for:
 - The number of tile types an HM/Pokéflute was used on.
 - The number of unique map ID transitions (warps) visited during a mini-episode.   
 - The number of unique seen and caught Pokémon.
-- The current level of the agent’s party with a cutoff to prevent grinding (not exploration related).
+- The current level of the agent’s party with a `CUT`off to prevent grinding (not exploration related).
 
 I tried to also reward for all locations an agent has pressed A on and the number of unique menus the agent visited during an epiosde. However, the A press and unique menus reward provided no gain and slowed down training tremendously.
 

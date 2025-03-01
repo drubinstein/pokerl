@@ -2,16 +2,16 @@
 title = 'RL Quickstart'
 weight = 1
 +++
-# RL Quickstart
+# Reinforcement Learning Quickstart
 
-Before I focus on Pokémon, I'd like to start by giving a brief primer on Reinforcement Learning. Reinforcement Learning (RL) is a focus of study on how an agent should take actions in an environment in order to maximize a reward. This primer will not be exhaustive. I am writing it to set the framework for which I built my Pokémon training system.
+Before discussing Pokémon, lets start with brief (and hand wavy) introduction to Reinforcement Learning (RL). The introduction will motivate a framework for how to discuss the Pokémon in an RL setting. 
 
-In a typical RL framework, there will be 2 components.
+RL is a focus of study on how an agent should take actions in an environment in order to maximize a reward. In a typical RL framework, there will be 2 components.
 
 1. The Environment - Represents the world context.
-2. The Agent - Responsible for generating actions to perform in the environment
+2. The Agent - Responsible for generating actions to perform in the environment.
 
-The agent contains a *policy* for generating an action given a state of the environment using a . The environment evaluates the action and returns an *observation* and a *reward*. These actions, observations and rewards can be used to update the agent's policy. [Deep Reinforcement Learning](https://en.wikipedia.org/wiki/Deep_reinforcement_learning) (DRL) uses a neural network for the policy. I'll be using DRL for Pokémon.
+The agent contains a *policy* which generates an action given a state in an environment. The environment evaluates the action and returns an *observation* and a *reward*. These actions, observations and rewards can be used to update the agent's policy. [Deep Reinforcement Learning](https://en.wikipedia.org/wiki/Deep_reinforcement_learning) (DRL) uses a neural network for the policy. The Pokémon RL System uses DRL to beat Pokémon.
 
 {{< mermaid >}}
 ---
@@ -30,7 +30,7 @@ flowchart LR
 
 {{< /mermaid >}}
 
-When building an RL system, I like to breakdown the problem into modeling the problem as
+When building an RL system, we breakdown the problem into:
 
 - the goal
 - the environment
@@ -39,9 +39,11 @@ When building an RL system, I like to breakdown the problem into modeling the pr
 - the reward
 - the policy / the agent
 
+because doing a little pre-work saves time later.
+
 ## Tic Tac Toe
 
-Let's apply RL to Tic-Tac-Toe. RL does not need machine learning. A valid RL agent can be as simple as a look up table! For those who have never played Tic-Tac-Toe, Tic-Tac-Toe is a two player game where each player takes turns marking a single square in a 3x3 grid. The first player to have marked 3 squares making a horizontal, vertical or diagonal line wins. Let's breakdown Tic-Tac-Toe in the framework above
+Let's apply RL to Tic-Tac-Toe. RL does not need deep learning. A valid RL agent can be as simple as a look up table. Tic-Tac-Toe is a two player game where each player takes turns marking a single square in a 3x3 grid. The first player to have marked 3 squares making a horizontal, vertical or diagonal line wins. Let's breakdown Tic-Tac-Toe in the framework above:
 
 ```
 Example Tic-Tac-Toe configurations:
@@ -56,19 +58,19 @@ Example Tic-Tac-Toe configurations:
 
 ### Goal
 
-The goal of Tic-Tac-Toe is to win! After a player has achieved 3-in-a-row, the game will reset. We call this beginning of game to end of game period an *episode*.
+The goal of Tic-Tac-Toe is to win. After a player has achieved 3-in-a-row, the game will reset. We call the time it takes from beginning to the end of the game an *episode*.
 
 ### Environment
 
-The environment is the Tic-Tac-Toe game itself. The environment will be responsible for performing actions on the grid, i.e., marking squares, ensuring invalid moves are not played and determining when the game has ended.
+The environment is the Tic-Tac-Toe game. The environment will be responsible for handling actions, i.e., marking squares, ensuring invalid moves are not played, and determining when the game has ended.
 
 ### Observation
 
-The observation will be the current 3x3 grid represented as a 3x3 array.
+The observation will be the current 3x3 grid. It can be represented as a 3x3 array.
 
 ### Actions
 
-The action will be a coordinate to play on the grid. For example [0, 0] will mean mark on the upper left hand corner. [2, 2] will mean mark the lower right hand corner.
+The action will be a coordinate to play on the grid. For example [0, 0] means mark  the upper left hand corner. [2, 2] means mark the lower right hand corner.
 
 ### Rewards
 
@@ -77,12 +79,11 @@ We can start with a reward of
 -  +1 if the player wins
 -  -1 if the player loses
 
-We can even be simpler and say +1 if the player wins, -1 if the player loses. The act of modifying the reward for a better system is known as *reward shaping*. If you make your reward simpler, you risk the agent never learning how to perform complex actions. If you make your reard complex, you risk the agent will never progress beyond immediate greedy actions.
+The act of modifying the reward for a better system is known as *reward shaping*. 
 
 ### Training the Policy
 
-Now that we have created our Tic-Tac-Toe RL system, we can attempt to train a policy to be the best Tic-Tac-Toe player ever. At the start of training, the policy will play random moves, but as it obtains more experience, it will learn to exploit the reward function.
+Now that we have created our Tic-Tac-Toe RL system, we can attempt to train a policy to be the best Tic-Tac-Toe player ever. At the start of training, the policy will play random moves, but as the policy obtains more experience, it will learn to exploit the reward function.
 
-
-For Pokémon, I am going to breakdown the game similarly. Let's dig in.
+For Pokémon, we will similarly breakdown the game. Let's dig in.
 
