@@ -9,9 +9,9 @@ So how did this agent perform? Well, I now have an agent that beats Pokémon wit
 
 ## What did I learn?
 
-I learned that reward shaping is super important. I learned that my initial belief was right. JRPGs are special and I still believe they are a stepping stone towards AGI. 
+I learned that reward shaping is super important. I learned that my initial belief was right. JRPGs are `SPECIAL` and I still believe they are a stepping stone towards AGI. 
 
-There’s a lot more to learn though. There are still scripts to remove. What if I could have the agent strength puzzles? I think at this point, more compromises will have to be made and the small model will be insufficient. I’m curious what is possible with LLMs. Recently, [Claude showed interesting results playing Pokémon Red with an LLM](https://www.anthropic.com/research/visible-extended-thinking). Although Claude isn't using RL to play the game and the agent was most likely trained with Pokémon data (and therefore not a zero-shot approach), I’m curious when an LLM will replace my entire approach. I wish I could remove the swarming technique and many of the in-game knowledge rewards I provided, especially event rewards, but I don’t think I can without making compromises on training speed.
+There’s a lot more to learn though. There are still scripts to remove. What if I could have the agent `STRENGTH` puzzles? I think at this point, more compromises will have to be made and the small model will be insufficient. I’m curious what is possible with LLMs. Recently, [Claude showed interesting results playing Pokémon Red with an LLM](https://www.anthropic.com/research/visible-extended-thinking). Although Claude isn't using RL to play the game and the agent was most likely trained with Pokémon data (and therefore not a zero-shot approach), I’m curious when an LLM will replace my entire approach. I wish I could remove the swarming technique and many of the in-game knowledge rewards I provided, e`SPECIAL`ly event rewards, but I don’t think I can without making compromises on training `SPEED`.
 
 Map ID rewards are still my least favorite addition overall, but without the ability for the agent to understand in-game text I don’t know how they can be removed.
 

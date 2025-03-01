@@ -5,21 +5,19 @@ weight = 20
 
 # Breaking Down Pokémon
 
-Before going into observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly.
+Before discussing observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly. Again, if you're already well-versed on Pokémon, 
+we recommend you skip to the [next chapter]({{<ref "/docs/chapter-2/observations/index" >}} "next chapter").
 
-Once we have an understanding of the game and all its gotchas, we can engineer observations and rewards to accomplish all tasks.
+To begin the breakdown, we enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average game summary, but there's a lot of hidden bottlenecks in Pokémon. At a high level, to beat Pokémon, you must:
 
-To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokémon, you must:
-
-1. Beat the 8 Gym Leaders. Gym leaders are a form of video game "boss.”  
-2. Acquire items to teach the moves CUT, STRENGTH, and, SURF. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.  
-3. Acquire Pokémon that can learn the field moves CUT, STRENGTH, and SURF. 
+1. Beat the 8 Gym Leaders (video game boss).  
+2. Acquire items to teach the field moves `CUT`, `STRENGTH`, and, `SURF` and Pokémon to teach the field moves to. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.  
+5. Teach capable Pokémon the field moves `CUT`, `STRENGTH`, and `SURF`.
 4. Acquire any items required for field interactions. Like field moves, there are items that are required to unlock new areas.  
-5. Teach available Pokémon the field moves CUT, STRENGTH, and SURF   
 6. Use field moves or items for field interactions to remove any game blocking obstacles.  
 7. Complete the Team Rocket storyline.     
-8. Beat the 6 required rival battles  
-9. Beat the Elite 4 and Champion
+8. Beat the 6 required rival battles.
+9. Beat the Elite 4 and Champion.
 
 Or, if we want to be more detailed...
 
@@ -35,7 +33,7 @@ flowchart TD
     AA --> AAA(Acquire Parcel from Viridian Mart) --> AAAA(Deliver Parcel to Prof. Oak)
     AAAA --> A(Defeat Brock) --> B(Traverse Mt. Moon)
     B --> C(Defeat Misty)
-    B --> D(Nugget Bridge) --> E(Get the SS Anne ticket from Bill) --> F(Defeat Cerulean Rocket Grunt) --> G(Defeat Rival on the SS Anne) --> H(Obtain HM01 - Cut from the Captain on the SS Anne)
+    B --> D(Nugget Bridge) --> E(Get the SS Anne ticket from Bill) --> F(Defeat Cerulean Rocket Grunt) --> G(Defeat Rival on the SS Anne) --> H(Obtain `HM01` - `CUT` from the Captain on the SS Anne)
     C --> I
     C --> J
     C --> K
@@ -51,9 +49,9 @@ flowchart TD
     L --> N(Obtain Pokéflute)
     L --> OO(Defeat Rival 5 in Silph Co) --> O(Defeat Giovanni in Silph Co) --> P(Defeat Sabrina)
     N --> Q(Use Pokéflute on at least one Snorlax)
-    Q --> R(Obtain HM03 - Surf from the Safari Zone) --> T(Acquire the Secret Key from Pokémon Mansion) --> U(Defeat Blaine)
+    Q --> R(Obtain `HM03` - `SURF` from the Safari Zone) --> T(Acquire the Secret Key from Pokémon Mansion) --> U(Defeat Blaine)
     Q --> V(Defeat Koga) --> T
-    Q --> SS(Obtain the Gold Teeth from the Safari Zone) --> S(Deliver the Gold Teeth to the old man in Fuchsia City to acquire HM04 - Strength)
+    Q --> SS(Obtain the Gold Teeth from the Safari Zone) --> S(Deliver the Gold Teeth to the old man in Fuchsia City to acquire `HM04` - `STRENGTH`)
     I --> W(Defeat Giovanni in Viridian Gym) --> X(Defeat Rival 6) --> Y(Traverse Victory Road)
     J --> W
     P --> W
@@ -61,6 +59,3 @@ flowchart TD
     S --> Y
     Y --> Z(Defeat the Elite 4) --> ZZ(Defeat the Champion)
 {{< /mermaid >}}
-
-
-I broke down these objectives to understand what is and is not important for beating Pokémon Red.
