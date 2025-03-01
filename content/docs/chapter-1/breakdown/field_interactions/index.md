@@ -5,7 +5,7 @@ weight = 24
 
 # Field Interactions and Exploration
 
-As mentioned previously, field moves taught to Pokémon via “HMs” allow you to interact with the world. These HMs can only be taught to specific Pokémon.
+As mentioned previously, field moves taught to Pokémon via "HMs” allow you to interact with the world. These HMs can only be taught to specific Pokémon.
 
 The 5 field moves of Pokémon are
 
@@ -24,7 +24,11 @@ Only CUT, SURF, and STRENGTH are required for game progression. Although useful,
 
 <div style="text-align: center;">
 
-![](assets/teach_use_cut.gif)
+{< figure
+  src="assets/teach_use_cut.png"
+  caption="Teaching and using HM01 - Cut."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -40,7 +44,11 @@ The captain will reward the agent with the item HM01.
 
 <div style="text-align: center;">
 
-![](assets/teach_use_surf.gif)
+{< figure
+  src="assets/teach_use_surf.png"
+  caption="Teaching and using HM03 - Surf."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -50,7 +58,11 @@ To obtain SURF, the agent must reach the end of the Safari Zone in less than *50
 
 <div style="text-align: center;">
 
-![](assets/teach_use_cut.gif)
+{< figure
+  src="assets/teach_use_strength.png"
+  caption="Teaching and using HM04 - Strength."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -66,7 +78,11 @@ The old man will then reward the agent with the item HM04
 
 <div style="text-align: center;">
 
-![](assets/use_Pokéflute.gif)
+{< figure
+  src="assets/use_Pokéflute.png"
+  caption="Using a Pokéflute to wake up a Snorlax."
+  class="ma0 w-75"
+>}}
 
 </div>
 

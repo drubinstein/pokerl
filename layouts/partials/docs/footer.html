@@ -1,5 +1,17 @@
 <div class="flex flex-wrap justify-between">
 
+<div class="next-post">
+  {{ if .Next }}
+  <a class="link-reverse" href="{{ .Next.Permalink }}?ref=footer">« {{ .Next.Title | truncate 50 "..." }}</a>
+  {{ end }}
+</div>
+
+<div class="previous-post">
+  {{ if .Prev }}
+  <a class="link-reverse" href="{{ .Prev.Permalink }}?ref=footer">{{ .Prev.Title | truncate 50 "..."}} »</a>
+  {{ end }}
+</div>
+
 {{ if and .GitInfo .Site.Params.BookRepo }}
   <div>
     {{- $date := partial "docs/date" (dict "Date" .GitInfo.AuthorDate.Local "Format" .Site.Params.BookDateFormat) -}}
@@ -25,3 +37,5 @@
 {{ with $script.Content }}
   <script>{{ . | safeJS }}</script>
 {{ end }}
+
+

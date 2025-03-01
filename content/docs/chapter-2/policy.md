@@ -203,7 +203,7 @@ Let’s summarize what the observation consists of:
 In the policy, I occasionally normalize the value by some constant. In machine learning, it is generally adviseable represent these numbers as values between 0 and 1 for model stability.
 
 ## The CNN
-The screen obs and visited mask were concatenated together to make 2 visual “channels”. These channels were passed to a 2D Convolutional Neural Network (CNN). The kernel sizes of the CNN were designed with the GameBoy's in mind.   
+The screen obs and visited mask were concatenated together to make 2 visual "channels”. These channels were passed to a 2D Convolutional Neural Network (CNN). The kernel sizes of the CNN were designed with the GameBoy's in mind.   
 
 The first layer of the CNN used an 8x8 kernel mapping to the size of a gameboy tile with a stride of size 2 so inter-tile dependencies could be detected. In successive layers, I decreased the kernel size so as not to capture too much information and similarly stride by 2 each layer so that the agent can hopefully get a good sense for edge detection.
 
@@ -218,7 +218,7 @@ The map ID and blackout map IDs are passed to the policy as integers, but in the
 Items held in the agent's bag are also identified by ID. The Item IDs are passed to their own embedding layer. I scale the item embeddings by the item's quantities; a number between 0 and 1 where 0 maps to 0 and 1 maps the max number of the same item an agent can have.
 
 ## Party Network
-All party data is concatenated together and passed through a small dense layer to create a “Pokémon” space.
+All party data is concatenated together and passed through a small dense layer to create a "Pokémon” space.
 
 ## Binary Vectors
 In RAM, events are a packed binary vector with each bit representing one in-game completed event. I unpack this vector and pass it on to the policy. The event vector in RAM does not include Lapras, Rival 3 and the Saffron Guard. I pass these in separately as they are "event"-like in my opinion.
