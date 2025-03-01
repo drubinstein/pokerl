@@ -11,7 +11,7 @@ Once we have an understanding of the game and all its gotchas, we can engineer o
 
 To begin, I enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average walkthrough, but it was important to cover what’s required or risk the agent getting stuck. At a high level, beat Pokémon, you must:
 
-1. Beat the 8 Gym Leaders. Gym leaders are a form of video game “boss.”  
+1. Beat the 8 Gym Leaders. Gym leaders are a form of video game "boss.”  
 2. Acquire items to teach the moves CUT, STRENGTH, and, SURF. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.  
 3. Acquire Pokémon that can learn the field moves CUT, STRENGTH, and SURF. 
 4. Acquire any items required for field interactions. Like field moves, there are items that are required to unlock new areas.  

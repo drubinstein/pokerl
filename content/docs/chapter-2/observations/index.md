@@ -27,7 +27,10 @@ What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No
 
 <div style="text-align: center;">
 
-![](assets/visitedmask.png)
+![](assets/fullres.gif)
+<br/>
+![](assets/halfres.gif)![](assets/visitedmask.gif)
+<figcaption>Top: Full resolution screen. Bottom: What the agent observes.</figcaption>
 
 </div>
 

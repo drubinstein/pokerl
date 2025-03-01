@@ -13,7 +13,11 @@ For metrics writing, I had two sinks: [Weights and Biases](https://wandb.ai/) an
 
 <div style="text-align: center;">
 
-![](assets/livemap.png)
+{{< figure
+  src="assets/livemap.png"
+  caption="A screenshot of the livemap."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -30,7 +34,11 @@ For example, I could look at a badge count metric to see how long it would take 
 
 <div style="text-align: center;">
 
-![](assets/badges.png)
+{{< figure
+  src="assets/badges.png"
+  caption="An example metric. With this plot, I could track the the agents' overall game progress."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -38,7 +46,11 @@ Or I could see how many events the agent has finished.
 
 <div style="text-align: center;">
 
-![](assets/events.png)
+{{< figure
+  src="assets/events.png"
+  caption="An example metric. With this plot, I could track the the agents' overall game progress."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -46,7 +58,11 @@ I could see if my pokecenter healing reward was finally tuned correctly.
 
 <div style="text-align: center;">
 
-![](assets/pokecenter.png)
+{{< figure
+  src="assets/pokecenter.png"
+  caption="An example metric. With this plot, I could track how often the agents were using the Pokecenter."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -54,7 +70,11 @@ And finally, I kept track of the current party all agents had. The party table p
 
 <div style="text-align: center;">
 
-![](assets/partytable.png)
+{{< figure
+  src="assets/partytable.png"
+  caption="An example party from one run. Notably, the player has a Mr. Mime."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -65,7 +85,11 @@ For context, to get a Mr. Mime, the player must catch an Abra (extremely difficu
 
 <div style="text-align: center;">
 
-![](assets/heatmap.png)
+{{< figure
+  src="assets/heatmap.png"
+  caption="A screenshot of a heatmap on WandB mid-experiment."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -75,7 +99,11 @@ The heatmap showed some interesting behavior from the agents. For example, it cl
 
 <div style="text-align: center;">
 
-![](assets/safari.png)
+{{< figure
+  src="assets/safari.png"
+  caption="A screenshot of a heatmap on WandB mid-experiment while the agent is lost in the Safari Zone."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -83,7 +111,11 @@ Sometimes the heatmap would also clue me into "routes" the agents' policy would 
 
 <div style="text-align: center;">
 
-![](assets/maxcut.png)
+{{< figure
+  src="assets/maxcut.png"
+  caption="A screenshot of a heatmap on WandB mid-experiment where the agent is fixated on cutting multiple trees in a loop."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -91,6 +123,10 @@ The map could also show me more intelligent routing from the agents like when th
 
 <div style="text-align: center;">
 
-![](assets/rocktunnel.png)
+{{< figure
+  src="assets/rocktunnel.png"
+  caption="A screenshot of a heatmap on WandB mid-experiment after the agent learned the fastest route through Rock Tunnel."
+  class="ma0 w-75"
+>}}
 
 </div>

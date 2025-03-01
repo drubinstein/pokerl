@@ -10,6 +10,8 @@ weight = 25
 ![](assets/hideoutmaze.gif)
 ![](assets/silph_co.gif)
 ![](assets/defeatgio.gif)
+<figcaption>Various challenges when completing the Team Rocket storyline. From left to right: (a) A spin puzzle in Rocket Hideout. (b) Using warps to find the Lift Key in Silph Co. (c) Defeating Giovanni at Silph Co.</figcaption>
+
 
 </div>
 

@@ -5,7 +5,7 @@ weight = 23
 
 # The 8 Badges
 
-Next, I focused on what it takes to beat the 8 gym leaders. The gym leaders upon defeat, give the main character a “badge.” Badges either unlock the ability to use a taught field move or apply permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokémon, their types and what they unlock.
+Next, I focused on what it takes to beat the 8 gym leaders. The gym leaders upon defeat, give the main character a "badge.” Badges either unlock the ability to use a taught field move or apply permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokémon, their types and what they unlock.
 
 
 
@@ -28,7 +28,11 @@ Some gym leaders require solving puzzles or removing environmental guards.
 
 <div style="text-align: center;">
 
-![](images/gym3.gif)
+{{< figure
+  src="assets/gym3.png"
+  caption="Solving Lt. Surge's gym."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -40,7 +44,11 @@ Lt. Surge’s gym contains a button puzzle. To acquire the ability to battle Lt.
 
 <div style="text-align: center;">
 
-![](images/gym4.gif)
+{{< figure
+  src="assets/gym4.png"
+  caption="Unlocking Erika's gym."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -50,7 +58,11 @@ To enter Erika's gym you must remove a tree blocking the entrance to her gym wit
 
 <div style="text-align: center;">
 
-![](images/gym5.gif)
+{{< figure
+  src="assets/gym5.png"
+  caption="Making your way around Koga's gym's invisible walls."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -60,7 +72,11 @@ Koga’s gym contains an easy maze made up of invisible barriers you have to tra
 
 <div style="text-align: center;">
 
-![](images/gym6.gif)
+{{< figure
+  src="assets/gym6.png"
+  caption="Sabrina's gym's warp maze."
+  class="ma0 w-75"
+>}}
 
 </div>
 
@@ -70,20 +86,28 @@ Sabrina’s gym can only be entered after completing the Team Rocket storyline. 
 
 <div style="text-align: center;">
 
-![](images/gym7.gif)
+{{< figure
+  src="assets/gym7.png"
+  caption="Failing a quiz in Blaine's gym."
+  class="ma0 w-75"
+>}}
 
 </div>
 
-To enter Blaine’s gym the agent must first *Surf* to Cinnabar Island where the gym is located. Subsequently, the agent must acquire the “SECRET KEY” from the Pokémon Mansion next door to his gym *Surf*. To battle Blaine, the agent must complete a series of optional True/False quizzes. If the agent incorrectly answers, the agent battles a trainer.
+To enter Blaine’s gym the agent must first *Surf* to Cinnabar Island where the gym is located. Subsequently, the agent must acquire the "SECRET KEY” from the Pokémon Mansion next door to his gym *Surf*. To battle Blaine, the agent must complete a series of optional True/False quizzes. If the agent incorrectly answers, the agent battles a trainer.
 
 ## Giovanni's Gym Gimmick
 
 <div style="text-align: center;">
 
-![](images/gym8.gif)
+{{< figure
+  src="assets/gym8.png"
+  caption="A spin tile in Giovanni's gym."
+  class="ma0 w-75"
+>}}
 
 </div>
 
-Giovanni’s gym is blocked until you beat all 7 prior gym leaders. Giovanni’s gym contains a maze puzzle with “spin tiles.”
+Giovanni’s gym is blocked until you beat all 7 prior gym leaders. Giovanni’s gym contains a maze puzzle with "spin tiles.”
 
 The agent must be capable of solving all these tasks.

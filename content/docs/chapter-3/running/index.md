@@ -17,13 +17,13 @@ But what was more important than good hardware? Good software! I want to discuss
 
 ### The Emulator
 
-Before I started working on the RL side of this project, it was commonly voiced in the Pokémon RL Discord that PyBoy slow. PyBoy happens to provide a very convenient interface for RL and is relatively well performant for Python. However, using an emulator comes with its downsides. Namely, PyBoy is emulating every instruction from the ROM. That means no compiler optimizations, no link time optimizations etc. I could have attempted to rewrite Pokémon in a modern language, but that would have been a Herculean effort on its own. Instead, PyBoy got faster.
+PyBoy happens to provide a very convenient interface for RL and is performant for Python. However, using an emulator comes with its downsides. Namely, PyBoy is emulating every instruction from the ROM. That means fewer compiler optimizations, no link time optimizations etc. I could have attempted to rewrite Pokémon in a modern language, but that would have been a Herculean effort on its own. Instead, PyBoy got faster.
 
 A slow PyBoy *was* the case. But I’ve been in frequent communication with the creator of PyBoy for a while and we (mostly him) have put a lot of effort into improving PyBoy since late 2023. PyBoy has released a number of updates that have improved runtime speed and developer ergonomics dramatically including:
 
 - Better usage of compiler optimization flags.
 - Better usage of Cython’s gil release options.
-- JIT compiling the ROM.
+- JIT compiling the ROM (coming soon™).
 - Data layout optimization.
 - The addition of hooks.
 
@@ -31,7 +31,11 @@ Most of these changes are in PyBoy’s core. Hooks are a special addition that l
 
 <div style="text-align: center; ">
 
-![](assets/flamegraph.png)
+{{< figure
+  src="assets/flamegraph.png"
+  caption="A profile I took mid-experiment using [Austin](https://github.com/P403n1x87/austin). Notably, most processing is spent in `run_action_on_emulator`. The PyBoy emulator's tick function is called multiple times in that function."
+  class="ma0 w-75"
+>}}
 
 </div>
 
