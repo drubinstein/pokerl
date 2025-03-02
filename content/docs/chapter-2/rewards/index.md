@@ -79,8 +79,8 @@ The level reward:
 \begin{equation}
   Reward = 
   \begin{cases}
-    \sum_{i=1}^{6} \text{level}_i & if \sum_{i=1}^6 \text{level}_i < 30 \\
-    30 + \frac{\sum_{i=1}^{6} \text{level}_i - 30}{4} & if \sum_{i=1}^6 \text{level}_i >= 30 
+    \sum_{i=1}^{6} \text{level}_i & if \sum_{i=1}^6 \text{level}_i < 15 \\
+    30 + \frac{\sum_{i=1}^{6} \text{level}_i - 15}{4} & if \sum_{i=1}^6 \text{level}_i >= 15
   \end{cases}
 \end{equation}
 
