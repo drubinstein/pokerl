@@ -32,6 +32,8 @@ Only `CUT`, `SURF`, and `STRENGTH` are required for game progression. Although u
 
 </div>
 
+CUT is required to access two gyms (one of which is visualized above) in the game and access the route east of Cerulean City.
+
 To acquire `HM01`, the player must: 
 
 - Acquire the SS Anne ticket from Bill north of Cerulean City. 
@@ -40,7 +42,7 @@ To acquire `HM01`, the player must:
 
 The captain will reward the player with the item `HM01`.
 
-## Acquiring `HM03` - `SURF`
+## `HM03` - `SURF`
 
 <div style="text-align: center;">
 
@@ -52,9 +54,11 @@ The captain will reward the player with the item `HM01`.
 
 </div>
 
+SURF is required to access Blaine's Gym and the route to the Elite 4.
+
 To acquire `SURF`, the player must reach the end of the Safari Zone in less than *500* steps. At the end, the Safari Zone Warden will reward the player with `HM03`
 
-## Acquiring `HM04` - `STRENGTH`
+## `HM04` - `STRENGTH`
 
 <div style="text-align: center;">
 
@@ -66,7 +70,9 @@ To acquire `SURF`, the player must reach the end of the Safari Zone in less than
 
 </div>
 
-To acquire `STRENGTH`, the player must:
+STRENGTH is required to access the Elite 4. It is used to solve [Sokoban](https://en.wikipedia.org/wiki/Sokoban)-style puzzles. One of which is partially visualized above.
+
+To `STRENGTH`, the player must:
 
 - Find the `GOLD TEETH` in the Safari Zone.
 - Bring the `GOLD TEETH` to the old man NPC in Fuchsia City
@@ -79,13 +85,13 @@ The old man will then reward the player with the item `HM04`
 <div style="text-align: center;">
 
 {{< figure
-  src="assets/use_Pokéflute.gif"
+  src="assets/use_pokeflute.gif"
   caption="Using a Pokéflute to wake up a Snorlax."
   class="ma0 w-75"
 >}}
 
 </div>
 
-Along with field moves, the player will need to use the item `Pokéflute` for one field interaction. Pokéflute can remove two roadblocks (at least one is required) so the player can gain access to Fuchsia City. 
+Along with field moves, the player will need to use the item `Pokéflute` to unlock at least one of two routes to Fuchsia City. 
 
 However, using `Pokéflute` is very similar to using an HM. A level of convenience that I will use when ensuring the player can perform the action.

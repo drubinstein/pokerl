@@ -13,6 +13,11 @@ theme = 'hugo-book'
           inline = [['\(', '\)']]
   [markup.goldmark.renderer]
     unsafe = true
+  [markup.highlight]
+    style = 'github'
+    tabWidth = 2
+    wrapperClass = 'highlight'
+
           
 [params]
   math = true

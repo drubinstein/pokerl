@@ -25,7 +25,9 @@ Based on Peter Whidden's prior work, I began with an episode as a fixed number o
 
 Because the **goal** was to be the Champion, we compromised. We created "mini-episodes.” An episode would be the duration of an entire game. However, the agent's state would periodically reset mid-episode, but the emulator state would not. 
 
-```python
+<div style="border:1px solid black;">
+{{< highlight python >}}
+
 class OnResetExplorationWrapper(gym.Wrapper):
     """
     Wrapper for experimenting with different reset strategies. The OnResetExplorationWrapper,
@@ -64,7 +66,8 @@ class OnResetExplorationWrapper(gym.Wrapper):
                 )
             self.counter += 1
         return self.env.step(action)
-```
+{{< /highlight >}}
+</div>
 
 ## Steps
 
@@ -78,7 +81,9 @@ Our step function for Pokémon can naively be written as:
 - Sample the environment
 - Return data based on the sample
 
-```python
+<div style="border:1px solid black;">
+{{< highlight python >}}
+
 def step(self, action: int):
     """
     A simplified version of the step function run during training
@@ -87,7 +92,8 @@ def step(self, action: int):
     self.pyboy.send_input(VALID_RELEASE_ACTIONS[action], delay=8)
     self.pyboy.tick(self.action_freq - 1, render=False)
     return self.get_obs(), self.get_reward()
-```
+{{< /highlight >}}
+</div>
 
 With a minimal environment defined, we could begin to think about what we wanted for 
 observations and rewards. 

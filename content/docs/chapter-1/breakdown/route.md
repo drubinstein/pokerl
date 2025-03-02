@@ -5,7 +5,7 @@ weight = 26
 
 # Defining a "Route"
 
-For the agent to complete all objectives, we wanted to simplify the number of game as much as possible to maximizing the likelihood of success. To limit non-determinism, we started the agent after the "Parcel Delivery" event. Starting the agent with a specific Pokémon would guarantee later stages of the game would be possible. Given the previous breakdown, here’s the *route* we wanted the agent to learn:
+For the agent to complete all objectives, we wanted to simplify the number of game as much as possible to maximizing the likelihood of success. To limit non-determinism, we started the agent after the "Parcel Delivery" event. Additionally, we want to guarantee the agent receives the gift Lapras. Starting the agent with a specific Pokémon would guarantee later stages of the game would be possible. Given the previous breakdown, here’s a simplified *route* we had the agent to learn:
 
 {{< mermaid >}}
 ---
@@ -41,7 +41,6 @@ BROCK --> MISTY
 MISTY --> TEACH_CUT
 BROCK --> HM01 --> TEACH_CUT --> LTSURGE
 MISTY --> LTSURGE
-TEACH_CUT --> LTSURGE
 TEACH_CUT --> ERIKA
 TEACH_CUT --> TEAM_ROCKET
 TEAM_ROCKET --> LAPRAS --> TEACH_STRENGTH
@@ -56,7 +55,6 @@ ERIKA --> TEACH_STRENGTH
 HM04 --> TEACH_STRENGTH
 
 LTSURGE --> GIOVANNI
-ERIKA --> GIOVANNI
 SABRINA --> GIOVANNI
 BLAINE --> GIOVANNI
 
