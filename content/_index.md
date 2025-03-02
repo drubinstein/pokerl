@@ -85,9 +85,11 @@ With RL, we built an agent with minimal resources and achieved amazing results.
 {{< /highlight >}}
 </div>
 
-## Acknowledgements
+## Contributors 
 
-Special thanks to:
+#### [David Rubinstein](https://github.com/drubinstein)
+
+Primary contributor and author.
 
 #### [Keelan Donovan](https://github.com/leanke) 
 For valuable insights and discussion from his own personal journey on the same project.
