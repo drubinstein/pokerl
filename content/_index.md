@@ -10,7 +10,7 @@ type: docs
 </div>
 
 Hi! Since 2020, we've been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.
-As of February 2025, we are able to beat Pokémon Red with Reinforcement Learning using a <10 million parameter policy (60500x smaller than DeepSeekV3) and with minimal simplifications. This website acts as a journal describing the system's current state. [All code is open sourced and available for you, the reader, to try.](https://github.com/thatguy11325/Pokémonred_puffer).
+**As of February 2025, we are able to beat Pokémon Red with Reinforcement Learning using a <10 million parameter policy (60500x smaller than DeepSeekV3) and with minimal simplifications.** This website acts as a journal describing the system's current state. [All code is open sourced and available for you, the reader, to try.](https://github.com/thatguy11325/Pokémonred_puffer).
 
 <div style="text-align: center; ">
 
@@ -69,21 +69,6 @@ out of date. If you can build a system that can create new data on the fly, you 
 With RL, we built an agent with minimal resources and achieved amazing results.
 
 {{< button relref="docs/chapter-1/the-loop" >}}Next Page{{< /button >}}
-
-## BibTeX
-
-<div style="border:1px solid black;">
-{{< highlight bibtex >}}
-
-@misc{PokemonRLEdition,
-	author = {David Rubinstein},
-	title = {Pokemon: RL Edition},
-	url = {https://thatguy11325.github.io/pokerl/},
-	year = {2025},
-}
-
-{{< /highlight >}}
-</div>
 
 ## Contributors 
 
