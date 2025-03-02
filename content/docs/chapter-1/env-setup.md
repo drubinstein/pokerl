@@ -45,19 +45,19 @@ class OnResetExplorationWrapper(gym.Wrapper):
                 self.counter = 0
                 self.env.unwrapped.explore_map *= 0
                 self.env.unwrapped.reward_explore_map *= 0
-                self.env.unwrapped.`CUT`_explore_map *= 0
-                self.env.unwrapped.`CUT`_tiles.clear()
+                self.env.unwrapped.cut_explore_map *= 0
+                self.env.unwrapped.cut_tiles.clear()
                 self.env.unwrapped.seen_coords.clear()
                 self.env.unwrapped.seen_map_ids *= 0
                 self.env.unwrapped.seen_npcs.clear()
-                self.env.unwrapped.valid_`CUT`_coords.clear()
-                self.env.unwrapped.invalid_`CUT`_coords.clear()
+                self.env.unwrapped.valid_cut_coords.clear()
+                self.env.unwrapped.invalid_cut_coords.clear()
                 self.env.unwrapped.valid_pokeflute_coords.clear()
                 self.env.unwrapped.invalid_pokeflute_coords.clear()
                 self.env.unwrapped.pokeflute_tiles.clear()
-                self.env.unwrapped.valid_`SURF`_coords.clear()
-                self.env.unwrapped.invalid_`SURF`_coords.clear()
-                self.env.unwrapped.`SURF`_tiles.clear()
+                self.env.unwrapped.valid_surf_coords.clear()
+                self.env.unwrapped.invalid_surf_coords.clear()
+                self.env.unwrapped.surf_tiles.clear()
                 self.env.unwrapped.seen_warps.clear()
                 self.env.unwrapped.seen_hidden_objs.clear()
                 self.env.unwrapped.seen_signs.clear()
