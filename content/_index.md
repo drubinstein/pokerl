@@ -70,29 +70,14 @@ With RL, we built an agent with minimal resources and achieved amazing results.
 
 {{< button relref="docs/chapter-1/the-loop" >}}Next Page{{< /button >}}
 
+## Authors
+
+[David Rubinstein](https://github.com/drubinstein), Kyoung Whan Choe, [Keelan Donovan](https://github.com/leanke), Daniel Addis, [Joseph Suarez](https://puffer.ai/), [Peter Whidden](https://peterwhidden.webflow.io/)
+
 ## Contributors 
-
-#### [David Rubinstein](https://github.com/drubinstein)
-
-Primary contributor and author.
-
-#### [Keelan Donovan](https://github.com/leanke) 
-For valuable insights and discussion from his own personal journey on the same project.
-
-#### Daniel Addis
-For valuable insights and discussion from his own personal journey on the same project.
-
-#### [Joseph Suarez](https://puffer.ai/)
-For creating PufferAI/PufferLib, providing machines for me to perform my research and acting as an RL mentor.
-
-#### [Peter Whidden](https://peterwhidden.webflow.io/)
-For reinspiring me to take up this project and valuable discussions from his own journey on the same project.
 
 #### [Mads Ynddal](https://github.com/Baekalfen)
 For creating PyBoy and his collaboration.
-
-#### Kyoung Whan Choe
-For code contributions and valuable insights.
 
 #### Death (PokeRL Discord handle)
 For their countless hours making the world map asset.
