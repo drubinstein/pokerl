@@ -54,7 +54,7 @@ We could’ve taken many approaches if we wanted to beat Pokémon with machine l
 labelled and plentiful dataset a model larger than we had the budget to support.
 
 - We could’ve chosen a behavioral cloning approach and attempted to build a model that imitates a
-known `SPEED`run route. We tried that once, but struggled to make a performant data collection system.
+known speedrun route. We tried that once, but struggled to make a performant data collection system.
 
 - We could’ve attempted to beat the game with an LLM like like Pimanrules did 
 in his video [Can ChatGPT play Pokémon Crystal? (with GPT-4V)](https://www.youtube.com/watch?v=Dct7dffObpY), but again, it would have reuqired more money and computing power than we had at our disposal.
@@ -64,7 +64,7 @@ Of the many approaches considered, RL appealed to us the most.
 What makes RL special is how you collect training data. 
 The data is almost always fresh. No need to build 
 complex data collection systems, manage large datasets or worry if the dataset is 
-out of date. If you can build a system that can create new data on the `FLY`, you can start training. 
+out of date. If you can build a system that can create new data on the fly, you can start training. 
 
 With RL, we built an agent with minimal resources and achieved amazing results.
 
