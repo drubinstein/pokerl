@@ -155,9 +155,9 @@ flowchart LR
         relu1("ReLU")
         Conv1("2D CNN<br>filters=32<br>kernel size=8<br>stride=2")
         relu2("ReLU")
-        Conv2("2D CNN<br>filters=64<br>kernel size=4<br>stride=2"")
+        Conv2("2D CNN<br>filters=64<br>kernel size=4<br>stride=2")
         relu3("ReLU")
-        Conv3("2D CNN<br>filters=64<br>kernel size=3<br>stride=2"")
+        Conv3("2D CNN<br>filters=64<br>kernel size=3<br>stride=2")
         Flatten2("Flatten")
     gamescreen --> Concat2
     visitedmask --> Concat2
