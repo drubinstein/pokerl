@@ -61,7 +61,7 @@ in his video [Can ChatGPT play Pokémon Crystal? (with GPT-4V)](https://www.yout
 
 Of the many approaches considered, RL appealed to us the most.
 
-What makes RL `SPECIAL` is how you collect training data. 
+What makes RL special is how you collect training data. 
 The data is almost always fresh. No need to build 
 complex data collection systems, manage large datasets or worry if the dataset is 
 out of date. If you can build a system that can create new data on the `FLY`, you can start training. 
@@ -87,7 +87,7 @@ With RL, we built an agent with minimal resources and achieved amazing results.
 
 By [David Rubinstein](https://github.com/drubinstein), [Keelan Donovan](https://github.com/leanke), Daniel Addis, [Joseph Suarez](https://puffer.ai/), and [Peter Whidden](https://peterwhidden.webflow.io/)
 
-With `SPECIAL` thanks to:
+With special thanks to:
 
 - [Mads Ynddal](https://github.com/Baekalfen) - PyBoy
 - Kyoung Whan Choe - Contributor and for collaboration in early 2024
