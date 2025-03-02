@@ -19,11 +19,11 @@ A reset will happen when an agent:
 
 Pokémon is in the realm of "long episodic RL" as it takes 25 hours for the average person to beat. Long episodes mean that the agent may not get large rewards for a very long time. If the agent only receives large rewards at the end of an episode, the agent may have trouble creating long term policies.
 
-For example, if we were playing 100x100 Tic-Tac-Toe, the agent wouldn't receive a reward for up to a max 5000 steps. Imagine having to plan out a 5000 step strategy. It's not easy! Later, I'll go over how I handled rewards for Pokémon's long episodes.
+For example, if we were playing 100x100 Tic-Tac-Toe, the agent wouldn't receive a reward for up to a max 5000 steps. Imagine having to plan out a 5000 step strategy. It's not easy! Later, we'll go over how we handled rewards for Pokémon's long episodes.
 
-Based on Peter Whidden's prior work, I began with an episode as a fixed number of steps. Over time, I tried other strategies such as dynamically increasing the number of steps per episode as the agent performed important milestones. However, I believe an episode *should be* based on a goal or when the agent achieves an unrecoverable state (soft-lock), e.g., such as running out of money. 
+Based on Peter Whidden's prior work, we began with an episode as a fixed number of steps. Over time, we tried other strategies such as dynamically increasing the number of steps per episode as the agent performed important milestones. However, we believe an episode *should be* based on a goal or when the agent achieves an unrecoverable state (soft-lock), e.g., such as running out of money. 
 
-Because the **goal** was to be the Champion, we compromised. We created "mini-episodes.” An episode would be the duration of an entire game. However, the agent's state would periodically reset mid-episode, but the emulator state would not. 
+Because the **goal** was to be the Champion, we compromised. We created "mini-episodes.” An episode would be the duration of an entire game. The agent's state would periodically reset mid-episode, but the emulator state would not. 
 
 <div style="border:1px solid black;">
 {{< highlight python >}}
