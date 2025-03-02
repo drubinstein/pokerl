@@ -89,28 +89,28 @@ With RL, we built an agent with minimal resources and achieved amazing results.
 
 Special thanks to:
 
-### [Keelan Donovan](https://github.com/leanke) 
+#### [Keelan Donovan](https://github.com/leanke) 
 For valuable insights and discussion from his own personal journey on the same project.
 
-### Daniel Addis
+#### Daniel Addis
 For valuable insights and discussion from his own personal journey on the same project.
 
-### [Joseph Suarez](https://puffer.ai/)
+#### [Joseph Suarez](https://puffer.ai/)
 For creating PufferAI/PufferLib, providing machines for me to perform my research and acting as an RL mentor.
 
-### [Peter Whidden](https://peterwhidden.webflow.io/)
+#### [Peter Whidden](https://peterwhidden.webflow.io/)
 For reinspiring me to take up this project and valuable discussions from his own journey on the same project.
 
-### [Mads Ynddal](https://github.com/Baekalfen)
+#### [Mads Ynddal](https://github.com/Baekalfen)
 For creating PyBoy and his collaboration.
 
-### Kyoung Whan Choe
+#### Kyoung Whan Choe
 For code contributions and valuable insights.
 
-### Death (PokeRL Discord handle)
+#### Death (PokeRL Discord handle)
 For their countless hours making the world map asset.
 
-### The [PokeRL Discord Community](http://discord.gg/RvadteZk4G)
+#### The [PokeRL Discord Community](http://discord.gg/RvadteZk4G)
 [![Join the Discord server!](https://invidget.switchblade.xyz/RvadteZk4G)](http://discord.gg/RvadteZk4G)
 
 ## Changelog
