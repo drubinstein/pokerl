@@ -85,7 +85,7 @@ With RL, we built an agent with minimal resources and achieved amazing results.
 {{< /highlight >}}
 </div>
 
-## Authors and Acknowledgements
+## Acknowledgements
 
 Special thanks to:
 
