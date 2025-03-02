@@ -33,7 +33,7 @@ flowchart TD
     AA --> AAA(Acquire Parcel from Viridian Mart) --> AAAA(Deliver Parcel to Prof. Oak)
     AAAA --> A(Defeat Brock) --> B(Traverse Mt. Moon)
     B --> C(Defeat Misty)
-    B --> D(Nugget Bridge) --> E(Get the SS Anne ticket from Bill) --> F(Defeat Cerulean Rocket Grunt) --> G(Defeat Rival on the SS Anne) --> H(Obtain `HM01` - `CUT` from the Captain on the SS Anne)
+    B --> D(Nugget Bridge) --> E(Get the SS Anne ticket from Bill) --> F(Defeat Cerulean Rocket Grunt) --> G(Defeat Rival on the SS Anne) --> H(Obtain HM01 - CUT from the Captain on the SS Anne)
     C --> I
     C --> J
     C --> K
@@ -49,9 +49,9 @@ flowchart TD
     L --> N(Obtain Pokéflute)
     L --> OO(Defeat Rival 5 in Silph Co) --> O(Defeat Giovanni in Silph Co) --> P(Defeat Sabrina)
     N --> Q(Use Pokéflute on at least one Snorlax)
-    Q --> R(Obtain `HM03` - `SURF` from the Safari Zone) --> T(Acquire the Secret Key from Pokémon Mansion) --> U(Defeat Blaine)
+    Q --> R(Obtain HM03 - SURF from the Safari Zone) --> T(Acquire the Secret Key from Pokémon Mansion) --> U(Defeat Blaine)
     Q --> V(Defeat Koga) --> T
-    Q --> SS(Obtain the Gold Teeth from the Safari Zone) --> S(Deliver the Gold Teeth to the old man in Fuchsia City to acquire `HM04` - `STRENGTH`)
+    Q --> SS(Obtain the Gold Teeth from the Safari Zone) --> S(Deliver the Gold Teeth to the old man in Fuchsia City to acquire HM04 - STRENGTH)
     I --> W(Defeat Giovanni in Viridian Gym) --> X(Defeat Rival 6) --> Y(Traverse Victory Road)
     J --> W
     P --> W
