@@ -68,6 +68,8 @@ out of date. If you can build a system that can create new data on the fly, you 
 
 With RL, we built an agent with minimal resources and achieved amazing results.
 
+{{< button relref="docs/chapter-1/the-loop" >}}Next Page{{< /button >}}
+
 ## BibTeX
 
 <div style="border:1px solid black;">
@@ -85,16 +87,34 @@ With RL, we built an agent with minimal resources and achieved amazing results.
 
 ## Authors and Acknowledgements
 
-By [David Rubinstein](https://github.com/drubinstein), [Keelan Donovan](https://github.com/leanke), Daniel Addis, [Joseph Suarez](https://puffer.ai/), and [Peter Whidden](https://peterwhidden.webflow.io/)
+Special thanks to:
 
-With special thanks to:
+### [Keelan Donovan](https://github.com/leanke) 
+For valuable insights and discussion from his own personal journey on the same project.
 
-- [Mads Ynddal](https://github.com/Baekalfen) - PyBoy
-- Kyoung Whan Choe - Contributor and for collaboration in early 2024
-- Death - Creator of the world map image asset.
-- The PokeRL Discord Community
-- The PufferAI Discord Community
+### Daniel Addis
+For valuable insights and discussion from his own personal journey on the same project.
+
+### [Joseph Suarez](https://puffer.ai/)
+For creating PufferAI/PufferLib, providing machines for me to perform my research and acting as an RL mentor.
+
+### [Peter Whidden](https://peterwhidden.webflow.io/)
+For reinspiring me to take up this project and valuable discussions from his own journey on the same project.
+
+### [Mads Ynddal](https://github.com/Baekalfen)
+For creating PyBoy and his collaboration.
+
+### Kyoung Whan Choe
+For code contributions and valuable insights.
+
+### Death (PokeRL Discord handle)
+For their countless hours making the world map asset.
+
+### The [PokeRL Discord Community](http://discord.gg/RvadteZk4G)
+[![Join the Discord server!](https://invidget.switchblade.xyz/RvadteZk4G)](http://discord.gg/RvadteZk4G)
 
 ## Changelog
 
 ### Feb. 28, 2025 - First Draft
+
+{{< button relref="docs/chapter-1/the-loop" >}}Next Page{{< /button >}}
