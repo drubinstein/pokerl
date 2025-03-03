@@ -66,7 +66,7 @@ With RL, we built an agent with minimal resources and achieved amazing results.
 
 ## Authors
 
-[David Rubinstein](https://github.com/drubinstein), Kyoung Whan Choe, [Keelan Donovan](https://github.com/leanke), Daniel Addis, [Joseph Suarez](https://puffer.ai/), [Peter Whidden](https://peterwhidden.webflow.io/)
+[David Rubinstein](https://github.com/drubinstein), [Keelan Donovan](https://github.com/leanke), Daniel Addis, Kyoung Whan Choe, [Joseph Suarez](https://puffer.ai/), [Peter Whidden](https://peterwhidden.webflow.io/)
 
 ## Acknowledgements
 
