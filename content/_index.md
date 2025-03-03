@@ -3,21 +3,15 @@ title: Learning Pokémon With Reinforcement Learning
 type: docs
 ---
 
-<div style="text-align: center;">
-
-![](logo2.png)
-
+<div style="text-align: center; ">
+  <video width="100%" autoplay loop muted>
+    <source src="assets/neonmapvid.mp4" type="video/mp4" />
+  </video>
 </div>
 
 Hi! Since 2020, we've been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.
 **As of February 2025, we are able to beat Pokémon Red with Reinforcement Learning using a <10 million parameter policy (60500x smaller than DeepSeekV3) and with minimal simplifications.** This website acts as a journal describing the system's current state. [All code is open sourced and available for you, the reader, to try.](https://github.com/thatguy11325/Pokémonred_puffer).
 
-<div style="text-align: center; ">
-
-![](assets/neonmapvid.gif)
-<figcaption>A heatmap showing 288 agents progressing through Pokémon Red.</figcaption>
-
-</div>
 
 As improvements to the codebase is made, the changelog will be updated. If you're not familiar with Pokémon, we recommend you read the first 1/3 of the website. Otherwise, assuming you're familiar with RL, we recommend you skip to [Chapter 2 - Observations]({{< ref "/docs/chapter-2/observations/index.md" >}} "Chapter 2 - Observations").
 
