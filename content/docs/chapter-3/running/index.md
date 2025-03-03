@@ -31,12 +31,14 @@ A slow PyBoy *was* the case. But we've been in frequent communication with the c
 
 Most of these changes are in PyBoy’s core. Hooks are a special addition that let us inject Python code at specified instructions. Although the context switch back to Python slows down execution, the less frequent RAM reads hooks allow have led to an overall speed up in Pokémon. However, even now, the environment still uses the majority of training time!
 
+
 <div style="text-align: center; ">
 
 {{< figure
   src="assets/flamegraph.png"
   caption="A profile of an environment taken mid-experiment using [Austin](https://github.com/P403n1x87/austin). Notably, most processing is spent in `run_action_on_emulator`. The PyBoy emulator's tick function is called multiple times in that function."
   class="ma0 w-75"
+  link="assets/flamegraph.png"
 >}}
 
 </div>
