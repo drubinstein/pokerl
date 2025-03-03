@@ -7,7 +7,7 @@ weight = 33
 
 For training, we adopted the [on-policy](https://towardsdatascience.com/on-policy-v-s-off-policy-learning-75089916bc2f/) algorithm [Proximal Policy Optimization](https://en.wikipedia.org/wiki/Proximal_policy_optimization) (PPO). PPO supports vectorized environments well and there is a large amount of online code examples surrounding it.
 
-we tried to keep the policy itself simple. We wanted a policy that 
+We tried to keep the policy itself simple. We wanted a policy that 
 
 - Could have some way of processing sequential (time) data.  
 - Was small for faster training.
@@ -201,7 +201,7 @@ Let’s summarize the shape and data type of the observations:
 |           Events Array           |  2560   |  boolean  |
 |            Direction             |    1    |    int    |
 |     Current Battle Condition     |    1    |    int    |
-|         Rival 3 defeated         |    1    |  boolean  |
+|         Rival 3 Defeated         |    1    |  boolean  |
 |         Lapras Acquired          |    1    |  boolean  |
 |          Saffron Guard           |    1    |  boolean  |
 |   Game Corner Rocket Defeated    |    1    |  boolean  |
@@ -210,7 +210,7 @@ Let’s summarize the shape and data type of the observations:
 You may notice nodes where we divide by a constant. We normalize some constants so the values will be in the range [0, 1] for model training stability.
 
 ## The CNN
-The screen obs and visited mask are concatenated together to make 2 "channels”. These channels are passed to a [2D Convolutional Neural Network (CNN)](https://en.wikipedia.org/wiki/Convolutional_neural_network). The kernel sizes of the CNN are designed with the GameBoy's tile size (8 pixels) in mind.
+The screen obs and visited mask observations are concatenated together to make 2 "channels”. These channels are passed to a [2D Convolutional Neural Network (CNN)](https://en.wikipedia.org/wiki/Convolutional_neural_network). The kernel sizes of the CNN are designed with the GameBoy's tile size (8 pixels) in mind.
 
 ## One-Hot encoding
 [One-hot encoding](https://en.wikipedia.org/wiki/One-hot) is a convenient technique to take a value representing a category and map it to a representation a model can understand. It's useful when the number of categories is low.
@@ -226,7 +226,7 @@ Items held in the agent's bag are also identified by ID. The Item IDs are passed
 All party data is concatenated together and passed through a small dense layer to create a "Pokémon” space.
 
 ## Binary Vectors
-In RAM, events are stored as 320 byte array each bit optionally representing one in-game event. We unpack this aray into a 2560 byte vector, filter for flags that are used by the game and pass the vector to the policy. The event vector in RAM does not include Lapras, Rival 3, defeating the Game Corner Rocket and the givingn a drink to a Saffron Guard. We additionally pass these 4 "events" separately as they are "event"-like in my opinion.
+In RAM, events are stored as 320 byte array each bit optionally representing one in-game event. We unpack this aray into a 2560 byte vector, filter for flags that are used by the game and pass the vector to the policy. The event vector in RAM does not include Lapras, Rival 3, defeating the Game Corner Rocket and the giving a drink to a Saffron Guard. We additionally pass these 4 "events" separately as they are "event"-like in my opinion.
 
 ## Safari Steps
 The numbers of steps left in the Safari Zone is in the range [0, 502]. We normalize the steps observation to a value between 0 and 1 where 0 means no steps are left and 1 means you have the max number of steps remaining.

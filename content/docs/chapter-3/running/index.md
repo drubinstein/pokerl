@@ -222,7 +222,7 @@ This data technique also works for the events vector. Instead of representing ev
 
 ## A Good Vectorized Env is Worth its Weight in Gold
 
-In between the emulator and the model, we had code managing the vectorized environment. Originally, we used the library [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/). It’s a great library for prototyping with RL, but it handles env vectorization suboptimally. SB3 will wait for all environments to finish their current step before calling the next step.
+In between the emulator and the model, we had code managing a vectorized environment. A vectorized environment runs many copies of the same environments in parallel. Originally, we used the library [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/). It’s a great library for prototyping with RL, but it handles env vectorization suboptimally. SB3 will wait for all environments to finish their current step before calling the next step.
 
 In early 2024, we adopted PufferLib from PufferAI. PufferLib provides an asynchronous vectorized environment implementation. Our PufferLib-based implementation collects data from environments until enough examples have been collected. Once enough examples have been collected, a few epochs of training occurs. 
 

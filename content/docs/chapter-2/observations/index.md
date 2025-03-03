@@ -9,7 +9,7 @@ Observations are a representation of the state of the environment. For the Tic-T
 
  Pokémon is way more complex. Pokémon contains tons of visible and invisible pieces of information. Although the overworld gamescreen provides most information a player want, some important information can only be accessed by lengthy menu navigation, talking to NPCs and random exploration. For example, *no NPC* in the game explains to the player what a cuttable tree looks like. That is something the player has to discover.
 
-It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. We desired to make the agent play the game as a new *human* player would. When in doubt, we stuck to one rule when designing my observations:
+It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. We desired to make the agent play the game as a new *human* player would. When in doubt, we stuck to one rule when designing our observations:
 
 _The observation can not contain any in-game knowledge a human player would not have access to._
 
@@ -72,6 +72,6 @@ The party observation may not have been necessary. We placed these observations 
 
 Although we have not explained the Safari Zone in-depth, we wanted to prevent the agent from walking aimlessly in the Safari Zone.
 
-### Whether or not the agent has received the gift lapras.  
+### Whether or not the agent has received the gift Lapras.  
 
 The Lapras observation is admittedly redundant given the party observation. However, Lapras is extremely important for game progression per [The Route]({{<ref "/docs/chapter-1/breakdown/route" >}} "The Route").

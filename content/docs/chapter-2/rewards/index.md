@@ -17,21 +17,19 @@ Unlike observations, we were a little more flexible with rewards with respect to
 
 Exploration was the foundation for all dense rewards.
 
-We originally believed that an agent had successfully learned Pokémon if the agent could visit every coordinate in the game’s world. We loosened that definition. Now, *any* interaction is considered a form of exploration.
-
-However, we can't only use exploration rewards. If we were to only reward for unique coordinates, the agent never interacts with Brock. Instead, the agent  wanders the world forever collecting new locations until it runs out of locations.
+We originally believed that an agent had successfully learned Pokémon if the agent could visit every coordinate in the game’s world. However, we couldn't only use exploration rewards. If we were to only reward for unique coordinates, the agent never interacts with Brock. Instead, the agent wanders the world forever collecting new locations until it runs out of locations. We loosened our definition. Now, we consider *any* interaction a form of exploration.
 
 In the end, we rewarded:
 
 - The number of unique coordinates visited during a mini-episode.
-- The number of signs interacted the agent interacts with during a mini-episode.
+- The number of signs the agent interacts with during a mini-episode.
 - The number of unique moves taught.
 - The number of valid and invalid uses of HMs/Pokéflute in the overworld.   
 - The number of tile types an HM/Pokéflute was used on.
 - The number of unique map ID transitions (warps) visited during a mini-episode.   
 - The number of unique seen and caught Pokémon.
 
-We also experimented with rewarding for all locations an agent has pressed A on and the number of unique menus the agent visited during an episode. However, the A press and unique menus rewards provided little gain and slowed down training tremendously. The agent would frequently press A instead of focusing on navigation.
+We also experimented with rewarding for all locations an agent has pressed the `A` button (you make selections in Pokémon by pressing `A`) on and the number of unique menus the agent visited during an episode. However, the `A` press and unique menus rewards provided little gain and slowed down training tremendously. The agent would frequently press `A` instead of focusing on navigation.
 
 ## Making Game Progress?
 
@@ -44,7 +42,7 @@ Without these rewards, the agent would ultimately wander until the mini-episode 
 
 ## Map ID Rewards
 
-In general, we found that in order to "solve" a map ID and accomplish and event, we needed around 10-20 agents exploring the map ID. 10-20 agents map to around 10% map ID coverage. 
+In general, we found that in order to "solve" a map ID (a map ID is a unique identifier for the current game area, e.g., town, route, cave floor, etc.) and accomplish and event, we needed around 10-20 agents exploring the map ID. 10-20 agents map to around 10% map ID coverage. 
 
 We regretfully "boosted" coordinates reward if the agent explored a currently important map ID. On one hand, we are potentially putting the game on rails. On the other hand, we experienced that the agent would not focus on important areas, e.g., Rocket Hideout, unless we boosted rewards for specific map IDs.
 
@@ -53,7 +51,7 @@ Specific map IDs start the game with a _boosted_ exploration reward *until* the 
 - Route 23 (where the Rival 6 battle occurs) does not get boosted until all gyms are beaten. 
 - Lavender Tower does not get boosted until Giovanni is defeated in Rocket Hideout and the Silph Scope is acquired. Otherwise, agents do not leave Lavender due to the level up reward obtained from the wild battles inside Lavender Tower. 
 
-We believe we would not need these rewards if the agent could understand text. Often in Pokémon, an NPC will give hints to the player as to where to go next. Our agent could not parse text and therefore would obviously no where to go.
+We believe we would not need these rewards if the agent could understand text. Often in Pokémon, an NPC will give hints to the player as to where to go next. Our agent could not parse text and therefore would obviously not know where to go.
 
 ## Safari Zone Rewards
 
@@ -65,7 +63,7 @@ We believe we would not need these rewards if the agent could understand text. O
 
 The Safari Zone minigame provided a big challenge. The Safari Zone is a minigame where two required items must be obtained within 500 steps. The Safari Zone can be attempted as long as you can pay for it. Safari Zone’s route is pretty linear until a fork in the road 75% the way in. We needed to incentivize the agent to get to that fork as fast as possible *and* take the correct fork.
 
-We added a specific Safari Zone reward for this case. The agent obtains a reward proportional to the number of steps left for any map id it reaches within the Safari Zone. Ideally, the agent’s visited mask would prompt the agent to explore both forks within the same episode. In reality, the agent does eventually complete the Safari Zone but it can take thousands of steps during training.
+We added a specific Safari Zone reward for this case. The agent obtains a reward proportional to the number of steps left for any map ID it reaches within the Safari Zone. Ideally, the agent’s visited mask would prompt the agent to explore both forks within the same episode. In reality, the agent does eventually complete the Safari Zone but it can take thousands of steps during training.
 
 ## Level Reward
 
