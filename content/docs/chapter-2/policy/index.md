@@ -5,9 +5,9 @@ weight = 33
 
 # RL Algorithm and Policy
 
-For training, I adopted the [on-policy](https://towardsdatascience.com/on-policy-v-s-off-policy-learning-75089916bc2f/) algorithm [Proximal Policy Optimization](https://en.wikipedia.org/wiki/Proximal_policy_optimization) (PPO). PPO supports vectorized environments well and there is a large amount of online code examples surrounding it.
+For training, we adopted the [on-policy](https://towardsdatascience.com/on-policy-v-s-off-policy-learning-75089916bc2f/) algorithm [Proximal Policy Optimization](https://en.wikipedia.org/wiki/Proximal_policy_optimization) (PPO). PPO supports vectorized environments well and there is a large amount of online code examples surrounding it.
 
-I tried to keep the policy itself simple. We wanted a policy that 
+we tried to keep the policy itself simple. We wanted a policy that 
 
 - Could have some way of processing sequential (time) data.  
 - Was small for faster training.
@@ -218,18 +218,18 @@ The screen obs and visited mask are concatenated together to make 2 "channels”
 Direction, battle state (in-battle, wild battle, trainer battle) are transformed to their one-hot encoded values.
 
 ## Embeddings
-The map ID and blackout map IDs come from the environment as integers, but are transformed before input to the embedding layer. [Embedding layers](https://en.wikipedia.org/wiki/Embedding_(machine_learning)) are a convenient way of representing categorical input in a low-dimensional space. Instead of one-hot encoding the map ID (255 dimensions), I use 4 floats to represent the map ID space. I chose 4 based on a recommendation from [Google's Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course). Google recommends using (# of categories)^.25 for the number of dimensions in an embedding layer.
+The map ID and blackout map IDs come from the environment as integers, but are transformed before input to the embedding layer. [Embedding layers](https://en.wikipedia.org/wiki/Embedding_(machine_learning)) are a convenient way of representing categorical input in a low-dimensional space. Instead of one-hot encoding the map ID (255 dimensions), we use 4 floats to represent the map ID space. We chose 4 based on a recommendation from [Google's Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course). Google recommends using (# of categories)^.25 for the number of dimensions in an embedding layer.
 
-Items held in the agent's bag are also identified by ID. The Item IDs are passed to their own embedding layer. I scale the item embeddings by the item's quantities; a number between 0 and 1 where 0 maps to not in the bag and 1 maps the max number of the same item an agent can have.
+Items held in the agent's bag are also identified by ID. The Item IDs are passed to their own embedding layer. We scale the item embeddings by the item's quantities; a number between 0 and 1 where 0 maps to not in the bag and 1 maps the max number of the same item an agent can have.
 
 ## Party Network
 All party data is concatenated together and passed through a small dense layer to create a "Pokémon” space.
 
 ## Binary Vectors
-In RAM, events are stored as 320 byte array each bit optionally representing one in-game event. I unpack this aray into a 2560 byte vector, filter for flags that are used by the game and pass the vector to the policy. The event vector in RAM does not include Lapras, Rival 3, defeating the Game Corner Rocket and the givingn a drink to a Saffron Guard. I additionally pass these 4 "events" separately as they are "event"-like in my opinion.
+In RAM, events are stored as 320 byte array each bit optionally representing one in-game event. We unpack this aray into a 2560 byte vector, filter for flags that are used by the game and pass the vector to the policy. The event vector in RAM does not include Lapras, Rival 3, defeating the Game Corner Rocket and the givingn a drink to a Saffron Guard. We additionally pass these 4 "events" separately as they are "event"-like in my opinion.
 
 ## Safari Steps
-The numbers of steps left in the Safari Zone is in the range [0, 502]. I normalize the steps observation to a value between 0 and 1 where 0 means no steps are left and 1 means you have the max number of steps remaining.
+The numbers of steps left in the Safari Zone is in the range [0, 502]. We normalize the steps observation to a value between 0 and 1 where 0 means no steps are left and 1 means you have the max number of steps remaining.
 
 ## Final Model Layers
 

@@ -7,6 +7,35 @@ weight = 2
 
 The Python library [Gymnasium](https://gymnasium.farama.org/) provides a fairly straightforward API for defining an environment. The environment can be simplified into two functions: `Reset` and `Step`
 
+## Steps
+
+Step handles actions meant for the environment and returns observations based on a taken action, any logging info and whether or not to reset the environment.
+
+Our step function for Pokémon can naively be written as:
+
+- Receive a button press action
+- Send the button press to the gameboy emulator
+- Wait some frames for the action to have an effect on the environment
+- Sample the environment
+- Return data based on the sample
+
+<div style="border:1px solid black;">
+{{< highlight python >}}
+
+def step(self, action: int):
+    """
+    A simplified version of the step function run during training
+    """
+    self.pyboy.send_input(VALID_ACTIONS[action])
+    self.pyboy.send_input(VALID_RELEASE_ACTIONS[action], delay=8)
+    self.pyboy.tick(self.action_freq - 1, render=False)
+    return self.get_obs(), self.get_reward()
+{{< /highlight >}}
+</div>
+
+With a minimal environment defined, we could begin to think about what we wanted for 
+observations and rewards. 
+
 ## Resets, Episodes and the Goal
 
 Reset handles the initialization for a gameplay session (episode).
@@ -69,31 +98,4 @@ class OnResetExplorationWrapper(gym.Wrapper):
 {{< /highlight >}}
 </div>
 
-## Steps
 
-Step handles actions meant for the environment and returns observations based on a taken action, any logging info and whether or not to reset the environment.
-
-Our step function for Pokémon can naively be written as:
-
-- Receive a button press action
-- Send the button press to the gameboy emulator
-- Wait some frames for the action to have an effect on the environment
-- Sample the environment
-- Return data based on the sample
-
-<div style="border:1px solid black;">
-{{< highlight python >}}
-
-def step(self, action: int):
-    """
-    A simplified version of the step function run during training
-    """
-    self.pyboy.send_input(VALID_ACTIONS[action])
-    self.pyboy.send_input(VALID_RELEASE_ACTIONS[action], delay=8)
-    self.pyboy.tick(self.action_freq - 1, render=False)
-    return self.get_obs(), self.get_reward()
-{{< /highlight >}}
-</div>
-
-With a minimal environment defined, we could begin to think about what we wanted for 
-observations and rewards. 

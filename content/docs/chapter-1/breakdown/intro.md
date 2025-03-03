@@ -5,19 +5,19 @@ weight = 20
 
 # Breaking Down Pokémon
 
-Before discussing observations, rewards and the policy, I believe studying the environment is higher priority. As I already said multiple times, Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly. Again, if you're already well-versed on Pokémon, 
+Before discussing observations, rewards and the policy we will do a deep dive into the environment. Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly. If you're already well-versed on Pokémon, 
 we recommend you skip to the [next chapter]({{<ref "/docs/chapter-2/observations/index" >}} "next chapter").
 
 To begin the breakdown, we enumerated the game’s storyline objectives. These objectives may be a little more detailed than what you would read in an average game summary, but there's a lot of hidden bottlenecks in Pokémon. At a high level, to beat Pokémon, you must:
 
 1. Beat the 8 Gym Leaders (video game boss).  
-2. Acquire items to teach the field moves `CUT`, `STRENGTH`, and, `SURF` and Pokémon to teach the field moves to. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.  
-5. Teach capable Pokémon the field moves `CUT`, `STRENGTH`, and `SURF`.
-4. Acquire any items required for field interactions. Like field moves, there are items that are required to unlock new areas.  
-6. Use field moves or items for field interactions to remove any game blocking obstacles.  
-7. Complete the Team Rocket storyline.     
-8. Beat the 6 required rival battles.
-9. Beat the Elite 4 and Champion.
+2. Acquire `HMs` (items) to teach the field moves `CUT`, `STRENGTH`, and, `SURF` and Pokémon to teach the field moves to. Field moves are abilities that can be used outside of battle to unlock a new area or make it easier to traverse an existing area.  
+3. Teach capable Pokémon the field moves `CUT`, `STRENGTH`, and `SURF`.
+4. Acquire any items (not HMs) required for field interactions. Like field moves, there are items that are required to unlock new areas.  
+5. Use field moves or items for field interactions to remove any game blocking obstacles.  
+6. Complete the Team Rocket storyline.     
+7. Beat the 6 required rival battles.
+8. Beat the Elite 4 and Champion.
 
 Or, if we want to be more detailed...
 

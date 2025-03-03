@@ -94,4 +94,4 @@ The old man will then reward the player with the item `HM04`
 
 Along with field moves, the player will need to use the item `Pokéflute` to unlock at least one of two routes to Fuchsia City. 
 
-However, using `Pokéflute` is very similar to using an HM. A level of convenience that I will use when ensuring the player can perform the action.
+Using `Pokéflute` is very similar to using an `HM`, which used when designing rewards for Pokéflute.
