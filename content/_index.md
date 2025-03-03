@@ -68,7 +68,7 @@ With RL, we built an agent with minimal resources and achieved amazing results.
 
 [David Rubinstein](https://github.com/drubinstein), Kyoung Whan Choe, [Keelan Donovan](https://github.com/leanke), Daniel Addis, [Joseph Suarez](https://puffer.ai/), [Peter Whidden](https://peterwhidden.webflow.io/)
 
-## Contributors 
+## Acknowledgements
 
 #### [Mads Ynddal](https://github.com/Baekalfen)
 For creating PyBoy and his collaboration.
