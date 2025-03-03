@@ -168,7 +168,7 @@ UsedCut:
 
 We could (and did) inject hooks at `.nothingToCut` and `.canCut` to tell if (a) `CUT` was attempted and (b) if `CUT` was successful or not.
 
-## My Strategy for Reading Disassembly
+## A Strategy for Reading Disassembly
 
 With this we had a strategy for navigating the Pokémon Red disassembly.
 
