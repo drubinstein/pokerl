@@ -7,7 +7,7 @@ weight = 42
 
 Without metrics, we would have no way of knowing how far the agents have progressed. Inspecting the game play of 288 agents is not just time consuming, it's expensive. Videos consume valuable CPU and disk space to render. However, generating a few metrics are way smaller and easier and can provide data in _real time_.
 
-For metrics writing, we had two sinks: [Weights and Biases](https://wandb.ai/) and [a live map visualization](https://pwhiddy.github.io/pokerl-map-viz/) Peter Whidden stood up for this effort. Without metrics, we never would have made any logical improvements, we'd only be guessing.
+For metrics writing, we had two sinks: [Weights and Biases (Wandb)](https://wandb.ai/) and [a live map visualization](https://pwhiddy.github.io/pokerl-map-viz/) Peter Whidden stood up for this effort. Without metrics, we never would have made any logical improvements, we'd only be guessing.
 
 ## The Live Map
 
@@ -25,7 +25,7 @@ For metrics writing, we had two sinks: [Weights and Biases](https://wandb.ai/) a
 
 The live map is a really simple addition from the developer side. In a wrapper per agent, we open a websocket to a service Peter is hosting and we send the agent's coordinates over the websocket. We can leave it open during the day. We can check it out whenever. It also provided us a valuable way of seeing if new code we wrote was properly working. It was the first place we looked when evaluating a running experiment.
 
-## Weights and Biases
+## Weights and Biases (Wandb)
 
 ### Charts
 
@@ -88,8 +88,9 @@ For example, to get a Mr. Mime, the player must catch an Abra (extremely difficu
 
 {{< figure
   src="assets/heatmap.png"
-  caption="A screenshot of a heatmap on WandB mid-experiment."
+  caption="A screenshot of a heatmap on Wandb mid-experiment."
   class="ma0 w-75"
+  link="assets/heatmap.png"
 >}}
 
 </div>
@@ -102,8 +103,9 @@ The heatmap showed some interesting behavior from the agents. For example, it cl
 
 {{< figure
   src="assets/safari.png"
-  caption="A screenshot of a heatmap on WandB mid-experiment while the agent is lost in the Safari Zone."
+  caption="A screenshot of a heatmap on Wandb mid-experiment while the agent is lost in the Safari Zone."
   class="ma0 w-75"
+  link="assets/safari.png"
 >}}
 
 </div>
@@ -114,8 +116,9 @@ Sometimes the heatmap would also clue us into "routes" the agents' policy would 
 
 {{< figure
   src="assets/maxcut.png"
-  caption="A screenshot of a heatmap on WandB mid-experiment where the agent is fixated on cutting multiple trees in a loop."
+  caption="A screenshot of a heatmap on Wandb mid-experiment where the agent is fixated on cutting multiple trees in a loop."
   class="ma0 w-75"
+  link="assets/maxcut.png"
 >}}
 
 </div>
@@ -126,8 +129,9 @@ The map also showed us more intelligent routing from the agents like when the ag
 
 {{< figure
   src="assets/rocktunnel.png"
-  caption="A screenshot of a heatmap on WandB mid-experiment after the agent learned the fastest route through Rock Tunnel."
+  caption="A screenshot of a heatmap on Wandb mid-experiment after the agent learned the fastest route through Rock Tunnel."
   class="ma0 w-75"
+  link="assets/rocktunnel.png"
 >}}
 
 </div>

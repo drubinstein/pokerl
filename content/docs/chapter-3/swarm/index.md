@@ -19,7 +19,7 @@ weight = 43
 
 {{< figure
   src="assets/wandb.png"
-  caption="The corresponding metric in WandB."
+  caption="The corresponding metric in Wandb."
   class="ma0 w-75"
 >}}
 
@@ -28,9 +28,9 @@ weight = 43
 
 </div>
 
-We have not mentioned an important modification made to RL loop. Pokémon is a nearly open world game. Unfortunately, the experiential data can get "non-coherent” and the agents can become detached from each other. 
+We have not mentioned an important modification made to RL loop. Pokémon is a nearly open world game. During training, the agents can be in wildly different parts of the game. Consequentially, the experience data can become too random to train a policy from. 
 
-Without sufficiently coherent data, the policy will not improve. This plagued us for *months*. Eventually, with inspiration from the [Go-Explore](https://arxiv.org/abs/1901.10995) paper, we changed the way training is done and assurances that the data would remain coherent. 
+Without sufficiently predictable data, the policy will not improve. This plagued us for *months*. Eventually, with inspiration from the [Go-Explore](https://arxiv.org/abs/1901.10995) paper, we changed the way training is done and made assurances that the data would remain predictable. 
 
 We began recording the save state every time an agent met a required game objective. Every time an agent completed a required objective, *every* agent loads the save state from the agent that completed the new objective. We tried a variety of other methods, but this method worked the best. We dubbed this method *swarming*.
 
