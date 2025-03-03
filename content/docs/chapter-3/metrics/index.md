@@ -17,6 +17,7 @@ For metrics writing, we had two sinks: [Weights and Biases](https://wandb.ai/) a
   src="assets/livemap.png"
   caption="A screenshot of the livemap."
   class="ma0 w-75"
+  link="assets/livemap.png"
 >}}
 
 </div>
@@ -30,7 +31,7 @@ The live map is a really simple addition from the developer side. In a wrapper p
 
 Charts provided an invaluable way for us to understand the timeline of progress and understand how fast the agent was capable of achieving tasks.
 
-For example, we could look at a badge count metric to see how long it would take on average for an agent to get a badge. Fun fact, with wild battles disabled, we can acquire badge 1 in as fast as _10 minutes_.
+For example, we could look at a badge count metric to see how long it would take on average for an agent to get a badge. Fun fact: with wild battles disabled, we can acquire badge 1 in only _10 minutes_.
 
 <div style="text-align: center;">
 
@@ -47,7 +48,7 @@ Or we could see how many events the agent has finished.
 <div style="text-align: center;">
 
 {{< figure
-  src="assets/events.png"
+  src="assets/event.png"
   caption="An example metric. With this plot, we could track the the agents' overall game progress."
   class="ma0 w-75"
 >}}
@@ -66,7 +67,7 @@ We could see if my pokecenter healing reward was finally tuned correctly.
 
 </div>
 
-We also kept track of the current party all agents had. The party table provided information that would only otherwise have by measuring gift Pokémon event completion. It also sometimes showed some fun scenarios.
+We also kept track of the current party all agents had. The party table provided information that would only otherwise have by measuring gift Pokémon event completion. It also sometimes showed some cool gameplay occurrences:
 
 <div style="text-align: center;">
 
@@ -78,7 +79,7 @@ We also kept track of the current party all agents had. The party table provided
 
 </div>
 
-For context, to get a Mr. Mime, the player must catch an Abra (extremely difficult to catch) and then perform an in-game trade. We've seen runs with Gyarados, tons of Safari Zone Pokémon and more!
+For example, to get a Mr. Mime, the player must catch an Abra (extremely difficult to catch) and then perform an in-game trade. We've seen runs with Gyarados, tons of Safari Zone Pokémon and more!
 
 
 ### The Map Overlay
