@@ -21,3 +21,4 @@ theme = 'hugo-book'
           
 [params]
   math = true
+  BookLogo = 'logo2.png'
