@@ -177,4 +177,4 @@ With this we had a strategy for navigating the Pokémon Red disassembly.
 3. Follow the disassembly subroutines and see if the area matches what you are looking for.
 4. If the value is in HRAM or WRAM, then read those, else create a hook at the closest label.
 
-This method scaled tremendously. We access over 80 symbols for all of training.
+This method scaled tremendously. We read or have hooks for many symbols when training.
