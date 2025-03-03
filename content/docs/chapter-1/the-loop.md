@@ -6,7 +6,7 @@ weight = 1
 
 Before discussing Pokémon, lets start with brief (and hand wavy) introduction to Reinforcement Learning (RL). The introduction will motivate a framework for how to discuss the Pokémon in an RL setting. 
 
-RL is a focus of study on how an agent should take actions in an environment in order to maximize a reward. In a typical RL framework, there will be 2 components.
+RL studies how an agent should take actions in an environment in order to maximize a reward. In a typical RL framework, there will be 2 components.
 
 1. The Environment - Represents the world context.
 2. The Agent - Responsible for generating actions to perform in the environment.
@@ -30,7 +30,7 @@ flowchart LR
 
 {{< /mermaid >}}
 
-When building an RL system, we breakdown the problem into:
+When building an RL system, we break down the problem into:
 
 - the goal
 - the environment
@@ -58,7 +58,7 @@ Example Tic-Tac-Toe configurations:
 
 ### Goal
 
-The goal of Tic-Tac-Toe is to win. After a player has achieved 3-in-a-row, the game will reset. We call the time it takes from beginning to the end of the game an *episode*.
+The goal of Tic-Tac-Toe is to win. After a player has achieved 3-in-a-row, the game will reset. We call the time it takes from beginning to the end of the game an *episode* (more on this later).
 
 ### Environment
 
@@ -85,5 +85,5 @@ The act of modifying the reward for a better system is known as *reward shaping*
 
 Now that we have created our Tic-Tac-Toe RL system, we can attempt to train a policy to be the best Tic-Tac-Toe player ever. At the start of training, the policy will play random moves, but as the policy obtains more experience, it will learn to exploit the reward function.
 
-For Pokémon, we will similarly breakdown the game. Let's dig in.
+For Pokémon, we will similarly break down the game. Let's dig in.
 

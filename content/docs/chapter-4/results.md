@@ -5,7 +5,7 @@ weight = 50
 
 # Results and Concluding Thoughts
 
-So how did this agent perform? We now have an agent that beats Pokémon with a few caveats. Currently, we're still struggling to get a stable enough run to prove that the system can beat the game with all my scripts disabled. I have seen winning runs with each script individually removed so we know it can be done, but there are a couple of bugs that sometimes occur that we need to iron out.
+So how did this agent perform? We now have an agent that beats Pokémon with a few caveats. Currently, we're still struggling to get a stable enough run to prove that the system can beat the game with all my scripts disabled. We have seen winning runs with each script individually removed so we know it can be done, but there are a couple of bugs that sometimes occur that we need to iron out.
 
 ## What did we learn?
 

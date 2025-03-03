@@ -5,7 +5,7 @@ weight = 23
 
 # The 8 Badges
 
-Next, I focused on what it takes to beat the 8 gym leaders. When defeated, gym leaders give the player a "badge.” Badges can unlock the ability to use a field move and give permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokémon, their types and what they unlock.
+Next, we focused on what it takes to beat the 8 gym leaders. When defeated, gym leaders give the player a "badge.” Badges can unlock the ability to use a field move and give permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokémon, their types and what they unlock.
 
 
 
@@ -20,7 +20,7 @@ Next, I focused on what it takes to beat the 8 gym leaders. When defeated, gym l
 | **Blaine**<br>![](images/blaine.png)     | Fire     | <div align="left">-12.5% `SPECIAL`</align> boost                                    |
 | Giovanni<br>![](images/giovanni.png)       | Ground   |                                                        |
 
-I emphasized 5 gym leaders. Why? Because these gym leaders can be accomplished in *nearly any order*. The vast majority of storyline events are gated by **Misty, Erika, and Koga** who give access to the field moves `CUT`, `STRENGTH` and `SURF` outside of battle. 
+We emphasized 5 gym leaders. Why? Because these gym leaders can be accomplished in *nearly any order*. The vast majority of storyline events are gated by **Misty, Erika, and Koga** who give access to the field moves `CUT`, `STRENGTH` and `SURF` outside of battle. 
 
 Some gym leaders require solving puzzles or removing environmental guards.
 
@@ -108,6 +108,6 @@ To enter Blaine’s gym the agent must first *`SURF`* to Cinnabar Island where t
 
 </div>
 
-Giovanni’s gym is blocked until you beat all 7 prior gym leaders. Giovanni’s gym contains a maze puzzle with "spin tiles.”
+Giovanni’s gym is blocked until you beat all 7 prior gym leaders. Giovanni’s gym contains a maze puzzle with "spin tiles" (see figure).
 
 The agent must be capable of solving all these tasks.
