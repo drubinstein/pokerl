@@ -7,7 +7,7 @@ weight = 40
 
 So we have a policy, observations, an environment and a reward. Now it's time to discuss how we wrote the RL system. Along the way, we'll provide relevant snippets of code and tricks done to make my system run as fast as possible.
 
-Before we begin though, we want to give thanks to PufferAI and PufferLib. Joseph Suarez, the creator of PufferAI, graciously donated 4 machines to this effort. Each machine contained a NVIDIA 4090 GPU, Intel Core i9-14900K, 125 GB of RAM and 2TB of disk space. Before his contribution, we were paying $200/month using [vast.ai](https://vast.ai/) for training with worse hardware.
+For compute, Joseph Suarez, the creator of [PufferAI](https://puffer.ai/) and the [PufferLib](https://github.com/PufferAI/PufferLib) RL Python library, graciously donated 4 machines to this effort. Each machine contained a NVIDIA 4090 GPU, Intel Core i9-14900K, 125 GB of RAM and 2TB of disk space. Before his contribution, we were paying $200/month using [vast.ai](https://vast.ai/) for training with worse hardware.
 
 Good hardware although not necessary, massively sped up training.
 
@@ -19,9 +19,9 @@ In the end, we 10x’d the steps per second (sps) of training to a peak of 10000
 
 ### The Emulator
 
-PyBoy happens to provide a very convenient interface for RL and is performant for Python. However, using an emulator comes with its downsides. Namely, an emulator emulates every instruction from the ROM. That means fewer compiler optimizations, no link time optimizations etc. We could have attempted to rewrite Pokémon in a modern language, but that would have been a Herculean effort on its own. Instead, we made PyBoy faster.
+[PyBoy](https://github.com/Baekalfen/PyBoy) happens to provide a very convenient interface for RL and is performant for Python. However, using an emulator comes with its downsides. Namely, an emulator emulates every instruction from the ROM. That means fewer compiler optimizations, no link time optimizations etc. We could have attempted to rewrite Pokémon in a modern language, but that would have been a Herculean effort on its own. Instead, we made PyBoy faster.
 
-A slow PyBoy *was* the case. But we've been in frequent communication with the creator of PyBoy for a while and we (mostly him) have put a lot of effort into improving PyBoy since late 2023. PyBoy has released a number of updates that have improved runtime speed and developer ergonomics dramatically including:
+A slow PyBoy *was* the case. But we've been in frequent communication with the creator of PyBoy for a while and we (mostly the PyBoy creator) have put a lot of effort into improving PyBoy since late 2023. PyBoy has released a number of updates that have improved runtime speed and developer ergonomics dramatically including:
 
 - Better usage of compiler optimization flags.
 - Better usage of Cython’s gil release options.
@@ -91,7 +91,7 @@ Some improvements have been contributed back to PufferLib (since early 2024 we h
 
 Of the easier to add improvements, We achieved a 30% GPU speed improvement on inference and improved GPU utilization with [torch.compile](https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html). Torch compilation traces the execution graph of a PyTorch module and will create an optimized GPU execution graph.
 
-Another speed optimization easy win came making sure we used [pinned memory](https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/#pinned_host_memory) for any tensors on GPU. Pinning prevents an extra memory copy when moving data from the CPU host to the GPU device.
+Another speed optimization easy win came making sure we used [pinned memory](https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/#pinned_host_memory) for any tensors on GPU. Pinning prevents an extra memory copy when moving data from the host CPU to the GPU device.
 
 ## Observation Size Matters
 
