@@ -9,8 +9,8 @@ So what comes next? We’ll continue working on this project and at some point p
 
 But also, we're thinking of trying Gen II games, Gold/Silver/Crystal. [Gen II has a decompilation from PRET](https://github.com/pret/pokecrystal) and Gen II is easier in one important way; `HMs` can be used by pressing `A` in the field instead of extra menu interactions.
 
-However, Gen II is extremely difficult in other ways. There are more `HMs` and we can’t rely on gift Pokémon to learn all of them (namely `SURF`, `WATERFALL` and `WHIRLPOOL`).
+However, Gen II is extremely difficult in other ways. There are more `HMs`, and we can’t rely on gift Pokémon to learn all of them (namely `SURF`, `WATERFALL` and `WHIRLPOOL`).
 
-We’ve thought of a run that we think will beat the game: If the agent uses a Totodile starter and catches the Red Gyarados, the agent would have enough Pokémon to satisfy all `HMs` and enough Pokémon to beat the game up to Red.
+That said, we think we have a strategy for winning the game: If the environment uses a Totodile starter and the agent catches the Red Gyarados, the environment will have enough Pokémon to satisfy all `HMs` and enough Pokémon to beat the game up to Red.
 
 To Be Continued!

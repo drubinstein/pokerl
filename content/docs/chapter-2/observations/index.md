@@ -18,13 +18,10 @@ What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No
 
 ## The First Observations
 
-<div style="text-align: center;">
-
-![](assets/fullres.gif)
-<br/>
-![](assets/halfres.gif)![](assets/visitedmask.gif)
-<figcaption>Top: Full resolution screen. Bottom: What the agent observes. Even in a self-similar area like Mt. Moon, the agent can see where it has been.</figcaption>
-
+<div style="text-align: center; ">
+  <video width="160px" autoplay loop muted>
+    <source src="assets/visitedmask.mp4" type="video/mp4" />
+  </video>
 </div>
 
 ### The current game screen downsampled by 2 (72x80 pixels) in grayscale.
@@ -43,7 +40,6 @@ What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No
 - Events are in-game objectives that have been accomplished. 
 - Beating a gym is an event. Similarly, any trainer battle is an event. Even buying a ticket to the Pewter City museum is an event. 
 - Pokémon uses an events array in the WRAM bank when to control what's loaded when entering a map.
-- We tried not to include the events array as the events observation leaks information.
 - We had to create four "events" not included in the events array:
   - Rival 3 defeated.
   - Lapras acquired.

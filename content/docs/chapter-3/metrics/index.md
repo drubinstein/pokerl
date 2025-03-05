@@ -79,7 +79,7 @@ We also kept track of the current party all agents had. The party table provided
 
 </div>
 
-For example, to get a Mr. Mime, the player must obtain an Abra (extremely difficult to catch) and then perform an in-game trade. We've seen runs with Gyarados, tons of Safari Zone Pokémon and more!
+For example, to get a Mr. Mime, the player must obtain an Abra (extremely difficult to catch unless you can obtain enough winning at the Game Corner to buy one) and then perform an in-game trade. We've seen runs with Gyarados, tons of Safari Zone Pokémon and more!
 
 
 ### The Map Overlay
@@ -95,9 +95,13 @@ For example, to get a Mr. Mime, the player must obtain an Abra (extremely diffic
 
 </div>
 
-Joseph Suarez at PufferAI also wrote a nifty heatmap of where the agent has visited during the experiment. We've made modifications since to show where the agent has visited during the episode. The map provided us a way to see where the agents were focusing effort when the live map was too hard to follow.
+Joseph Suarez at PufferAI also wrote a nifty heatmap of where the agent has visited during the experiment. We've made modifications since to show where the agent has visited during the episode. The map provided us a way to see where the agents were focusing effort when the live map was too hard to follow. Blue meant fewer agents visited a coordinate, Red meant many agents visited a coordinate.
 
-The heatmap showed some interesting behavior from the agents. For example, it clued us as to how the agents would not focus on maximizing exploration in the Safari Zone, the agents' exploiting the hidden object reward (mostly through gambling), and the agents' preference to avoid battles (as a way to not lose exploration reward possibilities for a mini-episode). 
+The heatmap showed some interesting behavior from the agents. For example, it clued us in as to how 
+
+- The agents would not focus on maximizing exploration in the Safari Zone.
+- The agents' exploiting of the hidden object reward (mostly through gambling).
+- The agents' preference to avoid battles (as a way to not lose exploration reward possibilities for a mini-episode). 
 
 <div style="text-align: center;">
 
@@ -110,7 +114,7 @@ The heatmap showed some interesting behavior from the agents. For example, it cl
 
 </div>
 
-Sometimes the heatmap would also clue us into "routes" the agents' policy would collapse to. For example when we mis-weighted tree cutting rewards, the heatmap pointed out that the agents' would optimize for a route that would maximize their ability to `CUT` trees in a mini-episode.
+Sometimes the heatmap would also clue us into "routes" the agents' policy would collapse to. For example, when we mis-weighted tree cutting rewards, the heatmap pointed out that the agents' would optimize for a route that would maximize their ability to `CUT` trees in a mini-episode.
 
 <div style="text-align: center;">
 

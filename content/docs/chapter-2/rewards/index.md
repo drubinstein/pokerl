@@ -7,6 +7,93 @@ weight = 31
 
 Unlike observations, we were a little more flexible with rewards with respect to leaking information to the agent. Event rewards are too sparse. It can be thousands of steps before a high value event is met. The agent needs some way knowing it is making progress in between these high value sparse rewards. 
 
+{{% details "Our reward function (contains over 25 parameters!)" closed %}}
+
+<div style="border:1px solid black;">
+{{< highlight python >}}
+
+class ObjectRewardRequiredEventsMapIds(BaselineRewardEnv):
+    def get_game_state_reward(self) -> dict[str, float]:
+        _, wBagItems = self.pyboy.symbol_lookup("wBagItems")
+        numBagItems = self.read_m("wNumBagItems")
+        bag_item_ids = set(self.pyboy.memory[wBagItems : wBagItems + 2 * numBagItems : 2])
+
+        return (
+            {
+                "cut_tiles": self.reward_config["cut_tiles"] * sum(self.cut_tiles.values()),
+                "event": self.reward_config["event"] * self.update_max_event_rew(),
+                "seen_pokemon": self.reward_config["seen_pokemon"] * np.sum(self.seen_pokemon),
+                "caught_pokemon": self.reward_config["caught_pokemon"]
+                * np.sum(self.caught_pokemon),
+                "obtained_move_ids": self.reward_config["obtained_move_ids"]
+                * np.sum(self.obtained_move_ids),
+                "hm_count": self.reward_config["hm_count"] * self.get_hm_count(),
+                "level": self.reward_config["level"] * self.get_levels_reward(),
+                "badges": self.reward_config["badges"] * self.get_badges(),
+                "valid_cut_coords": self.reward_config["valid_cut_coords"]
+                * len(self.valid_cut_coords.values()),
+                "invalid_cut_coords": self.reward_config["invalid_cut_coords"]
+                * len(self.invalid_cut_coords.values()),
+                "start_menu": self.reward_config["start_menu"] * self.seen_start_menu,
+                "pokemon_menu": self.reward_config["pokemon_menu"] * self.seen_pokemon_menu,
+                "stats_menu": self.reward_config["stats_menu"] * self.seen_stats_menu,
+                "bag_menu": self.reward_config["bag_menu"] * self.seen_bag_menu,
+                "explore_hidden_objs": sum(self.seen_hidden_objs.values()),
+                "explore_signs": sum(self.seen_signs.values())
+                * self.reward_config["explore_signs"],
+                "seen_action_bag_menu": self.seen_action_bag_menu
+                * self.reward_config["seen_action_bag_menu"],
+                "pokecenter_heal": self.pokecenter_heal * self.reward_config["pokecenter_heal"],
+                "rival3": self.reward_config["required_event"]
+                * int(self.read_m("wSSAnne2FCurScript") == 4),
+                "game_corner_rocket": self.reward_config["required_event"]
+                * float(self.missables.get_missable("HS_GAME_CORNER_ROCKET")),
+                "saffron_guard": self.reward_config["required_event"]
+                * float(self.flags.get_bit("BIT_GAVE_SAFFRON_GUARDS_DRINK")),
+                "lapras": self.reward_config["required_event"]
+                * float(self.flags.get_bit("BIT_GOT_LAPRAS")),
+                "a_press": len(self.a_press) * self.reward_config["a_press"],
+                "warps": len(self.seen_warps) * self.reward_config["explore_warps"],
+                "use_surf": self.reward_config["use_surf"] * self.use_surf,
+                "exploration": self.reward_config["exploration"] * np.sum(self.reward_explore_map),
+                "safari_zone": sum(
+                    self.reward_config["safari_zone"] * v for k, v in self.safari_zone_steps.items()
+                )
+                / 502.0,
+                "use_ball_count": self.reward_config["use_ball_count"] * self.use_ball_count,
+                "pokeflute_tiles": self.reward_config["pokeflute_tiles"]
+                * sum(self.pokeflute_tiles.values()),
+                "surf_tiles": self.reward_config["surf_tiles"] * sum(self.surf_tiles.values()),
+                "valid_pokeflute_coords": self.reward_config["valid_pokeflute_coords"]
+                * len(self.valid_pokeflute_coords.values()),
+                "invalid_pokeflute_coords": self.reward_config["invalid_pokeflute_coords"]
+                * len(self.invalid_pokeflute_coords.values()),
+                "valid_surf_coords": self.reward_config["valid_surf_coords"]
+                * len(self.valid_surf_coords.values()),
+                "invalid_surf_coords": self.reward_config["invalid_surf_coords"]
+                * len(self.invalid_surf_coords.values()),
+            }
+            | {
+                event: self.reward_config["required_event"] * float(self.events.get_event(event))
+                for event in REQUIRED_EVENTS
+            }
+            | {
+                item.name: self.reward_config["required_item"] * float(item.value in bag_item_ids)
+                for item in REQUIRED_ITEMS
+            }
+            | {
+                item.name: self.reward_config["useful_item"] * float(item.value in bag_item_ids)
+                for item in USEFUL_ITEMS
+            }
+        )
+
+
+{{< /highlight >}}
+</div>
+
+{{% /details %}}
+
+
 ### Sparse vs. Dense Rewards
 
 **Sparse rewards** are high value rewards, but rarely occur, e.g. gym battles. If we were to only reward the sparse rewards, the agent would never leave the starting point in Pallet Town.
@@ -38,11 +125,12 @@ Game progress is defined by accomplishing high value, sparse rewards. These incl
 
 - All required events completed. A required event is an event required to beat the game. Pokémon has around 80 required events.
 - All required items obtained. HMs are an example of required items.
+- All useful but not required items obtained. The Bicycle is an example of a useful item.
 
 Without these rewards, the agent would ultimately wander until the mini-episode reset and make no progress.
 
 ## Map ID Rewards
-<div style="text-align: center; align-items : center;">
+<div style="text-align: center; display : flex; align-items : center;">
 
 {{% columns ratio="1;1" %}}
   {{< figure

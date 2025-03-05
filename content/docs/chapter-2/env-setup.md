@@ -7,7 +7,11 @@ weight = 2
 
 ## Game Overview
 
-Before discussing observations, rewards, and the policy, we will provide a brief overview of the game's challenges. Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly. We cover Pokémon's challenges in greater depth in the [Appendix]({{<ref "/docs/appendix/breakdown/battling/index" >}} "appendix").
+Before discussing observations, rewards, and the policy, we will provide a brief overview of the game's challenges. Pokémon is a complex game with multiple tasks and puzzles that can be accomplished nonlinearly. 
+
+{{% hint info %}}
+We cover Pokémon's challenges in greater depth in the [Appendix]({{<ref "/docs/appendix/breakdown/battling/index" >}} "appendix").
+{{% /hint %}}
 
 At a high level, to beat Pokémon, you must:
 
@@ -63,7 +67,7 @@ flowchart TD
 
 ## Defining a "Route"
 
-For the agent to complete all objectives, we wanted to simplify the game as much as possible to maximize the likelihood of success. For determinism, we started all environments after the "Parcel Delivery" event. Additionally, we wanted to guarantee the agent would receive the gift Lapras in Silph Co. Here’s the simplified route:
+For the agent to complete all objectives, we wanted to simplify the game as much as possible to maximize the likelihood of success. To keep this work in line with Peter Whidden's video and to guarantee a Pokémon capable of learning `CUT`, we started all environments after the "Parcel Delivery" event. Additionally, we wanted to guarantee the agent would receive the gift Lapras in Silph Co. Here’s the updated route (simplified, with important changes in bold):
 
 {{< mermaid >}}
 ---
@@ -74,11 +78,11 @@ config:
 ---
 flowchart TD
 
-START("Start with Bulbasaur or Charmander to guarantee a Pokémon who can use CUT")
+START("**Start with Bulbasaur or Charmander to guarantee a Pokémon that can use CUT**")
 BROCK("Defeat Brock")
 MISTY("Defeat Misty")
 HM01("Acquire HM01")
-TEACH_CUT("Teach CUT")
+TEACH_CUT("**Teach the player's starter CUT**")
 LTSURGE("Defeat Lt. Surge")
 ERIKA("Defeat Erika")
 KOGA("Defeat Koga")
@@ -86,11 +90,11 @@ SABRINA("Defeat Sabrina")
 BLAINE("Defeat Blaine")
 GIOVANNI("Defeat Giovanni")
 HM03("Acquire HM03")
-TEACH_SURF("Teach SURF")
+TEACH_SURF("**Teach Lapras SURF**")
 HM04("Acquire HM04")
-TEACH_STRENGTH("Teach STRENGTH")
+TEACH_STRENGTH("**Teach Lapras STRENGTH**")
 TEAM_ROCKET("Complete Team Rocket Storyline")
-LAPRAS("Acquire the gift Lapras")
+LAPRAS("**Acquire the gift Lapras**")
 RIVAL6("Defeat Rival 6")
 E4("Defeat E4 and Champion")
 
@@ -196,7 +200,7 @@ def step(self, action: int):
 
 ## Reset, Episode and the Goal
 
-Reset handles the initialization for an episode. An episode is a sequence of actions that ends when some terminal state is reached.
+Reset handles the initialization for an episode. An episode is a sequence of actions and states that ends when some terminal state is reached.
 
 Resets usually occur when an environment:
 
@@ -210,7 +214,7 @@ For example, if we were playing 100x100 Tic-Tac-Toe, it could take up to 5000 st
 
 Based on Peter Whidden's prior work, we began with an episode terminating after a fixed number of steps. Over time, we tried other strategies around dynamically increasing the number of steps in an episode. We ultimately decided a Pokémon Red episode's terminal state is when an unrecoverable state (soft-lock) is met, e.g., such as running out of money or when the game is complete. 
 
-Because our **goal** was focused on becoming the Champion (a very long task), we compromised. We created "mini-episodes.” An episode would be the duration of an entire game. Portions of the environment's state would periodically reset mid-episode, but the emulator state would not:
+Because our **goal** was focused on becoming the Champion (a very long task), we compromised. We created "mini-episodes.” An episode would be the duration of an entire game. Some of the environment's state would periodically reset mid-episode, but the emulator running Pokémon within the environment would not:
 
 {{% details "Our reset function" closed %}}
 

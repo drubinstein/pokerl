@@ -7,19 +7,26 @@ weight = 40
 
 So we have a policy, observations, an environment and a reward. Now it's time to discuss how we wrote the RL system. Along the way, we'll provide relevant snippets of code and tricks done to make the system run as fast as possible.
 
-For compute, Joseph Suarez, the creator of [PufferAI](https://puffer.ai/) and the [PufferLib](https://github.com/PufferAI/PufferLib) RL Python library, graciously donated 4 machines to this effort. Each machine contained a NVIDIA 4090 GPU, Intel Core i9-14900K, 125 GB of RAM and 2TB of disk space. Before his contribution, we were paying $200/month using [vast.ai](https://vast.ai/) for training with worse hardware.
+For compute, Joseph Suarez, the creator of [PufferAI](https://puffer.ai/) and the [PufferLib](https://github.com/PufferAI/PufferLib) RL Python library, graciously donated 4 machines. Each machine contained 
 
-Good hardware although not necessary, massively sped up training.
+- a NVIDIA 4090 GPU
+- Intel Core i9-14900K
+- 128 GB of RAM 
+- 2TB of disk space
+  
+Before his contribution, we were paying $200/month using [vast.ai](https://vast.ai/) for training with worse hardware.
 
-But what was more important than good hardware? Good software! Lets discuss some of the challenges of the Pokémon environment and mitigations for those challenges. 
+Good hardware, although not necessary, massively sped up training.
+
+But what was more important than good hardware? Good software! Let's discuss some of the challenges of the Pokémon environment and how we addressed them. 
 
 In the end, we 10x’d the steps per second (sps) of training to a peak of 10000 sps with a lot of extra engineering effort. Most likely there are more optimizations we could make. Running experiments is still expensive and compute is still limited. However, it's now possible to beat Brock in less than 30 minutes! Potentially more effort was put into making the system performant than making the system beat Pokémon.
 
-## Pokémon is CPU Bound
+## Pokémon is CPU-Bound
 
 ### The Emulator
 
-[PyBoy](https://github.com/Baekalfen/PyBoy) happens to provide a very convenient interface for RL and is performant for Python. However, using an emulator comes with its downsides. Namely, an emulator emulates every instruction from the ROM. That means fewer compiler optimizations, no link time optimizations etc. We could have attempted to rewrite Pokémon in a modern language, but that would have been a Herculean effort on its own. Instead, we made PyBoy faster.
+[PyBoy](https://github.com/Baekalfen/PyBoy) happens to provide a very convenient interface for RL and is performant for Python. However, using an emulator comes with its downsides. Namely, an emulator emulates every instruction from the ROM. That means fewer compiler optimizations, no link time optimizations, etc. We could have attempted to rewrite Pokémon in a modern language, but that would have been a Herculean effort on its own. Instead, we made PyBoy faster.
 
 A slow PyBoy *was* the case. But we've been in frequent communication with the creator of PyBoy for a while and we (mostly the PyBoy creator) have put a lot of effort into improving PyBoy since late 2023. PyBoy has released a number of updates that have improved runtime speed and developer ergonomics dramatically including:
 
@@ -29,7 +36,7 @@ A slow PyBoy *was* the case. But we've been in frequent communication with the c
 - The hooks API.
 - JIT compiling the ROM (coming soon™).
 
-Most of these changes are in PyBoy’s core. Hooks are a special addition that let us inject Python code at specified instructions. Although the context switch back to Python slows down execution, the less frequent RAM reads hooks allow have led to an overall speed up in Pokémon. However, even now, the environment still uses the majority of training time!
+Most of these changes are in PyBoy’s core. Hooks are a special addition that let us inject Python code at specified instructions. Although the context switch back to Python slows down execution, the less frequent RAM reads have led to an overall speed up in Pokémon. However, even now, the environment still represents the majority of training time!
 
 
 <div style="text-align: center; ">
@@ -48,7 +55,7 @@ Most of these changes are in PyBoy’s core. Hooks are a special addition that l
 Do we need to collect data *every* frame? No. In fact, it is suboptimal. Most animations do not provide value to the player. This is well documented in Peter Whidden’s video. In order to use PyBoy effectively: 
 
 - We render the game headless (not every frame is rendered). No UI means less CPU time spent rendering the game.  
-- For every action, we tick PyBoy 24 times and record the game screen on the *last* step. 24 about the time it takes for the player to take one step in the overworld. In the future, we could make different buttons tick PyBoy different amounts.
+- For every action, we tick PyBoy 24 times and record the game screen on the *last* step. 24 ticks is about the time it takes for a player to take one step in the overworld. We did discover that some buttons can be processed in fewer than 24 ticks. In the future, we can make different actions take fewer ticks. 
 - We don’t collect information from memory every step.
 
 <div style="border:1px solid black;">
@@ -80,7 +87,7 @@ We additionally tick until the player is given back control. Waiting for control
 
 ## When to Care About the GPU
 
-Generating data on the CPU has generally been the bottleneck, but training and inference do occur. During the training phase, we do not run the emulator.
+Generating data on the CPU has generally been the bottleneck, but time training and inference on the GPU takes time too. During the training phase, we do not run the emulator.
 
 The policy is currently written in PyTorch and we have taken time to improve training speed where possible. Over time we have looked into:
 
@@ -89,15 +96,18 @@ The policy is currently written in PyTorch and we have taken time to improve tra
 * Improve the GPU utilization.
 * Improve sample efficiency.
 
-Some improvements have been contributed back to PufferLib (since early 2024 we have provided PufferLib with a 2x speed up). 
+Some improvements have been contributed back to PufferLib (since early 2024 we have provided PufferLib with a 2x speed up) including:
 
-Of the easier to add improvements, We achieved a 30% GPU speed improvement on inference and improved GPU utilization with [torch.compile](https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html). Torch compilation traces the execution graph of a PyTorch module and will create an optimized GPU execution graph.
-
-Another speed optimization easy win came making sure we used [pinned memory](https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/#pinned_host_memory) for any tensors on GPU. Pinning prevents an extra memory copy when moving data from the host CPU to the GPU device.
+- A 30% GPU speed improvement on inference and improved GPU utilization with [torch.compile](https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html). Torch compilation traces the execution graph of a PyTorch module and will create an optimized GPU execution graph.
+- Making sure we used [pinned memory](https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/#pinned_host_memory) for any tensors on GPU. Pinning prevents an extra memory copy when moving data from the host CPU to the GPU device.
+- Optimizations to PufferLib's multinomial sampling methods.
+- Optimizing CPU<->GPU transfers frequency.
+- Improvements in the vectorization.
+- New functionality for moving an entire observation tensor to the GPUs as packed bytes and unpacking the tensor to their original representation on the GPU.
 
 ## Observation Size Matters
 
-In the end, the biggest bottleneck happened to be the data transfer of the observation. Not just from the CPU to GPU, but also from each agent back to the buffer holding all agent experiences for the current policy.
+In the end, the biggest bottleneck was transmitting the observation to different locations. Not just from the CPU to GPU, but also from each agent back to the buffer holding all agent experiences for the current policy.
 
 {{< mermaid >}}
 ---
@@ -155,7 +165,7 @@ We can go one step further. GameBoy’s color system is 2 bit. Every pixel takes
 
 And there we had a potential near 64x speed up in host\<-\>device communication. How do we unpack on the GPU quickly?
 
-To unpack on the GPU, we store two buffers, a bit mask and a number of shifts. We shift the bytes using a [broadcast operation](https://pytorch.org/docs/stable/notes/broadcasting.html) then apply the bit mask in another broadcast operation and voila hyper parallel decoding for both the visited mask and the game screen.
+To unpack on the GPU, we store two buffers, a bit mask and a number of shifts. We shift the bytes using a [broadcast operation](https://pytorch.org/docs/stable/notes/broadcasting.html) then apply the bit mask in another broadcast operation and...voilà! Hyper parallel decoding for both the visited mask and the game screen.
 
 <div style="border:1px solid black;">
 {{< highlight python >}}
@@ -220,19 +230,19 @@ class Policy(nn.Module):
 {{< /highlight >}}
 </div>
 
-This data technique also works for the events vector. Instead of representing every event flag as 1 byte, we send the entire events vector to the GPU, i.e., 1 byte held 8 flags. On the GPU, and performed a similar shift and mask! Fast decompression of over 2000 event flags.
+This data technique can also be applied to the events vector. Instead of representing every event flag as 1 byte, we send the packed events vector to the GPU, i.e., 1 byte held 8 flags. On the GPU, we perform a similar shift and mask, enabling fast decompression of over 2,000 event flags.
 
 ## A Good Vectorized Env is Worth its Weight in Gold
 
-In between the emulator and the model, we had code managing a vectorized environment. A vectorized environment runs many copies of the same environments in parallel. Originally, we used the library [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/). It’s a great library for prototyping with RL, but it handles env vectorization suboptimally. SB3 will wait for all environments to finish their current step before calling the next step.
+A vectorized environment runs many copies of the same environments in parallel. Originally, we used the library [Stable Baselines 3](https://stable-baselines3.readthedocs.io/en/master/). It’s a great library for prototyping with RL, but it handles env vectorization suboptimally. SB3 will wait for all environments to finish their current step before calling the next step.
 
-In early 2024, we adopted PufferLib from PufferAI. PufferLib provides an asynchronous vectorized environment implementation. Our PufferLib-based implementation collects data from environments until enough examples have been collected. Once enough examples have been collected, a few epochs of training occurs. 
+In early 2024, we adopted PufferLib from PufferAI. PufferLib provides an asynchronous vectorized environment implementation. Our PufferLib-based implementation collects data from environments until enough examples have been collected. Once enough examples have been collected, a new policy is trained before returning to data collection. 
 
-## Good Hyperparameters can mean faster training
+## Good Hyperparameters can Mean Faster Training
 
-The last dimension for a faster training experience isn’t making the overall iteration time faster, but improving sample efficiency. Once we had a game winning model, we spent over a month sweeping hyperparameter to find parameters that would produce a winning run in the fastest amount of time. Hyperparameters define any configurable part of the system. These are parameters that are not intended to be learned.
+The last dimension for a faster training experience isn’t making the overall iteration time faster, but improving sample efficiency. Once we had a game winning model, we spent over a month sweeping hyperparameters to find parameters that would produce a winning run in the fastest amount of time. Hyperparameters define any configurable part of the system that are not intended to be learned.
 
-Most hyperparameter sweep libraries will optimize for a single metric, such as reward. We wanted to optimize for reward with a time penalty. [CARBS from Imbue](https://github.com/imbue-ai/carbs) is a *cost-aware* hyperparameter sweep tool. With proper hyperparameters, we reduced a single training run (that uses scripts) from 2 days to 7 hours. A nearly 7x reduction in training time.
+Most hyperparameter sweep libraries will optimize for a single metric, such as reward. We wanted to optimize for reward with a time penalty. [CARBS from Imbue](https://github.com/imbue-ai/carbs) is a *cost-aware* hyperparameter sweep tool. With proper hyperparameters, we reduced a single training run (that uses scripts) from 1 day to 7 hours. A nearly 7x reduction in training time.
 
 <div style="text-align: center; ">
 

@@ -9,12 +9,12 @@ So how did this agent perform? We now have an agent that beats Pokémon with a f
 
 ## What did we learn?
 
-We learned that reward shaping is super important. We learned that our initial belief was right. JRPGs are special and we still believe they are a stepping stone towards AGI. 
+We learned that reward shaping is super important. We learned that our initial belief was right: JRPGs are special and we still believe they are a stepping stone towards more powerful AI. 
 
-However, there's a lot more to learn. There are still scripts to remove. What if we could have the agent learn to solve the `STRENGTH` (Sokoban) puzzles? 
+However, there's still a lot more to learn. There are still scripts to remove. What if we could have the agent learn to solve the `STRENGTH` (Sokoban) puzzles? 
 
-We're curious what is possible with LLMs. Recently, [Claude showed interesting results playing Pokémon Red with an LLM](https://www.anthropic.com/research/visible-extended-thinking). Although Claude isn't using RL to play the game and the agent was most likely trained with Pokémon data (and therefore not a zero-shot approach), I’m curious when an LLM will replace our entire approach. We wish we could remove the swarming technique (for stability) and many of the in-game knowledge rewards we provided, especially event rewards, but we don’t think we can without making compromises on training speed.
+We're also curious as to what is possible with LLMs. Recently, [Claude showed interesting results playing Pokémon Red with an LLM](https://www.anthropic.com/research/visible-extended-thinking). Although Claude isn't using RL to play the game and the agent was most likely trained with Pokémon data (and therefore not a zero-shot approach), we're curious when an LLM will replace our entire approach and how efficient that approach will be. Furthermore, we wish we could remove the swarming technique (for stability) and many of the in-game knowledge rewards we provided, but we don’t think we can without making compromises on training speed.
 
-Map ID rewards are still our least favorite addition overall, but without the ability for the agent to understand in-game text we don’t know how they can be removed.
+Map ID rewards are still our least favorite addition overall, but without the ability for the agent to understand in-game text, we don’t know how they can be removed.
 
-But finally, optimizing for exploration really is super powerful, but hard to tune. We think there's room in the world to focus on exploration techniques.
+Finally, optimizing for exploration really is super powerful, but hard to tune. We think there's room in the world to focus on exploration techniques.

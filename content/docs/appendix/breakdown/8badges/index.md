@@ -5,7 +5,7 @@ weight = 93
 
 # The 8 Badges
 
-Next, we focused on what it takes to beat the 8 gym leaders. When defeated, gym leaders give the player a "badge.” Badges can unlock the ability to use a field move and give permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokémon, their types and what they unlock.
+The gym leaders are 8 in-game bosses. When defeated, gym leaders give the player a "badge.” Badges can unlock the ability to use a field move and give permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokémon, their types and what they unlock.
 
 
 
@@ -20,7 +20,7 @@ Next, we focused on what it takes to beat the 8 gym leaders. When defeated, gym 
 | **Blaine**<br>![](images/blaine.png)     | Fire     | <div align="left">-12.5% `SPECIAL`</align> boost                                    |
 | Giovanni<br>![](images/giovanni.png)       | Ground   |                                                        |
 
-We emphasized 5 gym leaders. Why? Because these gym leaders can be accomplished in *nearly any order*. The vast majority of storyline events are gated by **Misty, Erika, and Koga** who give access to the field moves `CUT`, `STRENGTH` and `SURF` outside of battle. 
+We emphasized 5 gym leaders because these gym leaders can be accomplished in *nearly any order*. The vast majority of storyline events are gated by **Misty, Erika, and Koga** who give access to the field moves `CUT`, `STRENGTH` and `SURF` outside of battle. 
 
 Some gym leaders require solving puzzles or removing environmental guards.
 

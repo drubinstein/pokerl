@@ -13,6 +13,15 @@ Hi! Since 2020, we've been developing a reinforcement learning (RL) agent to bea
 **As of February 2025, we are able to beat Pokémon Red with Reinforcement Learning using a <10 million parameter policy (60500x smaller than DeepSeekV3) and with minimal simplifications.** The output is not a policy capable of beating Pokémon, but a technique for producing solutions to Pokémon. This website describes the system's current state. [All code is open sourced and available for you, the reader, to try](https://github.com/thatguy11325/pokemonred_puffer) ![GitHub Repo stars](https://img.shields.io/github/stars/thatguy11325/pokemonred_puffer)
 .
 
+<div style="display : flex; align-items : center;">
+
+<img src="assets/mapvid.gif" width="250px">
+<img src="assets/visitedmask.png" width="250px">
+<video width="30%" autoplay loop muted>
+  <source src="assets/coordscrop.mp4" type="video/mp4" />
+</video>
+
+</div>
 
 As improvements to the codebase are made, the changelog will be updated.
 
@@ -67,7 +76,7 @@ With RL, we built an agent with a super tiny neural network with no pretraining 
 
 ## Authors
 
-[David Rubinstein](https://github.com/drubinstein), [Keelan Donovan](https://github.com/leanke), Daniel Addis, Kyoung Whan Choe, [Joseph Suarez](https://puffer.ai/), [Peter Whidden](https://peterwhidden.webflow.io/)
+[David Rubinstein](https://github.com/drubinstein), [Keelan Donovan](https://github.com/leanke), [Daniel Addis](https://github.com/xinpw8), Kyoung Whan Choe, [Joseph Suarez](https://puffer.ai/), [Peter Whidden](https://peterwhidden.webflow.io/)
 
 ## Acknowledgements
 
