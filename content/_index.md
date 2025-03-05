@@ -72,7 +72,7 @@ out of date. If you can build a system that can create new data on the fly, you 
 
 With RL, we built an agent with a super tiny neural network with no pretraining (the agent starts by literally pressing random buttons!) and we still achieved amazing results.
 
-{{< button relref="docs/chapter-1" >}}Next Page{{< /button >}}
+{{< button relref="docs/chapter-1/quickstart" >}}Next Page{{< /button >}}
 
 ## Authors
 
