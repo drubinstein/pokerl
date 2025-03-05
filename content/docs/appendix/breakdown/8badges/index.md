@@ -5,11 +5,10 @@ weight = 93
 
 # The 8 Badges
 
-The gym leaders are 8 in-game bosses. When defeated, gym leaders give the player a "badge.” Badges can unlock the ability to use a field move and give permanent stat modifiers to the agent’s party. Below is a table of the gym leaders of Pokémon, their types and what they unlock.
+The gym leaders are 8 in-game bosses. When defeated, gym leaders give the player a "badge.” Badges can unlock the ability to use a field move and give permanent stat modifiers to the agent’s party. Below is a table of the gym leaders, their specialty and what they unlock.
 
 
-
-| **Gym Leader** | **Type** |                       **Reward**                       |
+| **Gym Leader** | **Specialty** |                       **Reward**                       |
 |:--------------:|:--------:|:------------------------------------------------------:|
 | Brock<br>![](images/brock.png)          | Rock     | <div align="left">- 12.5% `ATTACK` boost<br/>- Can use `FLASH` outside of battle</align> |
 | Misty<br>![](images/misty.png)          | Water    | <div align="left">- Can use `CUT` outside of battle</align>                        |
@@ -94,7 +93,7 @@ Sabrina’s gym can only be entered after completing the Team Rocket storyline. 
 
 </div>
 
-To enter Blaine’s gym the agent must first *`SURF`* to Cinnabar Island where the gym is located. Subsequently, the agent must acquire the "SECRET KEY” from the Pokémon Mansion next door to his gym *`SURF`*. To battle Blaine, the agent must complete a series of optional True/False quizzes. If the agent incorrectly answers, the agent battles a trainer.
+To enter Blaine’s gym the agent must first *`SURF`* to Cinnabar Island where the gym is located. Subsequently, the agent must acquire the `SECRET KEY` from the Pokémon Mansion next door to his gym. To battle Blaine, the agent must complete a series of optional True/False quizzes. If the agent incorrectly answers, the agent battles a trainer.
 
 ## Giovanni's Gym Gimmick
 
@@ -109,5 +108,3 @@ To enter Blaine’s gym the agent must first *`SURF`* to Cinnabar Island where t
 </div>
 
 Giovanni’s gym is blocked until you beat all 7 prior gym leaders. Giovanni’s gym contains a maze puzzle with "spin tiles" (see figure).
-
-The agent must be capable of solving all these tasks.
