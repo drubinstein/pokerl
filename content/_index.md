@@ -97,7 +97,7 @@ For their countless hours making the world map asset.
   class="ma0 w-75"
 >}}
 
-{{< button relref="docs/chapter-1" >}}Next Page{{< /button >}}
+{{< button relref="docs/chapter-1/quickstart" >}}Next Page{{< /button >}}
 
 ## Changelog
 
