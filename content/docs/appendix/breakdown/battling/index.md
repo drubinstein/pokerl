@@ -29,4 +29,4 @@ Battles end when all Pokémon on one side have fainted. Fainting is when a Poké
 
 If the player's Pokémon knocks out the opposing Pokémon, the player's Pokémon gains experience (EXP). With enough EXP, a Pokémon will level up. Levelling up provides a mechanism to increase the Pokémon's stats. Levelling up to increase stats gives a mechanism to ignore worrying about battling. If the agent "grinds,” that is, let Pokémon level up or retry trainers infinite times, the agent will eventually win outside of a couple of very unlikely situations. 
 
-Consequentially, we ignored creating a policy for battling and focused on providing suitable conditions for levelling up when needed.
+Consequentially, we ignored creating a policy for battling and focused on providing suitable conditions for leveling up when needed.

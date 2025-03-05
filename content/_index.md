@@ -14,7 +14,7 @@ Hi! Since 2020, we've been developing a reinforcement learning (RL) agent to bea
 .
 
 
-As improvements to the codebase is made, the changelog will be updated.
+As improvements to the codebase are made, the changelog will be updated.
 
 ## What is Pokémon Red?
 
@@ -28,13 +28,13 @@ We focused on the second (more popular) goal, becoming the champion.
 
 ## Why Pokémon Red
 
-Why care about developing an agent to beat Pokémon with machine learning? 
-The answer is really a bit higher level. We believe solving _JRPGs_ with machine learning is a stepping stone towards AGI. JRPGs: 
+Why do we care about developing an agent to beat Pokémon with machine learning? 
+The answer is really a bit higher level. We believe solving _JRPGs_ with reinforcement learning provide extremely difficult challenges not present in current RL environments. It is our hope that JRPGs will provide a great benchmark for improving AI.
 
-- Are just as complex, if not moreso than games like Go, StarCraft II or Minecraft.
+- Can be just as complex as games like Go, StarCraft II or Minecraft.
 - Involve complex reasoning and decision making.
 - Are nonlinear.
-- Can be long such with > 24 hours average human gameplay.
+- Can be long, with > 24 hours average human gameplay. Pokémon Red takes 25 hours on average for a new player to complete.
 - Require multi-task reasoning.
 - Have non-obvious reward functions.
 
@@ -52,7 +52,7 @@ labelled and plentiful dataset a model larger than we had the budget to support.
 known speedrun route. We tried that once, but struggled to make a performant data collection system.
 
 - We could’ve attempted to beat the game with an LLM like like Pimanrules did 
-in his video [Can ChatGPT play Pokémon Crystal? (with GPT-4V)](https://www.youtube.com/watch?v=Dct7dffObpY), but again, it would have reuqired more money and computing power than we had at our disposal.
+in his video [Can ChatGPT play Pokémon Crystal? (with GPT-4V)](https://www.youtube.com/watch?v=Dct7dffObpY), but again, this would have required more money and computing power than we had at our disposal.
 
 Of the many approaches considered, RL appealed to us the most.
 
@@ -61,7 +61,7 @@ The data is almost always fresh. No need to build
 complex data collection systems, manage large datasets or worry if the dataset is 
 out of date. If you can build a system that can create new data on the fly, you can start training. 
 
-With RL, we built an agent with minimal resources and achieved amazing results.
+With RL, we built an agent with a super tiny neural network with no pretraining (the agent starts by literally pressing random buttons!) and we still achieved amazing results.
 
 {{< button relref="docs/chapter-1" >}}Next Page{{< /button >}}
 
@@ -77,12 +77,10 @@ For creating PyBoy and his collaboration.
 #### Death (PokeRL Discord handle)
 For their countless hours making the world map asset.
 
+#### [Tina Zhu](https://tolympia.github.io)
+
 #### The [PokeRL Discord Community](http://discord.gg/RvadteZk4G)
 [![Join the Discord server!](https://invidget.switchblade.xyz/RvadteZk4G)](http://discord.gg/RvadteZk4G)
-
-## Changelog
-
-### Feb. 28, 2025 - First Draft
 
 {{< figure
   src="puffer.png"
@@ -91,3 +89,7 @@ For their countless hours making the world map asset.
 >}}
 
 {{< button relref="docs/chapter-1" >}}Next Page{{< /button >}}
+
+## Changelog
+
+### March 4, 2025 - v1

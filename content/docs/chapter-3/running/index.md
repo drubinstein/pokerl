@@ -13,7 +13,7 @@ Good hardware although not necessary, massively sped up training.
 
 But what was more important than good hardware? Good software! Lets discuss some of the challenges of the Pokémon environment and mitigations for those challenges. 
 
-In the end, we 10x’d the steps per second (sps) of training to a peak of 10000 sps with a lot of extra engineering effort. Now, it's possible to beat Brock in less than 30 minutes! Potentially more effort was put into making the system performant than making the system beat Pokémon.
+In the end, we 10x’d the steps per second (sps) of training to a peak of 10000 sps with a lot of extra engineering effort. Most likely there are more optimizations we could make. Running experiments is still expensive and compute is still limited. However, it's now possible to beat Brock in less than 30 minutes! Potentially more effort was put into making the system performant than making the system beat Pokémon.
 
 ## Pokémon is CPU Bound
 

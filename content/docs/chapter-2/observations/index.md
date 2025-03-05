@@ -7,13 +7,13 @@ weight = 30
 
 Observations are a representation of the state of the environment. For the Tic-Tac-Toe example, the observation was a 3x3 grid. For Minecraft, it could be a rendered frame and the player's current inventory.
 
- Pokémon is way more complex. Pokémon contains tons of visible and invisible pieces of information. Although the overworld gamescreen provides most information a player want, some important information can only be accessed by lengthy menu navigation, talking to NPCs and random exploration. For example, *no NPC* in the game explains to the player what a cuttable tree looks like. That is something the player has to discover.
+ Pokémon is way more complex. Pokémon contains tons of visible and invisible pieces of information. Although the overworld gamescreen provides most information a player wants, some important information can only be accessed by lengthy menu navigation, talking to NPCs and random exploration. For example, *no NPC* in the game explains to the player what a cuttable tree looks like. That is something the player has to discover.
 
 It is possible to give the agent the entirety of in-game RAM and let the agent solve the game. We desired to make the agent play the game as a new *human* player would. When in doubt, we stuck to one rule when designing our observations:
 
 _The observation can not contain any in-game knowledge a human player would not have access to._
 
-What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No knowledge of a Pokémon’s future moves. No knowledge of an enemy’s moveset. No knowledge of what a new area looked like until the agent visits the new area, etc. 
+What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No knowledge of a Pokémon’s future moves. No knowledge of an enemy’s moveset. No knowledge of what a new area looked like until the agent visited the new area, etc. 
 
 
 ## The First Observations
@@ -31,8 +31,8 @@ What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No
 - Pokémon Red was released as a grayscale game. Color does not provide any extra information until later generations.
 - Downsampling the screen still provides enough information to determine where the character is.
 - The screen gives the agent the most direct knowledge of what it is doing. 
-- An alternative would be to collect all entity information for the current screen from RAM. However, we felt that the game screen provided the best parallel to how a human interacts with a Gameboy  
-- Another alternative would be to provide the sprites as an observation. Again, we like how using pixels mimic how a human would experience Pokémon Red.
+- An alternative would be to collect all entity information for the current screen from RAM. However, we felt that the game screen provided the best parallel to how a human interacts with a Gameboy.  
+- Another alternative would be to provide the sprites as an observation. Again, we like how using pixels mimics how a human would experience Pokémon Red.
 
 ### The "Visited Mask"
 
@@ -41,9 +41,9 @@ What does this mean in practice? No knowledge of a Pokémon’s hidden stats. No
 
 ### A binary vector of all events the agent has or has not completed.   
 - Events are in-game objectives that have been accomplished. 
-- Beating a gym is an event. Similarly, any trainer battles is an event. Even buying a ticket to the Pewter City museum is an event. 
-- Pokémon uses an events array in the WRAM bank when to control what's loaded when entering a maps.
-- We tried to not include the events array as the events observation leaks information.
+- Beating a gym is an event. Similarly, any trainer battle is an event. Even buying a ticket to the Pewter City museum is an event. 
+- Pokémon uses an events array in the WRAM bank when to control what's loaded when entering a map.
+- We tried not to include the events array as the events observation leaks information.
 - We had to create four "events" not included in the events array:
   - Rival 3 defeated.
   - Lapras acquired.
@@ -55,22 +55,22 @@ Along the way, we added more observations to handle specific in-game complexity.
 
 ### The direction the agent is facing  
   
-The direction provided an extra hint to teach the agent about what player sprite maps to what orientation.
+The direction provides an extra hint to teach the agent about what player sprite maps to what orientation.
 
 ### The map ID an agent will return to if they lose a battle (Blackout Map ID)
-The blackout map ID may not be necessary, but the observation provides a way for help the agent understand to use Pokémon Centers (a form of checkpointing).
+The blackout map ID may not be necessary, but the observation provides a way to help the agent understand to use Pokémon Centers (a form of checkpointing).
 
 ### The items in the agent’s inventory along with quantities  
 
-Without an inventory observation, the agent would have to open the menu periodically to remember what it has. Additionally, some items are required. The inventory observation helps the agent know when it obtained a required, non-event item.
+Without an inventory observation, the agent would have to open the menu periodically to remember what it is in inventory. Additionally, some items are required. The inventory observation helps the agent know when it obtains a required, non-event item.
 
 ### The agent’s party including any information available in a party member’s stats page, e.g. health left  
 
-The party observation may not have been necessary. We placed these observations in-case we ever wanted to write battle AI and to see if the agent learns anything about how different species and types are related to each other.
+The party observation may not have been necessary. We placed these observations in case we ever wanted to write battle AI and to see if the agent would learn anything about how different species and types are related to each other.
 
 ### The number of steps left in the Safari Zone minigame  
 
-Although we have not explained the Safari Zone in-depth, we wanted to prevent the agent from walking aimlessly in the Safari Zone.
+Although we have not explained the Safari Zone in depth, we wanted to prevent the agent from walking aimlessly in the Safari Zone and thereby stalling game progression.
 
 ### Whether or not the agent has received the gift Lapras.  
 

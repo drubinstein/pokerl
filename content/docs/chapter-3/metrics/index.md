@@ -79,7 +79,7 @@ We also kept track of the current party all agents had. The party table provided
 
 </div>
 
-For example, to get a Mr. Mime, the player must catch an Abra (extremely difficult to catch) and then perform an in-game trade. We've seen runs with Gyarados, tons of Safari Zone Pokémon and more!
+For example, to get a Mr. Mime, the player must obtain an Abra (extremely difficult to catch) and then perform an in-game trade. We've seen runs with Gyarados, tons of Safari Zone Pokémon and more!
 
 
 ### The Map Overlay

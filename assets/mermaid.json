@@ -1,4 +1,10 @@
 {
   "securityLevel": "loose",
-  "theme": "mc"
+  "theme": "mc",
+  "themeVariables": {
+    "fontSize": "32px"
+  },
+  "look": "handDrawn",
+  "layout": "elk"
+
 }

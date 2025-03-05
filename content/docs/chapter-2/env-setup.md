@@ -39,8 +39,8 @@ flowchart TD
     C --> J
     C --> K
     C --> M
-    H --> HH(Defeat Rocket grunt protecting Rocket Hideout) --> HHH(Flip switch in Celadon Game Corner to unlock the Rocket Hideout)
-    HHH --> KK(Defeat Rocket grunt with Lift Key) --> KKK(Obtain the Lift Key) --> K(Defeat Giovanni in Rocket Hideout) 
+    H --> HH(Defeat Rocket Grunt protecting Rocket Hideout) --> HHH(Flip switch in Celadon Game Corner to unlock the Rocket Hideout)
+    HHH --> KK(Defeat Rocket Grunt with Lift Key) --> KKK(Obtain the Lift Key) --> K(Defeat Giovanni in Rocket Hideout) 
     K --> LL(Collect the Silph Scope from Giovanni) --> LLL(Use the Silph Scope on the ghost in Lavender Tower) 
     LLL --> L(Save Mr. Fuji at the top floor of Lavender Tower) 
     H --> I(Defeat Lt. Surge)
@@ -74,7 +74,7 @@ config:
 ---
 flowchart TD
 
-START("Start with Bulbasaur or Charmander to guarantee a Pokemon who can use CUT")
+START("Start with Bulbasaur or Charmander to guarantee a Pokémon who can use CUT")
 BROCK("Defeat Brock")
 MISTY("Defeat Misty")
 HM01("Acquire HM01")
@@ -144,25 +144,27 @@ To handle these risks and difficulties, we split agent behavior into two classes
 * **Scripted:** Meaning the environment performs certain actions for the agent.  
 * **Emergent:** Allowing the agent to discover its own strategies.
 
-Ideally, no scripted behavior would be needed. However, we needed scripts. We aimed to only script behaviors that require human intuition or tasks that are not really a core part of Pokémon. These included:
+We really wanted to beat the game without any scripts. However, a few sections require human intuition not directly learnable from the game, e.g., reading the name of an HM and knowing immediately what it does. We aimed to only script behaviors that require human intuition or tasks that are not really a core part of Pokémon. Some of these scripts (especially ones related to `SURF` and `Pokéflute`) can probably be removed by running more ablations and better tuning reward weights and hyperparameters. These included:
 
 * Item management - the environment will toss all non-key items if the player's bag is full.
-* Money management - the agent will have infinite money.  
+* Money management - the environment provides infinite money.  
+* Teaching `STRENGTH`
 * Solving puzzles that require `STRENGTH`. 
+* Teaching `SURF` and using `SURF` outside of battle.
+* Automatically using Pokéflute.
 * Blocking the Indigo Plateau exit at the end of the game.
 * Using `FLASH`.
 
 We additionally used scripts to ease development. These scripts have since been removed.
 
-* Teaching HMs.
-* Automatically using HMs outside of battle.
-* Automatically Pokéflute.
+* Teaching `CUT`.
+* Automatically using `CUT` outside of battle.
 * Maxing the Pokémon’s stats.
 * Automatic insertion of drinks into the player's bag if the player *entered* Celadon Mart.
 * Automating elevator usage. If an agent entered an elevator, the elevator would go to the next floor modulo number of floors.
-* Disabling wild battles to simplify dungeons.
+* Disabling wild battles.
 
-## Playing the Environment
+## The Environment
 
 The Python library [Gymnasium](https://gymnasium.farama.org/) provides a fairly straightforward API for defining an environment. The environment can be simplified into two functions: `Step` and `Reset`
 
@@ -204,11 +206,11 @@ Resets usually occur when an environment:
 
 Pokémon is in the realm of "long episodic RL." There is no strict rule on what a long episode is, but Pokémon takes 25 hours for the average person to beat. That's much longer than a session of Pac-Man or Breakout. Long episodes mean that the environment may not return rewards for a very long time. If the environment only returns rewards at the end of an episode, the agent may have trouble learning long term policies.
 
-For example, if we were playing 100x100 Tic-Tac-Toe, it could take up to 5000 steps to return a reewards. Imagine having to plan out a 5000 step strategy. It's not easy! Later, we'll go over how we handled rewards for Pokémon's long episodes.
+For example, if we were playing 100x100 Tic-Tac-Toe, it could take up to 5000 steps to return a rewards. Imagine having to plan out a 5000 step strategy. It's not easy! Later, we'll go over how we handled rewards for Pokémon's long episodes.
 
-Based on Peter Whidden's prior work, we began with an episode as a fixed number of steps. Over time, we tried other strategies such as dynamically increasing the number of steps per episode as important milestones occur within an environment. However, we decided a Pokémon Red episode's terminal state is when an unrecoverable state (soft-lock) is met, e.g., such as running out of money or when the game is complete. 
+Based on Peter Whidden's prior work, we began with an episode terminating after a fixed number of steps. Over time, we tried other strategies around dynamically increasing the number of steps in an episode. We ultimately decided a Pokémon Red episode's terminal state is when an unrecoverable state (soft-lock) is met, e.g., such as running out of money or when the game is complete. 
 
-Because our **goal** was focused on becoming the Champion (a very long task), we compromised. We created "mini-episodes.” An episode would be the duration of an entire game. The environment's state would periodically reset mid-episode, but the emulator state would not:
+Because our **goal** was focused on becoming the Champion (a very long task), we compromised. We created "mini-episodes.” An episode would be the duration of an entire game. Portions of the environment's state would periodically reset mid-episode, but the emulator state would not:
 
 {{% details "Our reset function" closed %}}
 

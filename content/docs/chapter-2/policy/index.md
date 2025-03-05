@@ -18,7 +18,7 @@ To handle time dependence we considered a few options:
 - Use a [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_network) such as an [LSTM](https://en.wikipedia.org/wiki/Long_short-term_memory).   
 - Use a [state space model](https://huggingface.co/blog/lbourdois/get-on-the-ssm-train) (SSM).
 
-We went with the easiest to integrate solution, an LSTM. An LSTM contains an internal state that gets input to the model alongside the most recent data point. Although LSTMs can only remember up to ≈1000 steps, that was enough history for an effective policy.
+We went with the easiest to integrate solution, an LSTM. An LSTM contains an internal state that gets input to the model alongside the most recent data point. In the best case, LSTMs can only remember on the order of 1000 steps. That was enough history for an effective policy.
 
 <div style="text-align: center;">
 
@@ -32,9 +32,9 @@ We went with the easiest to integrate solution, an LSTM. An LSTM contains an int
 
 The policy ended up being ≈5M parameters or 20MB. For context, that's 5 orders of magnitude smaller than DeepSeek. Enough to fit on the average consumer GPU 400x over.
 
-## Feature Engineering the Policy
+## Inputting the Observations into the Policy
 
-In the previous sections we described the observation, but did not go into how each observation is input to the policy. 
+In the previous sections we described the observation, but did not go into how each observation is input to the policy. The policy looks large, but it's really an encoder for the previously described observations, e.g., normalizing continuous data. At the output, everything is concatenated and then input to the LSTM.
 
 ### Pokémon Red Policy
 
