@@ -10,8 +10,7 @@ type: docs
 </div>
 
 Hi! Since 2020, we've been developing a reinforcement learning (RL) agent to beat the 1996 game Pokémon Red.
-**As of February 2025, we are able to beat Pokémon Red with Reinforcement Learning using a <10 million parameter policy (60500x smaller than DeepSeekV3) and with minimal simplifications.** The output is not a policy capable of beating Pokémon, but a technique for producing solutions to Pokémon. This website describes the system's current state. [All code is open sourced and available for you, the reader, to try](https://github.com/drubinstein/pokemonred_puffer) ![GitHub Repo stars](https://img.shields.io/github/stars/drubinstein/pokemonred_puffer)
-.
+**As of February 2025, we are able to beat Pokémon Red with Reinforcement Learning using a <10 million parameter policy (60500x smaller than DeepSeekV3) and with minimal simplifications.** The output is not a policy capable of beating Pokémon, but a technique for producing solutions to Pokémon. This website describes the system's current state. [All code is open sourced and available for you, the reader, to try](https://github.com/drubinstein/pokemonred_puffer) ![GitHub Repo stars](https://img.shields.io/github/stars/drubinstein/pokemonred_puffer). If you want to contact us, please join our Discord server (linked below) or email us at `pokemonreinforcementlearning <at> gmail <dot> com`.
 
 <div style="display : flex; align-items : center;">
 
